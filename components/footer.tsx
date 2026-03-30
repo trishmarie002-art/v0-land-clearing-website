@@ -1,7 +1,6 @@
 "use client"
 
 import Link from "next/link"
-import Image from "next/image"
 import { Phone, Mail, MapPin } from "lucide-react"
 
 const quickLinks = [
@@ -29,11 +28,9 @@ export function Footer() {
           {/* Brand */}
           <div>
             <Link href="/" className="flex items-center mb-4 group transition-transform hover:scale-105">
-              <Image
+              <img
                 src="/images/logo.png"
                 alt="Jay's Land Clearing Service & Dirt Work"
-                width={160}
-                height={53}
                 className="h-14 w-auto"
               />
             </Link>

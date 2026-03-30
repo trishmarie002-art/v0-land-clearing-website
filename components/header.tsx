@@ -38,13 +38,10 @@ export function Header() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center group transition-transform hover:scale-105">
-            <Image
+            <img
               src="/images/logo.png"
               alt="Jay's Land Clearing Service & Dirt Work"
-              width={180}
-              height={60}
               className="h-12 md:h-16 w-auto"
-              priority
             />
           </Link>
 
