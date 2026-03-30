@@ -1,5 +1,9 @@
+"use client"
+
 import { Trees, Mountain, Home, Truck, Shovel, Fence } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { motion, useInView } from "framer-motion"
+import { useRef } from "react"
 
 const services = [
   {
@@ -35,53 +39,97 @@ const services = [
 ]
 
 export function Services() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-100px" })
+
   return (
-    <section id="services" className="py-20 md:py-28 bg-background">
-      <div className="container mx-auto px-4">
+    <section id="services" className="py-20 md:py-28 bg-background overflow-hidden">
+      <div className="container mx-auto px-4" ref={ref}>
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider">What We Do</span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-2 mb-4 font-[family-name:var(--font-display)] uppercase">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
+          <motion.span
+            initial={{ opacity: 0, y: 10 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-primary font-semibold text-sm uppercase tracking-wider"
+          >
+            What We Do
+          </motion.span>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-3xl md:text-4xl lg:text-5xl font-bold mt-2 mb-4 font-[family-name:var(--font-display)] uppercase"
+          >
             Our <span className="text-primary">Services</span>
-          </h2>
-          <p className="text-foreground/70">
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-foreground/70"
+          >
             From initial land clearing to final grading, we provide comprehensive services to transform your property.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
-            <Card
+            <motion.div
               key={index}
-              className="bg-card border-border hover:border-primary/50 transition-all group"
+              initial={{ opacity: 0, y: 40 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
             >
-              <CardHeader>
-                <div className="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                  <service.icon className="w-7 h-7 text-primary" />
-                </div>
-                <CardTitle className="text-xl font-bold font-[family-name:var(--font-display)] uppercase">
-                  {service.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-foreground/70 leading-relaxed">
-                  {service.description}
-                </CardDescription>
-              </CardContent>
-            </Card>
+              <motion.div
+                whileHover={{ y: -8, scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Card className="bg-card border-border hover:border-primary/50 transition-all group h-full">
+                  <CardHeader>
+                    <motion.div
+                      whileHover={{ rotate: [0, -10, 10, 0] }}
+                      transition={{ duration: 0.5 }}
+                      className="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors"
+                    >
+                      <service.icon className="w-7 h-7 text-primary" />
+                    </motion.div>
+                    <CardTitle className="text-xl font-bold font-[family-name:var(--font-display)] uppercase">
+                      {service.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-foreground/70 leading-relaxed">
+                      {service.description}
+                    </CardDescription>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </motion.div>
           ))}
         </div>
 
         {/* Service Area Note */}
-        <div className="mt-16 bg-card border border-border rounded-lg p-8 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          whileHover={{ scale: 1.01 }}
+          className="mt-16 bg-card border border-border rounded-lg p-8 text-center"
+        >
           <h3 className="text-xl font-bold mb-3 font-[family-name:var(--font-display)] uppercase">
             Proudly Serving <span className="text-primary">San Antonio</span> & Surrounding Areas
           </h3>
           <p className="text-foreground/70 max-w-2xl mx-auto">
             We service all of Bexar County and surrounding communities including Boerne, New Braunfels, Seguin, Floresville, Castroville, and more. Contact us to see if we service your area.
           </p>
-        </div>
+        </motion.div>
       </div>
     </section>
   )
