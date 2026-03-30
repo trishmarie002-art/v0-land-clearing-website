@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Menu, X, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -36,18 +37,15 @@ export function Header() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 md:w-12 md:h-12 bg-primary rounded-sm flex items-center justify-center transition-transform group-hover:scale-105 group-hover:-rotate-3">
-              <span className="text-primary-foreground font-bold text-lg md:text-xl font-[family-name:var(--font-display)]">J</span>
-            </div>
-            <div className="flex flex-col">
-              <span className="font-bold text-sm md:text-base text-primary font-[family-name:var(--font-display)] uppercase tracking-wide">
-                {"Jay's Land Clearing"}
-              </span>
-              <span className="text-xs text-muted-foreground hidden sm:block">
-                & Dirt Work
-              </span>
-            </div>
+          <Link href="/" className="flex items-center group transition-transform hover:scale-105">
+            <Image
+              src="/images/logo.png"
+              alt="Jay's Land Clearing Service & Dirt Work"
+              width={180}
+              height={60}
+              className="h-12 md:h-16 w-auto"
+              priority
+            />
           </Link>
 
           {/* Desktop Nav */}

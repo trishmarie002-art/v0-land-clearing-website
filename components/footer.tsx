@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { Phone, Mail, MapPin } from "lucide-react"
 
 const quickLinks = [
@@ -27,16 +28,14 @@ export function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 animate-on-scroll fade-in">
           {/* Brand */}
           <div>
-            <Link href="/" className="flex items-center gap-2 mb-4 group">
-              <div className="w-10 h-10 bg-primary rounded-sm flex items-center justify-center transition-transform group-hover:scale-105 group-hover:-rotate-3">
-                <span className="text-primary-foreground font-bold text-lg font-[family-name:var(--font-display)]">J</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-bold text-sm text-primary font-[family-name:var(--font-display)] uppercase tracking-wide">
-                  {"Jay's Land Clearing"}
-                </span>
-                <span className="text-xs text-muted-foreground">& Dirt Work</span>
-              </div>
+            <Link href="/" className="flex items-center mb-4 group transition-transform hover:scale-105">
+              <Image
+                src="/images/logo.png"
+                alt="Jay's Land Clearing Service & Dirt Work"
+                width={160}
+                height={53}
+                className="h-14 w-auto"
+              />
             </Link>
             <p className="text-foreground/70 text-sm mb-4">
               Professional land clearing and dirt work services in San Antonio and surrounding areas. Transforming properties for over 15 years.
