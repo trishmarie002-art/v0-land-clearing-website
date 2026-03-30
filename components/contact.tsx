@@ -37,24 +37,41 @@ export function Contact() {
     name: "",
     email: "",
     phone: "",
+    service: "",
     message: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const [error, setError] = useState("")
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setError("")
     
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-    
-    setIsSubmitting(false)
-    setSubmitted(true)
-    setFormData({ name: "", email: "", phone: "", message: "" })
-    
-    // Reset success message after 5 seconds
-    setTimeout(() => setSubmitted(false), 5000)
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+      
+      if (!response.ok) {
+        throw new Error('Failed to send message')
+      }
+      
+      setSubmitted(true)
+      setFormData({ name: "", email: "", phone: "", service: "", message: "" })
+      
+      // Reset success message after 5 seconds
+      setTimeout(() => setSubmitted(false), 5000)
+    } catch {
+      setError("Something went wrong. Please call us directly at (210) 891-4174")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -163,15 +180,36 @@ export function Contact() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email Address</Label>
+                  <Label htmlFor="email">Email Address *</Label>
                   <Input
                     id="email"
                     type="email"
                     placeholder="john@example.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    required
                     className="bg-background border-border"
                   />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="service">Service Interested In</Label>
+                  <select
+                    id="service"
+                    value={formData.service}
+                    onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                    className="flex h-10 w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  >
+                    <option value="">Select a service</option>
+                    <option value="Land Clearing">Land Clearing</option>
+                    <option value="Brush Removal">Brush Removal</option>
+                    <option value="Dirt Work & Grading">Dirt Work & Grading</option>
+                    <option value="Excavation">Excavation</option>
+                    <option value="Hauling Services">Hauling Services</option>
+                    <option value="Lot Preparation">Lot Preparation</option>
+                    <option value="Fence Line Clearing">Fence Line Clearing</option>
+                    <option value="Other">Other</option>
+                  </select>
                 </div>
 
                 <div className="space-y-2">
@@ -186,6 +224,12 @@ export function Contact() {
                     className="bg-background border-border resize-none"
                   />
                 </div>
+
+                {error && (
+                  <div className="bg-destructive/10 border border-destructive/30 rounded-lg p-4 text-center">
+                    <p className="text-destructive text-sm">{error}</p>
+                  </div>
+                )}
 
                 <Button
                   type="submit"
