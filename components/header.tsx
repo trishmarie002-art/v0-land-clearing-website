@@ -49,9 +49,9 @@ export function Header() {
 
           {/* CTA */}
           <div className="hidden md:flex items-center gap-4">
-            <a href="tel:+12105551234" className="flex items-center gap-2 text-primary font-semibold">
+            <a href="tel:+12108914174" className="flex items-center gap-2 text-primary font-semibold">
               <Phone className="w-4 h-4" />
-              <span>(210) 555-1234</span>
+              <span>(210) 891-4174</span>
             </a>
             <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
               <Link href="#contact">Free Estimate</Link>
@@ -82,9 +82,9 @@ export function Header() {
                   {link.label}
                 </Link>
               ))}
-              <a href="tel:+12105551234" className="flex items-center gap-2 text-primary font-semibold py-2">
+              <a href="tel:+12108914174" className="flex items-center gap-2 text-primary font-semibold py-2">
                 <Phone className="w-4 h-4" />
-                <span>(210) 555-1234</span>
+                <span>(210) 891-4174</span>
               </a>
               <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
                 <Link href="#contact">Free Estimate</Link>

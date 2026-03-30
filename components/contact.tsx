@@ -11,14 +11,14 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Phone",
-    value: "(210) 555-1234",
-    href: "tel:+12105551234",
+    value: "(210) 891-4174",
+    href: "tel:+12108914174",
   },
   {
     icon: Mail,
     title: "Email",
-    value: "info@jayslandclearing.com",
-    href: "mailto:info@jayslandclearing.com",
+    value: "jayslandclearingservices@gmail.com",
+    href: "mailto:jayslandclearingservices@gmail.com",
   },
   {
     icon: MapPin,

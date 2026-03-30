@@ -40,7 +40,7 @@ export function Footer() {
             </p>
             <div className="flex items-center gap-2 text-primary font-semibold">
               <Phone className="w-4 h-4" />
-              <a href="tel:+12105551234">(210) 555-1234</a>
+              <a href="tel:+12108914174">(210) 891-4174</a>
             </div>
           </div>
 
@@ -80,16 +80,16 @@ export function Footer() {
               <li className="flex items-start gap-3">
                 <Phone className="w-4 h-4 text-primary mt-0.5" />
                 <div>
-                  <a href="tel:+12105551234" className="text-foreground/70 hover:text-primary transition-colors text-sm">
-                    (210) 555-1234
+                  <a href="tel:+12108914174" className="text-foreground/70 hover:text-primary transition-colors text-sm">
+                    (210) 891-4174
                   </a>
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <Mail className="w-4 h-4 text-primary mt-0.5" />
                 <div>
-                  <a href="mailto:info@jayslandclearing.com" className="text-foreground/70 hover:text-primary transition-colors text-sm">
-                    info@jayslandclearing.com
+                  <a href="mailto:jayslandclearingservices@gmail.com" className="text-foreground/70 hover:text-primary transition-colors text-sm break-all">
+                    jayslandclearingservices@gmail.com
                   </a>
                 </div>
               </li>

@@ -43,7 +43,7 @@ export function ChatWidget() {
             <div className="space-y-3">
               {/* Call Button */}
               <a
-                href="tel:+12105551234"
+                href="tel:+12108914174"
                 className="flex items-center gap-3 w-full p-4 bg-primary/10 hover:bg-primary/20 border border-primary/30 rounded-lg transition-colors group"
               >
                 <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -51,13 +51,13 @@ export function ChatWidget() {
                 </div>
                 <div className="text-left">
                   <span className="block font-semibold text-foreground text-sm">Call Us Now</span>
-                  <span className="text-foreground/60 text-xs">(210) 555-1234</span>
+                  <span className="text-foreground/60 text-xs">(210) 891-4174</span>
                 </div>
               </a>
 
               {/* Text Button */}
               <a
-                href="sms:+12105551234?body=Hi, I'm interested in your land clearing services."
+                href="sms:+12108914174?body=Hi, I'm interested in your land clearing services."
                 className="flex items-center gap-3 w-full p-4 bg-secondary hover:bg-secondary/80 border border-border rounded-lg transition-colors group"
               >
                 <div className="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
