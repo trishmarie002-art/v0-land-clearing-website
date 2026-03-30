@@ -1,6 +1,5 @@
 "use client"
 
-import { motion } from "framer-motion"
 import { Plus, Minus } from "lucide-react"
 import { useState } from "react"
 
@@ -56,13 +55,7 @@ export function FAQ() {
       />
       
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
+        <div className="text-center mb-12 animate-on-scroll fade-in">
           <span className="text-primary font-semibold text-sm uppercase tracking-wider">
             Common Questions
           </span>
@@ -72,30 +65,21 @@ export function FAQ() {
           <p className="text-foreground/70 mt-4 max-w-2xl mx-auto text-balance">
             Get answers to common questions about our land clearing services in San Antonio
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="max-w-3xl mx-auto"
-        >
+        <div className="max-w-3xl mx-auto">
           {faqs.map((faq, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="mb-4"
+              className="mb-4 animate-on-scroll fade-in-up"
+              style={{ animationDelay: `${index * 100}ms` }}
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full flex items-center justify-between p-5 bg-card border border-border rounded-lg hover:border-primary/50 transition-colors text-left"
+                className="w-full flex items-center justify-between p-5 bg-card border border-border rounded-lg hover:border-primary/50 transition-all text-left group"
               >
                 <span className="font-semibold text-foreground pr-4">{faq.question}</span>
-                <span className="flex-shrink-0 w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                <span className="flex-shrink-0 w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                   {openIndex === index ? (
                     <Minus className="w-4 h-4 text-primary" />
                   ) : (
@@ -104,40 +88,30 @@ export function FAQ() {
                 </span>
               </button>
               
-              <motion.div
-                initial={false}
-                animate={{
-                  height: openIndex === index ? "auto" : 0,
-                  opacity: openIndex === index ? 1 : 0,
-                }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="overflow-hidden"
+              <div
+                className={`overflow-hidden transition-all duration-300 ${
+                  openIndex === index ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                }`}
               >
                 <div className="p-5 bg-card/50 border border-t-0 border-border rounded-b-lg">
                   <p className="text-foreground/70 leading-relaxed">{faq.answer}</p>
                 </div>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center mt-12"
-        >
+        <div className="text-center mt-12 animate-on-scroll fade-in">
           <p className="text-foreground/70 mb-4">
             Have more questions? We&apos;re here to help!
           </p>
           <a
             href="tel:+12108914174"
-            className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
+            className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-all hover:scale-105"
           >
             Call (210) 891-4174
           </a>
-        </motion.div>
+        </div>
       </div>
     </section>
   )
