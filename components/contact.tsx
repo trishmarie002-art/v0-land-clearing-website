@@ -205,7 +205,7 @@ export function Contact() {
                     value={formData.service}
                     onChange={handleChange}
                     required
-                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                  className="w-full rounded-lg border border-gray-300 bg-white text-black px-4 py-3 focus:outline-none focus:ring-2 focus:ring-yellow-400"
                   >
                     <option value="">Select a service</option>
                     <option value="Land Clearing">Land Clearing</option>
