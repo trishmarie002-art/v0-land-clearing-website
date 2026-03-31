@@ -44,217 +44,208 @@ export function Contact() {
   const [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState("")
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }))
+  }
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
     setError("")
+    setSubmitted(false)
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
+          Accept: "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          access_key: "9596e7f8-7d7a-43ad-a818-08dab78a7202",
+          subject: "New message from Jay's Land Clearing website",
+          from_name: "Jay's Land Clearing Website",
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          service: formData.service,
+          message: formData.message,
+          botcheck: "",
+        }),
       })
 
-      if (!response.ok) {
-        throw new Error('Failed to send message')
+      const result = await response.json()
+
+      if (result.success) {
+        setSubmitted(true)
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          service: "",
+          message: "",
+        })
+      } else {
+        setError("Something went wrong. Please try again.")
       }
-
-      setSubmitted(true)
-      setFormData({ name: "", email: "", phone: "", service: "", message: "" })
-
-      setTimeout(() => setSubmitted(false), 5000)
-    } catch {
-      setError("Something went wrong. Please call us directly at (210) 891-4174")
+    } catch (err) {
+      setError("Something went wrong. Please try again.")
     } finally {
       setIsSubmitting(false)
     }
   }
 
   return (
-    <section id="contact" className="py-20 md:py-28 bg-background overflow-hidden">
-      <div className="container mx-auto px-4">
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 animate-on-scroll fade-in">
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider">
-            Contact Us
-          </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-2 mb-4 font-[family-name:var(--font-display)] uppercase">
-            Get Your <span className="text-primary">Free Estimate</span>
-          </h2>
-          <p className="text-foreground/70">
-            Ready to transform your property? Contact us today for a free, no-obligation estimate.
-          </p>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Info */}
-          <div className="animate-on-scroll slide-in-left">
-            <h3 className="text-2xl font-bold mb-6 font-[family-name:var(--font-display)] uppercase">
-              Get in Touch
-            </h3>
-
-            <div className="space-y-6 mb-8">
-              {contactInfo.map((item, index) => (
-                <div
-                  key={index}
-                  className="flex items-start gap-4 transition-transform hover:translate-x-2"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0 transition-all hover:bg-primary/20 hover:scale-110">
-                    <item.icon className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground">{item.title}</h4>
-                    {item.href ? (
-                      <a
-                        href={item.href}
-                        className="text-foreground/70 hover:text-primary transition-colors"
-                      >
-                        {item.value}
-                      </a>
-                    ) : (
-                      <p className="text-foreground/70">{item.value}</p>
-                    )}
-                  </div>
-                </div>
-              ))}
+    <section id="contact" className="py-20 bg-black text-white">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="grid gap-12 lg:grid-cols-2">
+          <div>
+            <div className="mb-8">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Get Your Free Estimate</h2>
+              <p className="text-white/70 text-lg">
+                Ready to clear your land or start your dirt work project? Contact us today for a
+                free quote.
+              </p>
             </div>
 
-            {/* Map */}
-            <div className="aspect-video bg-card rounded-lg border border-border overflow-hidden">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d444477.30153655!2d-98.82064099999999!3d29.4246002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x865c58af04d00eaf%3A0x856e13b10a016bc!2sSan%20Antonio%2C%20TX!5e0!3m2!1sen!2sus!4v1704067200000!5m2!1sen!2sus"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="San Antonio Service Area Map"
-              />
+            <div className="grid gap-6 sm:grid-cols-2">
+              {contactInfo.map((item) => {
+                const Icon = item.icon
+                const content = (
+                  <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
+                    <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-yellow-400 text-black">
+                      <Icon className="h-6 w-6" />
+                    </div>
+                    <h3 className="mb-1 text-lg font-semibold">{item.title}</h3>
+                    <p className="text-white/70">{item.value}</p>
+                  </div>
+                )
+
+                return item.href ? (
+                  <a key={item.title} href={item.href} className="block transition hover:scale-[1.02]">
+                    {content}
+                  </a>
+                ) : (
+                  <div key={item.title}>{content}</div>
+                )
+              })}
             </div>
           </div>
 
-          {/* Contact Form */}
-          <div className="bg-card border border-border rounded-lg p-8 animate-on-scroll slide-in-right">
-            <h3 className="text-2xl font-bold mb-6 font-[family-name:var(--font-display)] uppercase">
-              Request a Quote
-            </h3>
+          <div className="rounded-2xl border border-white/10 bg-white p-6 text-black shadow-2xl md:p-8">
+            <h3 className="mb-6 text-2xl font-bold">Send Us a Message</h3>
 
-            {submitted ? (
-              <div className="bg-primary/10 border border-primary/30 rounded-lg p-6 text-center animate-scale-in">
-                <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                  <CheckCircle className="w-6 h-6 text-primary-foreground" />
-                </div>
-                <h4 className="text-lg font-bold text-primary mb-2">Thank You!</h4>
-                <p className="text-foreground/70">
-                  {"We've received your message and will get back to you within 24 hours."}
-                </p>
+            {submitted && (
+              <div className="mb-6 flex items-center gap-3 rounded-lg border border-green-200 bg-green-50 p-4 text-green-700">
+                <CheckCircle className="h-5 w-5" />
+                <p>Your message has been sent successfully.</p>
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">Full Name *</Label>
-                    <Input
-                      id="name"
-                      placeholder="John Doe"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      required
-                      className="bg-background border-border transition-all focus:scale-[1.02]"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="phone">Phone Number *</Label>
-                    <Input
-                      id="phone"
-                      type="tel"
-                      placeholder="(210) 555-1234"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      required
-                      className="bg-background border-border transition-all focus:scale-[1.02]"
-                    />
-                  </div>
-                </div>
+            )}
 
+            {error && (
+              <div className="mb-6 rounded-lg border border-red-200 bg-red-50 p-4 text-red-700">
+                {error}
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} />
+
+              <div className="grid gap-5 sm:grid-cols-2">
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email Address *</Label>
+                  <Label htmlFor="name">Full Name</Label>
                   <Input
-                    id="email"
-                    type="email"
-                    placeholder="john@example.com"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    id="name"
+                    name="name"
+                    placeholder="Your full name"
+                    value={formData.name}
+                    onChange={handleChange}
                     required
-                    className="bg-background border-border transition-all focus:scale-[1.02]"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="service">Service Interested In</Label>
+                  <Label htmlFor="email">Email Address</Label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="Your email address"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="grid gap-5 sm:grid-cols-2">
+                <div className="space-y-2">
+                  <Label htmlFor="phone">Phone Number</Label>
+                  <Input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    placeholder="Your phone number"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="service">Service Needed</Label>
                   <select
                     id="service"
+                    name="service"
                     value={formData.service}
-                    onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                    className="flex h-10 w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring transition-all focus:scale-[1.02]"
+                    onChange={handleChange}
+                    required
+                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
                   >
                     <option value="">Select a service</option>
                     <option value="Land Clearing">Land Clearing</option>
+                    <option value="Dirt Work">Dirt Work</option>
+                    <option value="Site Prep">Site Prep</option>
                     <option value="Brush Removal">Brush Removal</option>
-                    <option value="Dirt Work & Grading">Dirt Work & Grading</option>
-                    <option value="Excavation">Excavation</option>
-                    <option value="Hauling Services">Hauling Services</option>
-                    <option value="Lot Preparation">Lot Preparation</option>
-                    <option value="Fence Line Clearing">Fence Line Clearing</option>
+                    <option value="Grading">Grading</option>
                     <option value="Other">Other</option>
                   </select>
                 </div>
+              </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="message">Project Details *</Label>
-                  <Textarea
-                    id="message"
-                    placeholder="Tell us about your project - property size, type of work needed, timeline, etc."
-                    rows={5}
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    required
-                    className="bg-background border-border resize-none transition-all focus:scale-[1.01]"
-                  />
-                </div>
+              <div className="space-y-2">
+                <Label htmlFor="message">Project Details</Label>
+                <Textarea
+                  id="message"
+                  name="message"
+                  placeholder="Tell us about your project..."
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows={6}
+                  required
+                />
+              </div>
 
-                {error && (
-                  <div className="bg-destructive/10 border border-destructive/30 rounded-lg p-4 text-center">
-                    <p className="text-destructive text-sm">{error}</p>
-                  </div>
+              <Button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full bg-yellow-400 text-black hover:bg-yellow-300"
+              >
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  "Send Message"
                 )}
-
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-semibold transition-transform hover:scale-[1.02] active:scale-[0.98]"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? (
-                    <span className="flex items-center gap-2">
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                      Sending...
-                    </span>
-                  ) : (
-                    "Submit Request"
-                  )}
-                </Button>
-
-                <p className="text-xs text-foreground/50 text-center">
-                  By submitting this form, you agree to be contacted regarding your request.
-                </p>
-              </form>
-            )}
+              </Button>
+            </form>
           </div>
         </div>
       </div>
