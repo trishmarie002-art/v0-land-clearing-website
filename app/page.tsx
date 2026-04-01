@@ -17,7 +17,7 @@ export default function Home() {
       <Services />
       <WhyChooseUs />
       <FAQ />
-      >Contact /<
+      <Contact />
       <Footer />
       <ChatWidget />
     </main>
