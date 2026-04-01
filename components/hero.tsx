@@ -103,7 +103,7 @@ export function Hero() {
 
           {/* Trust badges */}
           <div className="mt-12 flex items-center gap-8 text-sm text-foreground/60 animate-fade-in-delay-2">
-            {["Fully Insured", "Free Estimates", "Local Owned"].map((badge, index) => (
+            {["Free Estimates", "Local Owned"].map((badge, index) => (
               <div
                 key={badge}
                 className="flex items-center gap-2"
