@@ -21,8 +21,8 @@ export function About() {
           <div className="relative animate-on-scroll slide-in-left">
             <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/633791329_122197194410538072_7226435149849840577_n-M2U3snkC38N3GKusZV2E56wQHdCtSx.jpg"
-                alt="Before and after land clearing comparison showing property transformation"
+                src="/images/hero-2.jpg"
+                alt="Jay's Land Clearing team at work"
                 fill
                 className="object-cover"
               />
