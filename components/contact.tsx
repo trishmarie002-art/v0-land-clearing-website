@@ -17,6 +17,7 @@ export function Contact() {
     name: "",
     email: "",
     phone: "",
+    address: "",
     service: "",
     message: "",
   })
@@ -32,7 +33,7 @@ export function Contact() {
     
     setIsSubmitting(false)
     setSubmitted(true)
-    setFormData({ name: "", email: "", phone: "", service: "", message: "" })
+    setFormData({ name: "", email: "", phone: "", address: "", service: "", message: "" })
   }
 
   const handleChange = (
@@ -124,6 +125,22 @@ export function Contact() {
                       onChange={handleChange}
                       className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
                       placeholder="(210) 555-1234"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="address" className="block text-sm font-medium mb-2">
+                      Property Address *
+                    </label>
+                    <input
+                      type="text"
+                      id="address"
+                      name="address"
+                      required
+                      value={formData.address}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
+                      placeholder="123 Main St, San Antonio, TX 78201"
                     />
                   </div>
 
