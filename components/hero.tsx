@@ -61,13 +61,13 @@ export function Hero() {
             className="object-cover"
             priority={index === 0}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-transparent" />
+          <div className="absolute inset-0 bg-background/70" />
         </div>
       ))}
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 h-full flex items-center">
-        <div className="max-w-2xl pt-20">
+      <div className="relative z-10 container mx-auto px-4 h-full flex items-center justify-center md:justify-center">
+        <div className="max-w-2xl pt-20 text-center">
           <div className="mb-4 animate-fade-in">
             <span className="inline-block px-4 py-1.5 bg-primary/20 text-primary text-sm font-semibold rounded-full border border-primary/30">
               San Antonio&apos;s Premier Land Clearing Service
@@ -83,7 +83,7 @@ export function Hero() {
             {heroSlides[currentSlide].subtitle}
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-delay">
+          <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-delay justify-center">
             <Button
               asChild
               size="lg"
@@ -102,7 +102,7 @@ export function Hero() {
           </div>
 
           {/* Trust badges */}
-          <div className="mt-12 flex items-center gap-8 text-sm text-foreground/60 animate-fade-in-delay-2">
+          <div className="mt-12 flex items-center justify-center gap-8 text-sm text-foreground/60 animate-fade-in-delay-2">
             {["Free Estimates", "Local Owned"].map((badge, index) => (
               <div
                 key={badge}
