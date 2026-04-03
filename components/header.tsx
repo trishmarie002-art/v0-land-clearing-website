@@ -35,13 +35,13 @@ export function Header() {
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between h-20 md:h-28">
           {/* Logo */}
           <Link href="/" className="flex items-center group transition-transform hover:scale-105">
             <img
               src="/images/logo.png"
               alt="Jay's Land Clearing Service & Dirt Work"
-              className="h-12 md:h-16 w-auto"
+              className="h-16 md:h-24 w-auto"
             />
           </Link>
 

@@ -8,17 +8,17 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 
 const heroSlides = [
   {
-    image: "/images/hero-1.jpg",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/597309592_122189063936538072_2733738572363445506_n-UOJPBnUWgzrcR6HTD4joppvqX0izck.jpg",
     title: "Professional Land Clearing",
     subtitle: "Transforming your property with expert clearing services",
   },
   {
-    image: "/images/hero-2.jpg",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/627162796_122195512712538072_1509152379615460320_n%20%281%29-FJolk2iSSpi1iXod4xk7xsCh8KB2oh.jpg",
     title: "Quality Dirt Work",
     subtitle: "Grading, excavation, and site preparation done right",
   },
   {
-    image: "/images/hero-3.jpg",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/653317281_122200574036538072_8200266081722862456_n%20%281%29-Bzw0ZQlOTF1QLSJ4IkEfqt6td2xpZ6.jpg",
     title: "Trusted in San Antonio",
     subtitle: "Serving the greater San Antonio area with pride",
   },
@@ -61,13 +61,13 @@ export function Hero() {
             className="object-cover"
             priority={index === 0}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-transparent" />
+          <div className="absolute inset-0 bg-background/70" />
         </div>
       ))}
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 h-full flex items-center">
-        <div className="max-w-2xl pt-20">
+      <div className="relative z-10 container mx-auto px-4 h-full flex items-center justify-center md:justify-center">
+        <div className="max-w-2xl pt-20 text-center">
           <div className="mb-4 animate-fade-in">
             <span className="inline-block px-4 py-1.5 bg-primary/20 text-primary text-sm font-semibold rounded-full border border-primary/30">
               San Antonio&apos;s Premier Land Clearing Service
@@ -83,7 +83,7 @@ export function Hero() {
             {heroSlides[currentSlide].subtitle}
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-delay">
+          <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-delay justify-center">
             <Button
               asChild
               size="lg"
@@ -102,8 +102,8 @@ export function Hero() {
           </div>
 
           {/* Trust badges */}
-          <div className="mt-12 flex items-center gap-8 text-sm text-foreground/60 animate-fade-in-delay-2">
-            {["Fully Insured", "Free Estimates", "Local Owned"].map((badge, index) => (
+          <div className="mt-12 flex items-center justify-center gap-8 text-sm text-foreground/60 animate-fade-in-delay-2">
+            {["Free Estimates", "Local Owned"].map((badge, index) => (
               <div
                 key={badge}
                 className="flex items-center gap-2"

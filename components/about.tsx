@@ -6,7 +6,7 @@ import { CheckCircle2 } from "lucide-react"
 const highlights = [
   "Over 15 years of experience in land clearing",
   "Locally owned and operated in San Antonio",
-  "Fully licensed and insured",
+  "Fully licensed",
   "State-of-the-art equipment and techniques",
   "Commitment to environmental responsibility",
   "Competitive pricing with no hidden fees",
