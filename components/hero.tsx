@@ -8,17 +8,17 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 
 const heroSlides = [
   {
-    image: "/images/hero-1.jpg",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/597309592_122189063936538072_2733738572363445506_n-UOJPBnUWgzrcR6HTD4joppvqX0izck.jpg",
     title: "Professional Land Clearing",
     subtitle: "Transforming your property with expert clearing services",
   },
   {
-    image: "/images/hero-2.jpg",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/627162796_122195512712538072_1509152379615460320_n%20%281%29-FJolk2iSSpi1iXod4xk7xsCh8KB2oh.jpg",
     title: "Quality Dirt Work",
     subtitle: "Grading, excavation, and site preparation done right",
   },
   {
-    image: "/images/hero-3.jpg",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/653317281_122200574036538072_8200266081722862456_n%20%281%29-Bzw0ZQlOTF1QLSJ4IkEfqt6td2xpZ6.jpg",
     title: "Trusted in San Antonio",
     subtitle: "Serving the greater San Antonio area with pride",
   },
