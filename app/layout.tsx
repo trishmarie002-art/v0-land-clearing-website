@@ -1,3 +1,4 @@
+import Script from "next/script";
 import type { Metadata } from 'next'
 import { Oswald, Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
@@ -251,7 +252,6 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} ${oswald.variable} font-sans antialiased`}>
         {children}
-    import Script from "next/script";
 
         <Script id="clarity" strategy="afterInteractive">
   {`
