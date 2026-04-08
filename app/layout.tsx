@@ -1,4 +1,3 @@
-import Script from 'next/script'
 import type { Metadata } from 'next'
 import { Oswald, Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
