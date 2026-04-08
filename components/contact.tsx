@@ -28,6 +28,8 @@ export function Contact() {
     e.preventDefault()
     setIsSubmitting(true)
     
+    console.log("[v0] Web3Forms key:", process.env.NEXT_PUBLIC_WEB3FORMS_KEY ? "Key exists" : "Key is missing!")
+    
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
@@ -48,6 +50,7 @@ export function Contact() {
       })
 
       const result = await response.json()
+      console.log("[v0] Web3Forms response:", result)
 
       if (result.success) {
         setSubmitted(true)
