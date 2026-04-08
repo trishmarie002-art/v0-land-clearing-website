@@ -28,12 +28,38 @@ export function Contact() {
     e.preventDefault()
     setIsSubmitting(true)
     
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000))
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
+          subject: `New Quote Request from ${formData.name} - ${formData.service}`,
+          from_name: "Jay's Land Clearing Website",
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          address: formData.address,
+          service: formData.service,
+          message: formData.message,
+        }),
+      })
+
+      const result = await response.json()
+
+      if (result.success) {
+        setSubmitted(true)
+        setFormData({ name: "", email: "", phone: "", address: "", service: "", message: "" })
+      } else {
+        alert("Something went wrong. Please try again or call us directly.")
+      }
+    } catch {
+      alert("Something went wrong. Please try again or call us directly.")
+    }
     
     setIsSubmitting(false)
-    setSubmitted(true)
-    setFormData({ name: "", email: "", phone: "", address: "", service: "", message: "" })
   }
 
   const handleChange = (
