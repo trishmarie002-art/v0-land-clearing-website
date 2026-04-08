@@ -148,6 +148,20 @@ export default function RootLayout({
     })(window, document, "clarity", "script", "w8bxwftdzs");
   `}
 </Script>
+
+      <Script
+  src="https://www.googletagmanager.com/gtag/js?id=G-32J0MQYH86"
+  strategy="afterInteractive"
+/>
+
+<Script id="google-analytics">
+  {`
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-32J0MQYH86');
+  `}
+</Script>
       
       <body className={`${inter.variable} ${oswald.variable} font-sans antialiased`}>
         {children}
