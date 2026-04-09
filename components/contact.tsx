@@ -24,44 +24,43 @@ export function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+ const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault()
+  setIsSubmitting(true)
 
-    try {
-      const response = await fetch(https://jayswebdesignservices.app.n8n.cloud/webhook/4963c5da-1739-4b50-8971-1c4f9f0b513e {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          address: formData.address,
-          service: formData.service,
-          message: formData.message,
-        }),
-      })
+  try {
+    const response = await fetch("https://jayswebdesignservices.app.n8n.cloud/webhook/4963c5da-1739-4b50-8971-1c4f9f0b513e", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        address: formData.address,
+        service: formData.service,
+        message: formData.message,
+      }),
+    })
 
-      if (!response.ok) {
-        throw new Error("Failed to send form")
-      }
-
-      setSubmitted(true)
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        address: "",
-        service: "",
-        message: "",
-      })
-    } catch (error) {
-      console.error(error)
-      alert("Something went wrong. Please try again or call us directly.")
+    if (!response.ok) {
+      throw new Error("Failed to send form")
     }
 
+    setSubmitted(true)
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      address: "",
+      service: "",
+      message: "",
+    })
+  } catch (error) {
+    console.error(error)
+    alert("Something went wrong. Please try again or call us directly.")
+  } finally {
     setIsSubmitting(false)
   }
 
