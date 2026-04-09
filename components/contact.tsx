@@ -95,88 +95,10 @@ export function Contact() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 max-w-6xl mx-auto">
-          {/* Contact Info Sidebar */}
-          <div className="lg:col-span-2 space-y-6">
-            {/* CTA Card */}
-            <div className="bg-card border border-border rounded-xl p-6 animate-on-scroll fade-in">
-              <h3 className="text-xl font-bold mb-4 font-[family-name:var(--font-display)] uppercase">
-                Contact Information
-              </h3>
-              <div className="space-y-4">
-                <a 
-                  href="tel:+12108914174" 
-                  className="flex items-center gap-4 p-3 rounded-lg bg-secondary/50 hover:bg-primary/10 transition-all group"
-                >
-                  <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center shrink-0">
-                    <Phone className="w-5 h-5 text-primary-foreground" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-foreground/60">Call Us Now</p>
-                    <p className="font-semibold text-foreground group-hover:text-primary transition-colors">(210) 891-4174</p>
-                  </div>
-                </a>
-                
-                <a 
-                  href="mailto:jayslandclearingservices@gmail.com" 
-                  className="flex items-center gap-4 p-3 rounded-lg bg-secondary/50 hover:bg-primary/10 transition-all group"
-                >
-                  <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center shrink-0">
-                    <Mail className="w-5 h-5 text-primary-foreground" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-foreground/60">Email Us</p>
-                    <p className="font-semibold text-foreground group-hover:text-primary transition-colors text-sm break-all">jayslandclearingservices@gmail.com</p>
-                  </div>
-                </a>
-                
-                <div className="flex items-center gap-4 p-3 rounded-lg bg-secondary/50">
-                  <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center shrink-0">
-                    <MapPin className="w-5 h-5 text-primary-foreground" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-foreground/60">Service Area</p>
-                    <p className="font-semibold text-foreground">San Antonio, TX & Surrounding Areas</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4 p-3 rounded-lg bg-secondary/50">
-                  <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center shrink-0">
-                    <Clock className="w-5 h-5 text-primary-foreground" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-foreground/60">Business Hours</p>
-                    <p className="font-semibold text-foreground">Mon - Sat: 7AM - 6PM</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Why Contact Us */}
-            <div className="bg-card border border-border rounded-xl p-6 animate-on-scroll fade-in">
-              <h3 className="text-xl font-bold mb-4 font-[family-name:var(--font-display)] uppercase">
-                Why Choose Us
-              </h3>
-              <ul className="space-y-3">
-                {[
-                  "Free, no-obligation estimates",
-                  "15+ years of experience",
-                  "Fully licensed & insured",
-                  "Fast response times",
-                  "Competitive pricing",
-                ].map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-foreground/80">
-                    <CheckCircle className="w-5 h-5 text-primary shrink-0" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* Contact Form */}
-          <div className="lg:col-span-3">
-            <div className="bg-card border border-border rounded-xl p-6 md:p-8 animate-on-scroll fade-in">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 max-w-5xl mx-auto">
+          {/* Contact Form - Left Side */}
+          <div className="order-2 lg:order-1">
+            <div className="bg-card border border-border rounded-xl p-5 md:p-6 animate-on-scroll fade-in">
               <h3 className="text-xl font-bold mb-6 font-[family-name:var(--font-display)] uppercase">
                 Request Your Free Quote
               </h3>
@@ -320,6 +242,82 @@ export function Contact() {
                   </p>
                 </form>
               )}
+            </div>
+          </div>
+
+          {/* Contact Info Sidebar - Right Side */}
+          <div className="order-1 lg:order-2 space-y-6">
+            {/* Contact Info Card */}
+            <div className="bg-card border border-border rounded-xl p-5 animate-on-scroll fade-in">
+              <h3 className="text-lg font-bold mb-4 font-[family-name:var(--font-display)] uppercase">
+                Contact Information
+              </h3>
+              <div className="space-y-3">
+                <a 
+                  href="tel:+12108914174" 
+                  className="flex items-center gap-3 p-3 rounded-lg bg-secondary/50 hover:bg-primary/10 transition-all group"
+                >
+                  <div className="w-9 h-9 bg-primary rounded-full flex items-center justify-center shrink-0">
+                    <Phone className="w-4 h-4 text-primary-foreground" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-foreground/60">Call Us Now</p>
+                    <p className="font-semibold text-foreground group-hover:text-primary transition-colors text-sm">(210) 891-4174</p>
+                  </div>
+                </a>
+                
+                <a 
+                  href="mailto:jayslandclearingservices@gmail.com" 
+                  className="flex items-center gap-3 p-3 rounded-lg bg-secondary/50 hover:bg-primary/10 transition-all group"
+                >
+                  <div className="w-9 h-9 bg-primary rounded-full flex items-center justify-center shrink-0">
+                    <Mail className="w-4 h-4 text-primary-foreground" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-foreground/60">Email Us</p>
+                    <p className="font-semibold text-foreground group-hover:text-primary transition-colors text-xs break-all">jayslandclearingservices@gmail.com</p>
+                  </div>
+                </a>
+                
+                <div className="flex items-center gap-3 p-3 rounded-lg bg-secondary/50">
+                  <div className="w-9 h-9 bg-primary rounded-full flex items-center justify-center shrink-0">
+                    <MapPin className="w-4 h-4 text-primary-foreground" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-foreground/60">Service Area</p>
+                    <p className="font-semibold text-foreground text-sm">San Antonio, TX & Surrounding</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3 p-3 rounded-lg bg-secondary/50">
+                  <div className="w-9 h-9 bg-primary rounded-full flex items-center justify-center shrink-0">
+                    <Clock className="w-4 h-4 text-primary-foreground" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-foreground/60">Business Hours</p>
+                    <p className="font-semibold text-foreground text-sm">Mon - Sat: 7AM - 6PM</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Why Choose Us */}
+            <div className="bg-card border border-border rounded-xl p-5 animate-on-scroll fade-in">
+              <h3 className="text-lg font-bold mb-4 font-[family-name:var(--font-display)] uppercase">
+                Why Choose Us
+              </h3>
+              <ul className="space-y-3">
+                {[
+                  "Free, no-obligation estimates",
+                  "Fast response times",
+                  "Competitive pricing",
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-3 text-foreground/80">
+                    <CheckCircle className="w-5 h-5 text-primary shrink-0" />
+                    <span className="text-sm">{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
