@@ -1,4 +1,4 @@
-"use client"
+            "use client"
 
 import { useState } from "react"
 
@@ -27,19 +27,14 @@ export function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    
-    console.log("[v0] Web3Forms key:", process.env.NEXT_PUBLIC_WEB3FORMS_KEY ? "Key exists" : "Key is missing!")
-    
+
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch(https://jayswebdesignservices.app.n8n.cloud/webhook/4963c5da-1739-4b50-8971-1c4f9f0b513e {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
-          subject: `New Quote Request from ${formData.name} - ${formData.service}`,
-          from_name: "Jay's Land Clearing Website",
           name: formData.name,
           email: formData.email,
           phone: formData.phone,
@@ -49,19 +44,24 @@ export function Contact() {
         }),
       })
 
-      const result = await response.json()
-      console.log("[v0] Web3Forms response:", result)
-
-      if (result.success) {
-        setSubmitted(true)
-        setFormData({ name: "", email: "", phone: "", address: "", service: "", message: "" })
-      } else {
-        alert("Something went wrong. Please try again or call us directly.")
+      if (!response.ok) {
+        throw new Error("Failed to send form")
       }
-    } catch {
+
+      setSubmitted(true)
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        address: "",
+        service: "",
+        message: "",
+      })
+    } catch (error) {
+      console.error(error)
       alert("Something went wrong. Please try again or call us directly.")
     }
-    
+
     setIsSubmitting(false)
   }
 
@@ -75,7 +75,6 @@ export function Contact() {
     <section id="contact" className="py-20 md:py-28 bg-card">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          {/* Header */}
           <div className="text-center mb-12">
             <span className="text-primary font-semibold text-sm uppercase tracking-wider">
               Contact Us
@@ -89,7 +88,6 @@ export function Contact() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {/* Contact Form */}
             <div className="bg-background border border-border rounded-lg p-6 md:p-8">
               {submitted ? (
                 <div className="text-center py-8">
@@ -220,7 +218,6 @@ export function Contact() {
               )}
             </div>
 
-            {/* Contact Info */}
             <div className="space-y-6">
               <div className="bg-background border border-border rounded-lg p-6">
                 <h3 className="text-lg font-bold mb-4 font-[family-name:var(--font-display)] uppercase">
