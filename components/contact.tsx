@@ -1,6 +1,8 @@
 "use client"
 
 import { useState } from "react"
+import { Phone, Mail, MapPin, Clock, CheckCircle, Send } from "lucide-react"
+import { Button } from "@/components/ui/button"
 
 const services = [
   "Land Clearing",
@@ -78,58 +80,248 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="py-20 md:py-28 bg-card">
+    <section id="contact" className="py-20 md:py-28 bg-background">
       <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
+        {/* Section Header */}
+        <div className="text-center mb-16 animate-on-scroll fade-in">
+          <span className="inline-block px-4 py-1 bg-primary/10 text-primary text-sm font-semibold rounded-full mb-4 uppercase tracking-wider">
+            Get In Touch
+          </span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 font-[family-name:var(--font-display)] uppercase text-balance">
+            Ready to <span className="text-primary">Transform</span> Your Property?
+          </h2>
+          <p className="text-foreground/70 max-w-2xl mx-auto text-lg">
+            Get a free, no-obligation quote for your land clearing project. We respond within 24 hours.
+          </p>
+        </div>
 
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">
-              Get Your Free Quote
-            </h2>
+        <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 max-w-6xl mx-auto">
+          {/* Contact Info Sidebar */}
+          <div className="lg:col-span-2 space-y-6">
+            {/* CTA Card */}
+            <div className="bg-card border border-border rounded-xl p-6 animate-on-scroll fade-in">
+              <h3 className="text-xl font-bold mb-4 font-[family-name:var(--font-display)] uppercase">
+                Contact Information
+              </h3>
+              <div className="space-y-4">
+                <a 
+                  href="tel:+12108914174" 
+                  className="flex items-center gap-4 p-3 rounded-lg bg-secondary/50 hover:bg-primary/10 transition-all group"
+                >
+                  <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center shrink-0">
+                    <Phone className="w-5 h-5 text-primary-foreground" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-foreground/60">Call Us Now</p>
+                    <p className="font-semibold text-foreground group-hover:text-primary transition-colors">(210) 891-4174</p>
+                  </div>
+                </a>
+                
+                <a 
+                  href="mailto:jayslandclearingservices@gmail.com" 
+                  className="flex items-center gap-4 p-3 rounded-lg bg-secondary/50 hover:bg-primary/10 transition-all group"
+                >
+                  <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center shrink-0">
+                    <Mail className="w-5 h-5 text-primary-foreground" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-foreground/60">Email Us</p>
+                    <p className="font-semibold text-foreground group-hover:text-primary transition-colors text-sm break-all">jayslandclearingservices@gmail.com</p>
+                  </div>
+                </a>
+                
+                <div className="flex items-center gap-4 p-3 rounded-lg bg-secondary/50">
+                  <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center shrink-0">
+                    <MapPin className="w-5 h-5 text-primary-foreground" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-foreground/60">Service Area</p>
+                    <p className="font-semibold text-foreground">San Antonio, TX & Surrounding Areas</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4 p-3 rounded-lg bg-secondary/50">
+                  <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center shrink-0">
+                    <Clock className="w-5 h-5 text-primary-foreground" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-foreground/60">Business Hours</p>
+                    <p className="font-semibold text-foreground">Mon - Sat: 7AM - 6PM</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Why Contact Us */}
+            <div className="bg-card border border-border rounded-xl p-6 animate-on-scroll fade-in">
+              <h3 className="text-xl font-bold mb-4 font-[family-name:var(--font-display)] uppercase">
+                Why Choose Us
+              </h3>
+              <ul className="space-y-3">
+                {[
+                  "Free, no-obligation estimates",
+                  "15+ years of experience",
+                  "Fully licensed & insured",
+                  "Fast response times",
+                  "Competitive pricing",
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-3 text-foreground/80">
+                    <CheckCircle className="w-5 h-5 text-primary shrink-0" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          {/* Contact Form */}
+          <div className="lg:col-span-3">
+            <div className="bg-card border border-border rounded-xl p-6 md:p-8 animate-on-scroll fade-in">
+              <h3 className="text-xl font-bold mb-6 font-[family-name:var(--font-display)] uppercase">
+                Request Your Free Quote
+              </h3>
 
-            <input name="name" required placeholder="Full Name"
-              value={formData.name} onChange={handleChange}
-              className="w-full p-3 rounded bg-white text-black" />
+              {submitted ? (
+                <div className="text-center py-12">
+                  <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <CheckCircle className="w-8 h-8 text-green-500" />
+                  </div>
+                  <h4 className="text-xl font-bold text-foreground mb-2">Message Sent Successfully!</h4>
+                  <p className="text-foreground/70 mb-6">
+                    Thank you for contacting us. We&apos;ll get back to you within 24 hours.
+                  </p>
+                  <Button 
+                    onClick={() => setSubmitted(false)}
+                    variant="outline"
+                    className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                  >
+                    Send Another Message
+                  </Button>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-medium text-foreground/80 mb-2">
+                        Full Name *
+                      </label>
+                      <input 
+                        id="name"
+                        name="name" 
+                        required 
+                        placeholder="John Doe"
+                        value={formData.name} 
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="phone" className="block text-sm font-medium text-foreground/80 mb-2">
+                        Phone Number *
+                      </label>
+                      <input 
+                        id="phone"
+                        name="phone" 
+                        type="tel"
+                        required 
+                        placeholder="(210) 555-0123"
+                        value={formData.phone} 
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                      />
+                    </div>
+                  </div>
 
-            <input name="email" required placeholder="Email"
-              value={formData.email} onChange={handleChange}
-              className="w-full p-3 rounded bg-white text-black" />
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-foreground/80 mb-2">
+                      Email Address *
+                    </label>
+                    <input 
+                      id="email"
+                      name="email" 
+                      type="email"
+                      required 
+                      placeholder="john@example.com"
+                      value={formData.email} 
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                    />
+                  </div>
 
-            <input name="phone" required placeholder="Phone"
-              value={formData.phone} onChange={handleChange}
-              className="w-full p-3 rounded bg-white text-black" />
+                  <div>
+                    <label htmlFor="address" className="block text-sm font-medium text-foreground/80 mb-2">
+                      Property Address *
+                    </label>
+                    <input 
+                      id="address"
+                      name="address" 
+                      required 
+                      placeholder="123 Main St, San Antonio, TX"
+                      value={formData.address} 
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                    />
+                  </div>
 
-            <input name="address" required placeholder="Address"
-              value={formData.address} onChange={handleChange}
-              className="w-full p-3 rounded bg-white text-black" />
+                  <div>
+                    <label htmlFor="service" className="block text-sm font-medium text-foreground/80 mb-2">
+                      Service Needed *
+                    </label>
+                    <select 
+                      id="service"
+                      name="service" 
+                      required
+                      value={formData.service} 
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all appearance-none cursor-pointer"
+                    >
+                      <option value="" className="text-foreground/40">Select a service...</option>
+                      {services.map((s) => (
+                        <option key={s} value={s} className="text-foreground bg-secondary">{s}</option>
+                      ))}
+                    </select>
+                  </div>
 
-            <select name="service" required
-              value={formData.service} onChange={handleChange}
-              className="w-full p-3 rounded bg-white text-black">
-              <option value="">Select Service</option>
-              {services.map((s) => <option key={s}>{s}</option>)}
-            </select>
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium text-foreground/80 mb-2">
+                      Project Details
+                    </label>
+                    <textarea 
+                      id="message"
+                      name="message" 
+                      rows={4}
+                      placeholder="Tell us about your project: property size, specific needs, timeline, etc."
+                      value={formData.message} 
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none"
+                    />
+                  </div>
 
-            <textarea name="message" placeholder="Project Details"
-              value={formData.message} onChange={handleChange}
-              className="w-full p-3 rounded bg-white text-black" />
+                  <Button 
+                    type="submit" 
+                    disabled={isSubmitting}
+                    className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-6 text-lg font-bold uppercase tracking-wide transition-all hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? (
+                      <span className="flex items-center justify-center gap-2">
+                        <span className="w-5 h-5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
+                        Sending...
+                      </span>
+                    ) : (
+                      <span className="flex items-center justify-center gap-2">
+                        <Send className="w-5 h-5" />
+                        Get Your Free Quote
+                      </span>
+                    )}
+                  </Button>
 
-            <button type="submit" disabled={isSubmitting}
-              className="w-full bg-yellow-400 text-black p-3 rounded font-bold">
-              {isSubmitting ? "Sending..." : "Get Free Quote"}
-            </button>
-
-          </form>
-
-          {submitted && (
-            <div className="mt-4 p-3 bg-green-500 text-white rounded text-center">
-              Message sent successfully!
+                  <p className="text-center text-foreground/50 text-sm">
+                    We respect your privacy. Your information will never be shared.
+                  </p>
+                </form>
+              )}
             </div>
-          )}
-
+          </div>
         </div>
       </div>
     </section>
