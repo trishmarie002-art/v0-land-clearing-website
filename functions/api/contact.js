@@ -26,30 +26,35 @@ export default function Contact() {
     setSuccess(false)
 
     try {
-      const res = await fetch("/api/contact", {
+      const response = await https://jayswebdesignservices.app.n8n.cloud/webhook/4963c5da-1739-4b50-8971-1c4f9f0b513e, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          service: formData.service,
+          message: formData.message,
+        }),
       })
 
-      const data = await res.json()
-
-      if (data.success) {
-        setSuccess(true)
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          service: "",
-          message: "",
-        })
-      } else {
-        setError("Failed to send message")
+      if (!response.ok) {
+        throw new Error("Failed to send form")
       }
+
+      setSuccess(true)
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        service: "",
+        message: "",
+      })
     } catch (err) {
-      setError("Something went wrong")
+      console.error(err)
+      setError("Something went wrong. Please try again.")
     } finally {
       setLoading(false)
     }
