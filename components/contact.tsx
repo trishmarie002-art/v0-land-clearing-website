@@ -47,7 +47,9 @@ export function Contact() {
     try {
       // Create FormData for file upload support
       const submitData = new FormData()
-      submitData.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "")
+      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || ""
+      console.log("[v0] Web3Forms access key present:", !!accessKey, "Key length:", accessKey.length)
+      submitData.append("access_key", accessKey)
       submitData.append("subject", `New Quote Request from ${formData.name} - ${formData.service}`)
       submitData.append("from_name", "Jay's Land Clearing Website")
       submitData.append("name", formData.name)
@@ -68,6 +70,7 @@ export function Contact() {
       })
 
       const result = await response.json()
+      console.log("[v0] Web3Forms response:", result)
 
       if (result.success) {
         setSubmitted(true)
