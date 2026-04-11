@@ -156,13 +156,12 @@ export function Contact() {
 
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-foreground/80 mb-2">
-                      Email Address *
+                      Email Address (optional)
                     </label>
                     <input 
                       id="email"
                       name="email" 
                       type="email"
-                      required 
                       placeholder="john@example.com"
                       value={formData.email} 
                       onChange={handleChange}
