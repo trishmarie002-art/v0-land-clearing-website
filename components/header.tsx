@@ -70,7 +70,7 @@ export function Header() {
               </span>
               <span>(210) 891-4174</span>
             </a>
-            <Button asChild className="animate-flash-sync bg-primary text-primary-foreground hover:bg-primary/90 transition-transform hover:scale-105">
+            <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 transition-transform hover:scale-105">
               <a href="tel:+12108914174">Call Now</a>
             </Button>
           </div>
@@ -109,7 +109,7 @@ export function Header() {
               <Phone className="w-5 h-5" />
               <span>(210) 891-4174</span>
             </a>
-            <Button asChild className="animate-flash-sync w-full bg-primary text-primary-foreground hover:bg-primary/90 mt-2">
+            <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90 mt-2">
               <a href="tel:+12108914174">Call Now</a>
             </Button>
           </nav>
