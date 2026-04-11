@@ -8,11 +8,11 @@ export function UrgentQuoteBanner() {
   }
 
   return (
-    <div className="fixed top-[80px] md:top-[112px] left-0 right-0 z-30 animate-flash-sync bg-yellow-400">
+    <div className="fixed top-[80px] md:top-[112px] left-0 right-0 z-30 bg-yellow-400">
       <div className="container mx-auto px-4 py-2">
         <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
           {/* Flashing Banner Text */}
-          <div className="animate-flash-sync text-black font-bold text-lg sm:text-xl md:text-2xl tracking-wide text-center uppercase">
+          <div className="text-black font-bold text-lg sm:text-xl md:text-2xl tracking-wide text-center uppercase">
             SCHEDULE A FREE QUOTE TODAY
           </div>
 
