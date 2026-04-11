@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Phone, Mail, MapPin, Clock, CheckCircle, Send } from "lucide-react"
+import { Phone, Mail, MapPin, Clock, CheckCircle, Send, Upload, X, ImageIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const services = [
@@ -24,30 +24,47 @@ export function Contact() {
     message: "",
   })
 
+  const [images, setImages] = useState<File[]>([])
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files
+    if (files) {
+      const newImages = Array.from(files).slice(0, 5 - images.length) // Max 5 images
+      setImages((prev) => [...prev, ...newImages].slice(0, 5))
+    }
+  }
+
+  const removeImage = (index: number) => {
+    setImages((prev) => prev.filter((_, i) => i !== index))
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
 
     try {
+      // Create FormData for file upload support
+      const submitData = new FormData()
+      submitData.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "")
+      submitData.append("subject", `New Quote Request from ${formData.name} - ${formData.service}`)
+      submitData.append("from_name", "Jay's Land Clearing Website")
+      submitData.append("name", formData.name)
+      submitData.append("email", formData.email)
+      submitData.append("phone", formData.phone)
+      submitData.append("zip_code", formData.zipCode)
+      submitData.append("service", formData.service)
+      submitData.append("message", formData.message)
+      
+      // Append images
+      images.forEach((image, index) => {
+        submitData.append(`attachment_${index + 1}`, image)
+      })
+
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
-          subject: `New Quote Request from ${formData.name} - ${formData.service}`,
-          from_name: "Jay's Land Clearing Website",
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          zip_code: formData.zipCode,
-          service: formData.service,
-          message: formData.message,
-        }),
+        body: submitData,
       })
 
       const result = await response.json()
@@ -62,6 +79,7 @@ export function Contact() {
           service: "",
           message: "",
         })
+        setImages([])
       } else {
         alert("Something went wrong. Please try again.")
       }
@@ -215,6 +233,60 @@ export function Contact() {
                       onChange={handleChange}
                       className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none"
                     />
+                  </div>
+
+                  {/* Image Upload */}
+                  <div>
+                    <label className="block text-sm font-medium text-foreground/80 mb-2">
+                      Upload Photos (optional) - For faster quote
+                    </label>
+                    <div className="space-y-3">
+                      <label 
+                        htmlFor="images"
+                        className="flex flex-col items-center justify-center w-full px-4 py-6 rounded-lg bg-secondary border-2 border-dashed border-border hover:border-primary/50 text-foreground/60 hover:text-primary cursor-pointer transition-all"
+                      >
+                        <Upload className="w-8 h-8 mb-2" />
+                        <span className="text-sm font-medium">Click to upload images</span>
+                        <span className="text-xs text-foreground/40 mt-1">JPG, PNG up to 5 images</span>
+                        <input 
+                          id="images"
+                          type="file"
+                          accept="image/*"
+                          multiple
+                          onChange={handleImageUpload}
+                          className="hidden"
+                        />
+                      </label>
+                      
+                      {/* Image Previews */}
+                      {images.length > 0 && (
+                        <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
+                          {images.map((image, index) => (
+                            <div key={index} className="relative group aspect-square rounded-lg overflow-hidden bg-secondary border border-border">
+                              <img 
+                                src={URL.createObjectURL(image)} 
+                                alt={`Upload ${index + 1}`}
+                                className="w-full h-full object-cover"
+                              />
+                              <button
+                                type="button"
+                                onClick={() => removeImage(index)}
+                                className="absolute top-1 right-1 w-5 h-5 bg-destructive text-destructive-foreground rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                              >
+                                <X className="w-3 h-3" />
+                              </button>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                      
+                      {images.length > 0 && (
+                        <p className="text-xs text-foreground/50 flex items-center gap-1">
+                          <ImageIcon className="w-3 h-3" />
+                          {images.length}/5 images uploaded
+                        </p>
+                      )}
+                    </div>
                   </div>
 
                   <Button 
