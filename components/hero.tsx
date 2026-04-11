@@ -87,9 +87,9 @@ export function Hero() {
             <Button
               asChild
               size="lg"
-              className="animate-slow-blink bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-base px-8 transition-transform hover:scale-105"
+              className="animate-slow-blink bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-sm sm:text-base px-4 sm:px-8 transition-transform hover:scale-105"
             >
-              <a href="tel:+12108914174">SCHEDULE YOUR FREE QUOTE NOW</a>
+              <a href="tel:+12108914174" className="text-center whitespace-normal">SCHEDULE YOUR FREE QUOTE NOW</a>
             </Button>
             <Button
               asChild
@@ -101,14 +101,14 @@ export function Hero() {
             </Button>
           </div>
           
-          <div className="mt-6 animate-fade-in-delay">
+          <div className="mt-6 animate-fade-in-delay px-4">
             <Button
               asChild
               variant="secondary"
               size="lg"
-              className="bg-black/80 text-yellow-400 hover:bg-black font-semibold text-sm sm:text-base px-6 transition-transform hover:scale-105 border border-yellow-400/50"
+              className="bg-black/80 text-yellow-400 hover:bg-black font-semibold text-xs sm:text-sm md:text-base px-3 sm:px-6 transition-transform hover:scale-105 border border-yellow-400/50 max-w-full"
             >
-              <a href="sms:+12108914174">
+              <a href="sms:+12108914174" className="text-center whitespace-normal leading-tight">
                 Text a photo of your land to (210) 891-4174 for a faster quote
               </a>
             </Button>
