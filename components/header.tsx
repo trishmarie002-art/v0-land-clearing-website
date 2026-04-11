@@ -63,10 +63,10 @@ export function Header() {
           <div className="hidden md:flex items-center gap-4">
             <a
               href="tel:+12108914174"
-              className="flex items-center gap-2 text-primary font-semibold group"
+              className="flex items-center gap-2 text-primary font-bold text-lg group"
             >
               <span className="animate-phone-ring inline-block">
-                <Phone className="w-4 h-4" />
+                <Phone className="w-5 h-5" />
               </span>
               <span>(210) 891-4174</span>
             </a>
@@ -104,9 +104,9 @@ export function Header() {
             ))}
             <a
               href="tel:+12108914174"
-              className="flex items-center gap-2 text-primary font-semibold py-2"
+              className="flex items-center gap-2 text-primary font-bold text-lg py-2"
             >
-              <Phone className="w-4 h-4" />
+              <Phone className="w-5 h-5" />
               <span>(210) 891-4174</span>
             </a>
             <Button asChild className="animate-flash-sync w-full bg-primary text-primary-foreground hover:bg-primary/90 mt-2">
