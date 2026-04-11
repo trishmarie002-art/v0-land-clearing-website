@@ -359,3 +359,18 @@
 .animate-flash-sync {
   animation: flash-sync 0.8s ease-in-out infinite;
 }
+
+/* Marquee scrolling animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: inline-flex;
+  animation: marquee 20s linear infinite;
+}
