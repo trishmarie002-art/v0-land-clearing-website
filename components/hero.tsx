@@ -61,7 +61,7 @@ export function Hero() {
             className="object-cover"
             priority={index === 0}
           />
-          <div className="absolute inset-0 bg-background/70" />
+          <div className="absolute inset-0 bg-background/80" />
         </div>
       ))}
 
@@ -87,7 +87,7 @@ export function Hero() {
             <Button
               asChild
               size="lg"
-              className="animate-flash-sync bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-base px-8 transition-transform hover:scale-105"
+              className="animate-slow-blink bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-base px-8 transition-transform hover:scale-105"
             >
               <a href="tel:+12108914174">SCHEDULE YOUR FREE QUOTE NOW</a>
             </Button>
