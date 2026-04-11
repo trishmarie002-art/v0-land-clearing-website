@@ -87,9 +87,9 @@ export function Hero() {
             <Button
               asChild
               size="lg"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-base px-8 transition-transform hover:scale-105"
+              className="animate-flash-sync bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-base px-8 transition-transform hover:scale-105"
             >
-              <Link href="#contact">Get Free Estimate</Link>
+              <a href="tel:+12108914174">SCHEDULE A FREE QUOTE NOW</a>
             </Button>
             <Button
               asChild
