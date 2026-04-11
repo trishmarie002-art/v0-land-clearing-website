@@ -341,3 +341,21 @@
 .animate-point-left {
   animation: point-left 0.6s ease-in-out infinite;
 }
+
+/* Synced flash animation for banner, text, and button */
+@keyframes flash-sync {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.02);
+    filter: brightness(1.15);
+  }
+}
+
+.animate-flash-sync {
+  animation: flash-sync 0.8s ease-in-out infinite;
+}
