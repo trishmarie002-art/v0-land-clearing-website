@@ -45,31 +45,23 @@ export function Contact() {
     setIsSubmitting(true)
 
     try {
-      // Create FormData for file upload support
-      const submitData = new FormData()
-      submitData.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "")
-      submitData.append("subject", `New Quote Request from ${formData.name} - ${formData.service}`)
-      submitData.append("from_name", "Jay's Land Clearing Website")
-      submitData.append("name", formData.name)
-      submitData.append("email", formData.email)
-      submitData.append("phone", formData.phone)
-      submitData.append("zip_code", formData.zipCode)
-      submitData.append("service", formData.service)
-      submitData.append("message", formData.message)
-      
-      // Append images
-      images.forEach((image, index) => {
-        submitData.append(`attachment_${index + 1}`, image)
-      })
-
-      const response = await fetch("https://api.web3forms.com/submit", {
+      // Send to n8n webhook
+      const response = await fetch("https://jayswebdesignservices.app.n8n.cloud/webhook/4963c5da-1739-4b50-8971-1c4f9f0b513e", {
         method: "POST",
-        body: submitData,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          zipCode: formData.zipCode,
+          service: formData.service,
+          message: formData.message,
+        }),
       })
 
-      const result = await response.json()
-
-      if (result.success) {
+      if (response.ok) {
         setSubmitted(true)
         setFormData({
           name: "",
