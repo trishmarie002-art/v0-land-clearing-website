@@ -109,7 +109,7 @@ export function Hero() {
               className="bg-black/80 text-yellow-400 hover:bg-black font-semibold text-sm sm:text-base px-6 transition-transform hover:scale-105 border border-yellow-400/50"
             >
               <a href="sms:+12108914174">
-                Text a photo of your land to (210) 891-4174 for a faster estimate
+                Text a photo of your land to (210) 891-4174 for a faster quote
               </a>
             </Button>
           </div>
