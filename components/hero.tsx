@@ -45,7 +45,7 @@ export function Hero() {
   }
 
   return (
-    <section className="relative h-screen min-h-[600px] max-h-[900px] overflow-hidden mt-[140px] md:mt-[172px]">
+    <section className="relative h-[calc(100vh-140px)] md:h-[calc(100vh-172px)] min-h-[500px] md:min-h-[600px] max-h-[700px] md:max-h-[900px] overflow-hidden mt-[140px] md:mt-[172px]">
       {/* Slides */}
       {heroSlides.map((slide, index) => (
         <div
@@ -66,8 +66,8 @@ export function Hero() {
       ))}
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 sm:px-8 h-full flex items-center justify-center md:justify-center">
-        <div className="max-w-2xl pt-20 text-center w-full">
+      <div className="relative z-10 container mx-auto px-6 sm:px-8 h-full flex items-start md:items-center justify-center">
+        <div className="max-w-2xl pt-8 sm:pt-12 md:pt-0 text-center w-full">
           <div className="mb-4 animate-fade-in">
             <span className="inline-block px-3 sm:px-4 py-1.5 bg-primary/20 text-primary text-xs sm:text-sm font-semibold rounded-full border border-primary/30">
               San Antonio&apos;s Premier Land Clearing Service
@@ -111,7 +111,7 @@ export function Hero() {
           </div>
 
           {/* Trust badges */}
-          <div className="mt-12 flex items-center justify-center gap-8 text-sm text-foreground/60 animate-fade-in-delay-2">
+          <div className="mt-6 sm:mt-8 md:mt-12 flex items-center justify-center gap-8 text-sm text-foreground/60 animate-fade-in-delay-2">
             {["Free Estimates", "Local Owned"].map((badge, index) => (
               <div
                 key={badge}
