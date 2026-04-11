@@ -19,7 +19,7 @@ export function Contact() {
     name: "",
     email: "",
     phone: "",
-    address: "",
+    zipCode: "",
     service: "",
     message: "",
   })
@@ -44,7 +44,7 @@ export function Contact() {
           name: formData.name,
           email: formData.email,
           phone: formData.phone,
-          address: formData.address,
+          zip_code: formData.zipCode,
           service: formData.service,
           message: formData.message,
         }),
@@ -58,7 +58,7 @@ export function Contact() {
           name: "",
           email: "",
           phone: "",
-          address: "",
+          zipCode: "",
           service: "",
           message: "",
         })
@@ -171,15 +171,14 @@ export function Contact() {
                   </div>
 
                   <div>
-                    <label htmlFor="address" className="block text-sm font-medium text-foreground/80 mb-2">
-                      Property Address *
+                    <label htmlFor="zipCode" className="block text-sm font-medium text-foreground/80 mb-2">
+                      Zip Code (optional)
                     </label>
                     <input 
-                      id="address"
-                      name="address" 
-                      required 
-                      placeholder="123 Main St, San Antonio, TX"
-                      value={formData.address} 
+                      id="zipCode"
+                      name="zipCode" 
+                      placeholder="78201"
+                      value={formData.zipCode} 
                       onChange={handleChange}
                       className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                     />
