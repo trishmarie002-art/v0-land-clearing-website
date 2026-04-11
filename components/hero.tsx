@@ -66,8 +66,8 @@ export function Hero() {
       ))}
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 sm:px-8 h-full flex items-start md:items-center justify-center">
-        <div className="max-w-2xl pt-8 sm:pt-12 md:pt-0 text-center w-full">
+      <div className="relative z-10 container mx-auto px-6 sm:px-8 h-full flex items-center justify-center">
+        <div className="max-w-2xl text-center w-full">
           <div className="mb-4 animate-fade-in">
             <span className="inline-block px-3 sm:px-4 py-1.5 bg-primary/20 text-primary text-xs sm:text-sm font-semibold rounded-full border border-primary/30">
               San Antonio&apos;s Premier Land Clearing Service

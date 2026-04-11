@@ -16,6 +16,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  icons: {
+    icon: '/images/logo.png',
+    shortcut: '/images/logo.png',
+    apple: '/images/logo.png',
+  },
   title: {
     default: "Jay's Land Clearing Service & Dirt Work | San Antonio TX",
     template: "%s | Jay's Land Clearing Service"
