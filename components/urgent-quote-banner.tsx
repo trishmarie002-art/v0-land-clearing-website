@@ -8,20 +8,20 @@ export function UrgentQuoteBanner() {
       href="tel:+12108914174"
       className="fixed top-[80px] md:top-[112px] left-0 right-0 z-30 bg-yellow-400 block cursor-pointer hover:bg-yellow-300 transition-colors"
     >
-      <div className="container mx-auto px-4 py-2">
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
+      <div className="container mx-auto px-2 sm:px-4 py-2">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-4">
           {/* Banner Text */}
-          <div className="text-black font-bold text-lg sm:text-xl md:text-2xl tracking-wide text-center uppercase">
+          <div className="text-black font-bold text-base sm:text-xl md:text-2xl tracking-wide text-center uppercase">
             Get Your Land Cleared Fast
           </div>
 
           {/* Button with Arrow Pointers */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 sm:gap-2">
             {/* Left Arrow Pointer */}
-            <div className="animate-point-right">
+            <div className="animate-point-right hidden sm:block">
               <svg
-                width="32"
-                height="24"
+                width="24"
+                height="18"
                 viewBox="0 0 32 24"
                 fill="none"
                 className="text-yellow-600"
@@ -38,17 +38,17 @@ export function UrgentQuoteBanner() {
 
             {/* Flashing Call Button */}
             <div
-              className="animate-flash-sync flex items-center gap-2 bg-black text-yellow-400 font-bold px-4 py-2 rounded-lg text-base sm:text-lg shadow-lg border-2 border-yellow-600"
+              className="animate-flash-sync flex items-center gap-1 sm:gap-2 bg-black text-yellow-400 font-bold px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-sm sm:text-lg shadow-lg border-2 border-yellow-600"
             >
-              <Phone className="w-5 h-5 animate-phone-ring" />
+              <Phone className="w-4 h-4 sm:w-5 sm:h-5 animate-phone-ring" />
               Call NOW
             </div>
 
             {/* Right Arrow Pointer */}
-            <div className="animate-point-left">
+            <div className="animate-point-left hidden sm:block">
               <svg
-                width="32"
-                height="24"
+                width="24"
+                height="18"
                 viewBox="0 0 32 24"
                 fill="none"
                 className="text-yellow-600"

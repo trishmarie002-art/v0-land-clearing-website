@@ -87,6 +87,9 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html, body {
+    @apply overflow-x-hidden;
+  }
   body {
     @apply bg-background text-foreground;
   }
@@ -373,4 +376,18 @@
 .animate-marquee {
   display: inline-flex;
   animation: marquee 20s linear infinite;
+}
+
+/* Slow blink animation for text buttons */
+@keyframes slow-blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-slow-blink {
+  animation: slow-blink 2s ease-in-out infinite;
 }
