@@ -7,25 +7,17 @@ export function UrgentQuoteBanner() {
     window.location.href = "tel:+12108914174"
   }
 
-  const bannerText = "GET A FREE QUOTE TODAY"
-  const repeatedText = Array(10).fill(bannerText).join(" \u2022 ")
-
   return (
-    <div className="fixed top-[80px] md:top-[112px] left-0 right-0 z-30 bg-yellow-400 overflow-hidden">
-      <div className="relative py-3">
-        {/* Scrolling Marquee Text */}
-        <div className="animate-marquee whitespace-nowrap">
-          <span className="text-black font-bold text-lg sm:text-xl md:text-2xl tracking-wide uppercase mx-4">
-            {repeatedText}
-          </span>
-          <span className="text-black font-bold text-lg sm:text-xl md:text-2xl tracking-wide uppercase mx-4">
-            {repeatedText}
-          </span>
-        </div>
+    <div className="fixed top-[80px] md:top-[112px] left-0 right-0 z-30 animate-flash-sync bg-yellow-400">
+      <div className="container mx-auto px-4 py-3">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6">
+          {/* Flashing Banner Text */}
+          <div className="animate-flash-sync text-black font-bold text-lg sm:text-xl md:text-2xl tracking-wide text-center uppercase">
+            GET A FREE QUOTE TODAY
+          </div>
 
-        {/* Centered Button Overlay */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="flex items-center gap-2 pointer-events-auto">
+          {/* Button with Arrow Pointers */}
+          <div className="flex items-center gap-2">
             {/* Left Arrow Pointer */}
             <div className="animate-point-right">
               <svg
