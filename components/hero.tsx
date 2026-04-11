@@ -66,50 +66,50 @@ export function Hero() {
       ))}
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 h-full flex items-center justify-center md:justify-center">
-        <div className="max-w-2xl pt-20 text-center">
+      <div className="relative z-10 container mx-auto px-6 sm:px-8 h-full flex items-center justify-center md:justify-center">
+        <div className="max-w-2xl pt-20 text-center w-full">
           <div className="mb-4 animate-fade-in">
-            <span className="inline-block px-4 py-1.5 bg-primary/20 text-primary text-sm font-semibold rounded-full border border-primary/30">
+            <span className="inline-block px-3 sm:px-4 py-1.5 bg-primary/20 text-primary text-xs sm:text-sm font-semibold rounded-full border border-primary/30">
               San Antonio&apos;s Premier Land Clearing Service
             </span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 font-[family-name:var(--font-display)] uppercase tracking-tight text-balance animate-slide-up">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 font-[family-name:var(--font-display)] uppercase tracking-tight text-balance animate-slide-up px-2">
             <span className="text-primary">{heroSlides[currentSlide].title.split(" ")[0]}</span>{" "}
             {heroSlides[currentSlide].title.split(" ").slice(1).join(" ")}
           </h1>
 
-          <p className="text-lg md:text-xl text-foreground/80 mb-8 max-w-lg animate-slide-up-delay">
+          <p className="text-base sm:text-lg md:text-xl text-foreground/80 mb-8 max-w-lg mx-auto animate-slide-up-delay px-2">
             {heroSlides[currentSlide].subtitle}
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-delay justify-center">
+          <div className="flex flex-col gap-3 sm:flex-row sm:gap-4 animate-fade-in-delay justify-center px-2">
             <Button
               asChild
               size="lg"
-              className="animate-slow-blink bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-sm sm:text-base px-4 sm:px-8 transition-transform hover:scale-105"
+              className="animate-slow-blink bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-xs sm:text-sm md:text-base px-3 sm:px-6 md:px-8 transition-transform hover:scale-105 w-full sm:w-auto"
             >
-              <a href="tel:+12108914174" className="text-center whitespace-normal">SCHEDULE YOUR FREE QUOTE NOW</a>
+              <a href="tel:+12108914174" className="text-center">SCHEDULE YOUR FREE QUOTE NOW</a>
             </Button>
             <Button
               asChild
               variant="outline"
               size="lg"
-              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold text-base px-8 transition-transform hover:scale-105"
+              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold text-sm sm:text-base px-6 sm:px-8 transition-transform hover:scale-105 w-full sm:w-auto"
             >
               <Link href="#services">Our Services</Link>
             </Button>
           </div>
           
-          <div className="mt-6 animate-fade-in-delay px-4">
+          <div className="mt-4 sm:mt-6 animate-fade-in-delay">
             <Button
               asChild
               variant="secondary"
-              size="lg"
-              className="bg-black/80 text-yellow-400 hover:bg-black font-semibold text-xs sm:text-sm md:text-base px-3 sm:px-6 transition-transform hover:scale-105 border border-yellow-400/50 max-w-full"
+              size="default"
+              className="bg-black/80 text-yellow-400 hover:bg-black font-semibold text-xs sm:text-sm px-3 sm:px-4 py-2 transition-transform hover:scale-105 border border-yellow-400/50 w-full sm:w-auto"
             >
-              <a href="sms:+12108914174" className="text-center whitespace-normal leading-tight">
-                Text a photo of your land to (210) 891-4174 for a faster quote
+              <a href="sms:+12108914174" className="text-center leading-tight">
+                Text a photo to (210) 891-4174 for a faster quote
               </a>
             </Button>
           </div>
