@@ -102,16 +102,12 @@ export function Hero() {
           </div>
           
           <div className="mt-4 sm:mt-6 animate-fade-in-delay">
-            <Button
-              asChild
-              variant="secondary"
-              size="default"
-              className="bg-black/80 text-yellow-400 hover:bg-black font-semibold text-xs sm:text-sm px-3 sm:px-4 py-2 transition-transform hover:scale-105 border border-yellow-400/50 w-full sm:w-auto"
+            <a 
+              href="sms:+12108914174" 
+              className="inline-block bg-black/80 text-yellow-400 hover:bg-black font-semibold text-xs sm:text-sm px-4 py-3 rounded-lg transition-transform hover:scale-105 border border-yellow-400/50"
             >
-              <a href="sms:+12108914174" className="text-center leading-tight">
-                Text a photo to (210) 891-4174 for a faster quote
-              </a>
-            </Button>
+              Text us a photo for a faster quote!
+            </a>
           </div>
 
           {/* Trust badges */}
