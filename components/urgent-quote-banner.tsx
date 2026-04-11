@@ -13,7 +13,7 @@ export function UrgentQuoteBanner() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6">
           {/* Flashing Banner Text */}
           <div className="animate-flash-sync text-black font-bold text-lg sm:text-xl md:text-2xl tracking-wide text-center uppercase">
-            GET A FREE QUOTE TODAY
+            SCHEDULE A FREE QUOTE TODAY
           </div>
 
           {/* Button with Arrow Pointers */}
