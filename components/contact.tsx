@@ -45,32 +45,31 @@ export function Contact() {
     setIsSubmitting(true)
 
     try {
-      // Create FormData for file upload support
-      const submitData = new FormData()
       const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || ""
-      console.log("[v0] Web3Forms access key present:", !!accessKey, "Key length:", accessKey.length)
-      submitData.append("access_key", accessKey)
-      submitData.append("subject", `New Quote Request from ${formData.name} - ${formData.service}`)
-      submitData.append("from_name", "Jay's Land Clearing Website")
-      submitData.append("name", formData.name)
-      submitData.append("email", formData.email)
-      submitData.append("phone", formData.phone)
-      submitData.append("zip_code", formData.zipCode)
-      submitData.append("service", formData.service)
-      submitData.append("message", formData.message)
       
-      // Append images
-      images.forEach((image, index) => {
-        submitData.append(`attachment_${index + 1}`, image)
-      })
+      // Build form data without file attachments (Web3Forms free tier doesn't support them)
+      const submitData = {
+        access_key: accessKey,
+        subject: `New Quote Request from ${formData.name} - ${formData.service}`,
+        from_name: "Jay's Land Clearing Website",
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        zip_code: formData.zipCode,
+        service: formData.service,
+        message: formData.message,
+        images_uploaded: images.length > 0 ? `${images.length} image(s) attached by customer - please follow up to receive them` : "No images uploaded"
+      }
 
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        body: submitData,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(submitData),
       })
 
       const result = await response.json()
-      console.log("[v0] Web3Forms response:", result)
 
       if (result.success) {
         setSubmitted(true)
@@ -241,7 +240,7 @@ export function Contact() {
                   {/* Image Upload */}
                   <div>
                     <label className="block text-sm font-medium text-foreground/80 mb-2">
-                      Upload Photos (optional) - For faster quote
+                      Upload Photos (optional) - We&apos;ll request them after you submit
                     </label>
                     <div className="space-y-3">
                       <label 
