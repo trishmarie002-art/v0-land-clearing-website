@@ -61,12 +61,14 @@ export function Contact() {
         submitData.append(`image_${index + 1}`, image)
       })
 
-      const response = await fetch("https://formgrid.dev/api/f/c30xdwys", {
+      const response = await fetch("/api/submit-form", {
         method: "POST",
         body: submitData,
       })
 
-      if (response.ok) {
+      const result = await response.json()
+
+      if (result.success) {
         setSubmitted(true)
         setFormData({
           name: "",
