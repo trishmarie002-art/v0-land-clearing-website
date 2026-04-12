@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Phone, Mail, MapPin, Clock, CheckCircle, Send, Upload, X, ImageIcon } from "lucide-react"
+import { Phone, Mail, MapPin, Clock, CheckCircle, Send } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const services = [
@@ -24,59 +24,26 @@ export function Contact() {
     message: "",
   })
 
-  const [images, setImages] = useState<File[]>([])
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
-
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files
-    if (files) {
-      const newImages = Array.from(files).slice(0, 5 - images.length) // Max 5 images
-      setImages((prev) => [...prev, ...newImages].slice(0, 5))
-    }
-  }
-
-  const removeImage = (index: number) => {
-    setImages((prev) => prev.filter((_, i) => i !== index))
-  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // If images are attached, open SMS app with pre-filled message
-    if (images.length > 0) {
-      const phoneNumber = "2108574027"
-      const smsBody = `Quote Request - Jay's Land Clearing
-
-Name: ${formData.name}
-Phone: ${formData.phone}
-Email: ${formData.email || "Not provided"}
-Zip Code: ${formData.zipCode || "Not provided"}
-Service: ${formData.service}
-Message: ${formData.message || "None"}
-
-(Attach your ${images.length} photo${images.length > 1 ? "s" : ""} before sending)`
-
-      window.location.href = `sms:${phoneNumber}?body=${encodeURIComponent(smsBody)}`
-      setIsSubmitting(false)
-      return
-    }
-
     try {
       const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || ""
       
-      // Build form data without file attachments (Web3Forms free tier doesn't support them)
       const submitData = {
         access_key: accessKey,
         subject: `New Quote Request from ${formData.name} - ${formData.service}`,
         from_name: "Jay's Land Clearing Website",
         name: formData.name,
-        email: formData.email,
+        email: formData.email || "Not provided",
         phone: formData.phone,
-        zip_code: formData.zipCode,
+        zip_code: formData.zipCode || "Not provided",
         service: formData.service,
-        message: formData.message,
+        message: formData.message || "No additional details",
       }
 
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -99,7 +66,6 @@ Message: ${formData.message || "None"}
           service: "",
           message: "",
         })
-        setImages([])
       } else {
         alert("Something went wrong. Please try again.")
       }
@@ -135,9 +101,9 @@ Message: ${formData.message || "None"}
 
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 max-w-5xl mx-auto">
           {/* Contact Form - Left Side */}
-          <div className="order-2 lg:order-1">
-            <div className="bg-card border border-border rounded-xl p-5 md:p-6 animate-on-scroll fade-in">
-              <h3 className="text-xl font-bold mb-6 font-[family-name:var(--font-display)] uppercase">
+          <div className="order-2 lg:order-1 min-w-0">
+            <div className="bg-card border border-border rounded-xl p-4 sm:p-5 md:p-6 animate-on-scroll fade-in">
+              <h3 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 font-[family-name:var(--font-display)] uppercase">
                 Request Your Free Quote
               </h3>
 
@@ -159,10 +125,10 @@ Message: ${formData.message || "None"}
                   </Button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid sm:grid-cols-2 gap-4">
+                <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-foreground/80 mb-2">
+                      <label htmlFor="name" className="block text-xs sm:text-sm font-medium text-foreground/80 mb-1.5 sm:mb-2">
                         Full Name *
                       </label>
                       <input 
@@ -172,11 +138,11 @@ Message: ${formData.message || "None"}
                         placeholder="John Doe"
                         value={formData.name} 
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-sm sm:text-base"
                       />
                     </div>
                     <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-foreground/80 mb-2">
+                      <label htmlFor="phone" className="block text-xs sm:text-sm font-medium text-foreground/80 mb-1.5 sm:mb-2">
                         Phone Number *
                       </label>
                       <input 
@@ -187,13 +153,13 @@ Message: ${formData.message || "None"}
                         placeholder="(210) 555-0123"
                         value={formData.phone} 
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-sm sm:text-base"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-foreground/80 mb-2">
+                    <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-foreground/80 mb-1.5 sm:mb-2">
                       Email Address (optional)
                     </label>
                     <input 
@@ -203,12 +169,12 @@ Message: ${formData.message || "None"}
                       placeholder="john@example.com"
                       value={formData.email} 
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-sm sm:text-base"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="zipCode" className="block text-sm font-medium text-foreground/80 mb-2">
+                    <label htmlFor="zipCode" className="block text-xs sm:text-sm font-medium text-foreground/80 mb-1.5 sm:mb-2">
                       Zip Code (optional)
                     </label>
                     <input 
@@ -217,12 +183,12 @@ Message: ${formData.message || "None"}
                       placeholder="78201"
                       value={formData.zipCode} 
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-sm sm:text-base"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="service" className="block text-sm font-medium text-foreground/80 mb-2">
+                    <label htmlFor="service" className="block text-xs sm:text-sm font-medium text-foreground/80 mb-1.5 sm:mb-2">
                       Service Needed *
                     </label>
                     <select 
@@ -231,7 +197,7 @@ Message: ${formData.message || "None"}
                       required
                       value={formData.service} 
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all appearance-none cursor-pointer"
+                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-secondary border border-border text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all appearance-none cursor-pointer text-sm sm:text-base"
                     >
                       <option value="" className="text-foreground/40">Select a service...</option>
                       {services.map((s) => (
@@ -241,95 +207,50 @@ Message: ${formData.message || "None"}
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-foreground/80 mb-2">
+                    <label htmlFor="message" className="block text-xs sm:text-sm font-medium text-foreground/80 mb-1.5 sm:mb-2">
                       Project Details
                     </label>
                     <textarea 
                       id="message"
                       name="message" 
-                      rows={4}
+                      rows={3}
                       placeholder="Tell us about your project: property size, specific needs, timeline, etc."
                       value={formData.message} 
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none"
+                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none text-sm sm:text-base"
                     />
-                  </div>
-
-                  {/* Image Upload */}
-                  <div>
-                    <label className="block text-sm font-medium text-foreground/80 mb-2">
-                      Upload Photos (optional) - Opens SMS to send with attachments
-                    </label>
-                    <div className="space-y-3">
-                      <label 
-                        htmlFor="images"
-                        className="flex flex-col items-center justify-center w-full px-4 py-6 rounded-lg bg-secondary border-2 border-dashed border-border hover:border-primary/50 text-foreground/60 hover:text-primary cursor-pointer transition-all"
-                      >
-                        <Upload className="w-8 h-8 mb-2" />
-                        <span className="text-sm font-medium">Click to upload images</span>
-                        <span className="text-xs text-foreground/40 mt-1">JPG, PNG up to 5 images</span>
-                        <input 
-                          id="images"
-                          type="file"
-                          accept="image/*"
-                          multiple
-                          onChange={handleImageUpload}
-                          className="hidden"
-                        />
-                      </label>
-                      
-                      {/* Image Previews */}
-                      {images.length > 0 && (
-                        <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
-                          {images.map((image, index) => (
-                            <div key={index} className="relative group aspect-square rounded-lg overflow-hidden bg-secondary border border-border">
-                              <img 
-                                src={URL.createObjectURL(image)} 
-                                alt={`Upload ${index + 1}`}
-                                className="w-full h-full object-cover"
-                              />
-                              <button
-                                type="button"
-                                onClick={() => removeImage(index)}
-                                className="absolute top-1 right-1 w-5 h-5 bg-destructive text-destructive-foreground rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
-                              >
-                                <X className="w-3 h-3" />
-                              </button>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                      
-                      {images.length > 0 && (
-                        <p className="text-xs text-foreground/50 flex items-center gap-1">
-                          <ImageIcon className="w-3 h-3" />
-                          {images.length}/5 images uploaded
-                        </p>
-                      )}
-                    </div>
                   </div>
 
                   <Button 
                     type="submit" 
                     disabled={isSubmitting}
-                    className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-6 text-lg font-bold uppercase tracking-wide transition-all hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-4 sm:py-6 text-base sm:text-lg font-bold uppercase tracking-wide transition-all hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
                       <span className="flex items-center justify-center gap-2">
-                        <span className="w-5 h-5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
+                        <span className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
                         Sending...
                       </span>
                     ) : (
                       <span className="flex items-center justify-center gap-2">
-                        <Send className="w-5 h-5" />
+                        <Send className="w-4 h-4 sm:w-5 sm:h-5" />
                         Get Your Free Quote
                       </span>
                     )}
                   </Button>
 
-                  <p className="text-center text-foreground/50 text-sm">
+                  <p className="text-center text-foreground/50 text-xs sm:text-sm">
                     We respect your privacy. Your information will never be shared.
                   </p>
+
+                  {/* SMS Photos Button */}
+                  <a
+                    href="sms:2108914174?body=Hi, I'd like to send photos of my property for a quote."
+                    className="flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2 w-full py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg border-2 border-dashed border-primary/50 text-primary hover:bg-primary/10 transition-all text-xs sm:text-sm font-medium text-center"
+                  >
+                    <Phone className="w-4 h-4 shrink-0" />
+                    <span>Click here to text project photos directly</span>
+                  </a>
                 </form>
               )}
             </div>
