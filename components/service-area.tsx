@@ -59,9 +59,9 @@ function ServiceAreaMap() {
       )}
 
       {/* Radius label overlay */}
-      <div className="absolute bottom-4 right-4 bg-card/95 backdrop-blur-sm px-3 py-2 rounded-md border border-border z-10">
-        <p className="text-xs text-muted-foreground">Service Radius</p>
-        <p className="text-lg font-bold text-primary font-[family-name:var(--font-display)]">50 Miles</p>
+      <div className="absolute bottom-4 right-4 bg-primary px-4 py-2 rounded-md shadow-lg z-10">
+        <p className="text-xs text-primary-foreground/80 font-medium">Service Radius</p>
+        <p className="text-lg font-bold text-primary-foreground font-[family-name:var(--font-display)]">50 Miles</p>
       </div>
     </div>
   )
