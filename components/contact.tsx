@@ -101,9 +101,9 @@ export function Contact() {
 
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 max-w-5xl mx-auto">
           {/* Contact Form - Left Side */}
-          <div className="order-2 lg:order-1">
-            <div className="bg-card border border-border rounded-xl p-5 md:p-6 animate-on-scroll fade-in">
-              <h3 className="text-xl font-bold mb-6 font-[family-name:var(--font-display)] uppercase">
+          <div className="order-2 lg:order-1 min-w-0">
+            <div className="bg-card border border-border rounded-xl p-4 sm:p-5 md:p-6 animate-on-scroll fade-in">
+              <h3 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 font-[family-name:var(--font-display)] uppercase">
                 Request Your Free Quote
               </h3>
 
@@ -125,10 +125,10 @@ export function Contact() {
                   </Button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid sm:grid-cols-2 gap-4">
+                <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-foreground/80 mb-2">
+                      <label htmlFor="name" className="block text-xs sm:text-sm font-medium text-foreground/80 mb-1.5 sm:mb-2">
                         Full Name *
                       </label>
                       <input 
@@ -138,11 +138,11 @@ export function Contact() {
                         placeholder="John Doe"
                         value={formData.name} 
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-sm sm:text-base"
                       />
                     </div>
                     <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-foreground/80 mb-2">
+                      <label htmlFor="phone" className="block text-xs sm:text-sm font-medium text-foreground/80 mb-1.5 sm:mb-2">
                         Phone Number *
                       </label>
                       <input 
@@ -153,13 +153,13 @@ export function Contact() {
                         placeholder="(210) 555-0123"
                         value={formData.phone} 
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-sm sm:text-base"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-foreground/80 mb-2">
+                    <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-foreground/80 mb-1.5 sm:mb-2">
                       Email Address (optional)
                     </label>
                     <input 
@@ -169,12 +169,12 @@ export function Contact() {
                       placeholder="john@example.com"
                       value={formData.email} 
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-sm sm:text-base"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="zipCode" className="block text-sm font-medium text-foreground/80 mb-2">
+                    <label htmlFor="zipCode" className="block text-xs sm:text-sm font-medium text-foreground/80 mb-1.5 sm:mb-2">
                       Zip Code (optional)
                     </label>
                     <input 
@@ -183,12 +183,12 @@ export function Contact() {
                       placeholder="78201"
                       value={formData.zipCode} 
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-sm sm:text-base"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="service" className="block text-sm font-medium text-foreground/80 mb-2">
+                    <label htmlFor="service" className="block text-xs sm:text-sm font-medium text-foreground/80 mb-1.5 sm:mb-2">
                       Service Needed *
                     </label>
                     <select 
@@ -197,7 +197,7 @@ export function Contact() {
                       required
                       value={formData.service} 
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all appearance-none cursor-pointer"
+                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-secondary border border-border text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all appearance-none cursor-pointer text-sm sm:text-base"
                     >
                       <option value="" className="text-foreground/40">Select a service...</option>
                       {services.map((s) => (
@@ -207,46 +207,46 @@ export function Contact() {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-foreground/80 mb-2">
+                    <label htmlFor="message" className="block text-xs sm:text-sm font-medium text-foreground/80 mb-1.5 sm:mb-2">
                       Project Details
                     </label>
                     <textarea 
                       id="message"
                       name="message" 
-                      rows={4}
+                      rows={3}
                       placeholder="Tell us about your project: property size, specific needs, timeline, etc."
                       value={formData.message} 
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none"
+                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none text-sm sm:text-base"
                     />
                   </div>
 
                   <Button 
                     type="submit" 
                     disabled={isSubmitting}
-                    className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-6 text-lg font-bold uppercase tracking-wide transition-all hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-4 sm:py-6 text-base sm:text-lg font-bold uppercase tracking-wide transition-all hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
                       <span className="flex items-center justify-center gap-2">
-                        <span className="w-5 h-5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
+                        <span className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
                         Sending...
                       </span>
                     ) : (
                       <span className="flex items-center justify-center gap-2">
-                        <Send className="w-5 h-5" />
+                        <Send className="w-4 h-4 sm:w-5 sm:h-5" />
                         Get Your Free Quote
                       </span>
                     )}
                   </Button>
 
-                  <p className="text-center text-foreground/50 text-sm">
+                  <p className="text-center text-foreground/50 text-xs sm:text-sm">
                     We respect your privacy. Your information will never be shared.
                   </p>
 
                   {/* SMS Photos Button */}
                   <a
                     href="sms:2108914174?body=Hi, I'd like to send photos of my property for a quote."
-                    className="flex flex-col sm:flex-row items-center justify-center gap-2 w-full py-3 px-4 rounded-lg border-2 border-dashed border-primary/50 text-primary hover:bg-primary/10 transition-all text-sm font-medium text-center"
+                    className="flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2 w-full py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg border-2 border-dashed border-primary/50 text-primary hover:bg-primary/10 transition-all text-xs sm:text-sm font-medium text-center"
                   >
                     <Phone className="w-4 h-4 shrink-0" />
                     <span>Click here to text project photos directly</span>
