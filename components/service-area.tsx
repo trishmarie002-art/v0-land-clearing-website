@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useRef, useState } from "react"
 import { CheckCircle2, MapPin } from "lucide-react"
 
 const serviceCities = [
@@ -25,6 +26,146 @@ const serviceCities = [
   "Terrell Hills",
 ]
 
+// San Antonio coordinates
+const SAN_ANTONIO_LAT = 29.4241
+const SAN_ANTONIO_LNG = -98.4936
+const RADIUS_MILES = 60
+const RADIUS_METERS = RADIUS_MILES * 1609.34 // Convert miles to meters
+
+function ServiceAreaMap() {
+  const mapRef = useRef<HTMLDivElement>(null)
+  const [isLoaded, setIsLoaded] = useState(false)
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !mapRef.current) return
+
+    // Dynamically import Leaflet
+    const loadMap = async () => {
+      const L = (await import("leaflet")).default
+      await import("leaflet/dist/leaflet.css")
+
+      // Check if map already initialized
+      if (mapRef.current && !mapRef.current.hasChildNodes()) {
+        // Create map with dark theme tile layer
+        const map = L.map(mapRef.current, {
+          center: [SAN_ANTONIO_LAT, SAN_ANTONIO_LNG],
+          zoom: 8,
+          zoomControl: true,
+          scrollWheelZoom: false,
+          attributionControl: true,
+        })
+
+        // Dark themed map tiles (Carto Dark Matter)
+        L.tileLayer(
+          "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+          {
+            attribution:
+              '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+            subdomains: "abcd",
+            maxZoom: 19,
+          }
+        ).addTo(map)
+
+        // Add translucent green circle for 60-mile radius
+        L.circle([SAN_ANTONIO_LAT, SAN_ANTONIO_LNG], {
+          color: "rgba(34, 197, 94, 0.8)",
+          fillColor: "rgba(34, 197, 94, 0.15)",
+          fillOpacity: 0.4,
+          weight: 2,
+          radius: RADIUS_METERS,
+        }).addTo(map)
+
+        // Custom marker icon for San Antonio
+        const customIcon = L.divIcon({
+          className: "custom-marker",
+          html: `
+            <div style="position: relative; display: flex; align-items: center; justify-content: center;">
+              <div style="position: absolute; width: 32px; height: 32px; background: rgba(234, 179, 8, 0.3); border-radius: 50%; animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;"></div>
+              <div style="width: 16px; height: 16px; background: #eab308; border-radius: 50%; border: 3px solid #1a1a2e; box-shadow: 0 4px 12px rgba(234, 179, 8, 0.5);"></div>
+            </div>
+          `,
+          iconSize: [32, 32],
+          iconAnchor: [16, 16],
+        })
+
+        // Add marker for San Antonio
+        const marker = L.marker([SAN_ANTONIO_LAT, SAN_ANTONIO_LNG], {
+          icon: customIcon,
+        }).addTo(map)
+
+        // Add popup
+        marker.bindPopup(
+          `<div style="text-align: center; padding: 4px 8px;">
+            <strong style="font-size: 14px;">San Antonio, TX</strong>
+            <p style="margin: 4px 0 0; font-size: 12px; color: #666;">Service Center</p>
+          </div>`
+        )
+
+        // Add custom CSS for ping animation
+        const style = document.createElement("style")
+        style.textContent = `
+          @keyframes ping {
+            75%, 100% {
+              transform: scale(2);
+              opacity: 0;
+            }
+          }
+          .leaflet-container {
+            background: #1a1a2e !important;
+            font-family: inherit;
+          }
+          .leaflet-control-zoom {
+            border: 1px solid rgba(255,255,255,0.1) !important;
+          }
+          .leaflet-control-zoom a {
+            background: rgba(26, 26, 46, 0.95) !important;
+            color: #fff !important;
+            border-color: rgba(255,255,255,0.1) !important;
+          }
+          .leaflet-control-zoom a:hover {
+            background: rgba(50, 50, 70, 0.95) !important;
+          }
+          .leaflet-control-attribution {
+            background: rgba(26, 26, 46, 0.8) !important;
+            color: rgba(255,255,255,0.5) !important;
+            font-size: 10px !important;
+          }
+          .leaflet-control-attribution a {
+            color: rgba(255,255,255,0.6) !important;
+          }
+        `
+        document.head.appendChild(style)
+
+        setIsLoaded(true)
+      }
+    }
+
+    loadMap()
+  }, [])
+
+  return (
+    <div className="relative w-full h-full">
+      <div ref={mapRef} className="w-full h-full min-h-[400px]" />
+      
+      {/* Loading state */}
+      {!isLoaded && (
+        <div className="absolute inset-0 flex items-center justify-center bg-[#1a1a2e]">
+          <div className="flex flex-col items-center gap-3">
+            <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+            <p className="text-muted-foreground text-sm">Loading map...</p>
+          </div>
+        </div>
+      )}
+
+      {/* Radius label overlay */}
+      <div className="absolute bottom-16 right-3 bg-card/95 backdrop-blur-sm px-3 py-2 rounded-md border border-border z-[1000]">
+        <p className="text-xs text-muted-foreground">Service Radius</p>
+        <p className="text-lg font-bold text-primary font-[family-name:var(--font-display)]">60 Miles</p>
+      </div>
+    </div>
+  )
+}
+
 export function ServiceArea() {
   return (
     <section id="service-area" className="py-20 md:py-28 bg-secondary overflow-hidden">
@@ -47,72 +188,7 @@ export function ServiceArea() {
           {/* Map Container */}
           <div className="animate-on-scroll slide-in-left">
             <div className="relative aspect-square lg:aspect-[4/3] rounded-lg overflow-hidden bg-card border border-border">
-              {/* Dark themed map placeholder */}
-              <div className="absolute inset-0 bg-[#1a1a2e]">
-                {/* Grid pattern overlay for map texture */}
-                <div 
-                  className="absolute inset-0 opacity-20"
-                  style={{
-                    backgroundImage: `
-                      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-                      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
-                    `,
-                    backgroundSize: '40px 40px'
-                  }}
-                />
-                
-                {/* Subtle road network effect */}
-                <svg className="absolute inset-0 w-full h-full opacity-30" preserveAspectRatio="none">
-                  <defs>
-                    <pattern id="roads" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
-                      <path d="M0 50 L100 50" stroke="rgba(255,255,255,0.1)" strokeWidth="1" fill="none"/>
-                      <path d="M50 0 L50 100" stroke="rgba(255,255,255,0.1)" strokeWidth="1" fill="none"/>
-                      <path d="M20 0 L80 100" stroke="rgba(255,255,255,0.05)" strokeWidth="0.5" fill="none"/>
-                      <path d="M80 0 L20 100" stroke="rgba(255,255,255,0.05)" strokeWidth="0.5" fill="none"/>
-                    </pattern>
-                  </defs>
-                  <rect width="100%" height="100%" fill="url(#roads)"/>
-                </svg>
-
-                {/* 60-mile radius circle - translucent green */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div 
-                    className="w-[70%] aspect-square rounded-full border-2 border-green-500/60"
-                    style={{
-                      background: 'radial-gradient(circle, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.08) 50%, rgba(34, 197, 94, 0.03) 100%)',
-                      boxShadow: '0 0 60px rgba(34, 197, 94, 0.2), inset 0 0 60px rgba(34, 197, 94, 0.1)'
-                    }}
-                  />
-                </div>
-
-                {/* San Antonio center marker */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="relative">
-                    {/* Pulse animation */}
-                    <div className="absolute inset-0 w-4 h-4 bg-primary/50 rounded-full animate-ping" />
-                    {/* Center dot */}
-                    <div className="relative w-4 h-4 bg-primary rounded-full border-2 border-primary-foreground shadow-lg" />
-                    {/* Label */}
-                    <div className="absolute top-6 left-1/2 -translate-x-1/2 whitespace-nowrap bg-card/90 backdrop-blur-sm px-3 py-1.5 rounded-md border border-border shadow-lg">
-                      <div className="flex items-center gap-2">
-                        <MapPin className="w-4 h-4 text-primary" />
-                        <span className="text-sm font-semibold text-foreground">San Antonio, TX</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Radius label */}
-                <div className="absolute bottom-4 right-4 bg-card/90 backdrop-blur-sm px-3 py-2 rounded-md border border-border">
-                  <p className="text-xs text-muted-foreground">Service Radius</p>
-                  <p className="text-lg font-bold text-primary font-[family-name:var(--font-display)]">60 Miles</p>
-                </div>
-
-                {/* Map attribution placeholder */}
-                <div className="absolute bottom-4 left-4 text-xs text-muted-foreground/50">
-                  Map powered by Mapbox
-                </div>
-              </div>
+              <ServiceAreaMap />
             </div>
           </div>
 
