@@ -45,7 +45,7 @@ export function Contact() {
     setIsSubmitting(true)
 
     try {
-      // Build FormData for FormGrid submission (supports file uploads)
+      // Build FormData for FormGrid submission (text fields only)
       const submitData = new FormData()
       
       // Add form fields
@@ -56,10 +56,10 @@ export function Contact() {
       submitData.append("service", formData.service)
       submitData.append("message", formData.message || "")
       
-      // Add images if any
-      images.forEach((image, index) => {
-        submitData.append(`image_${index + 1}`, image)
-      })
+      // Note if images were attached
+      if (images.length > 0) {
+        submitData.append("has_images", `Yes - ${images.length} photo(s) to be sent via text`)
+      }
 
       const response = await fetch("/api/submit-form", {
         method: "POST",
@@ -69,6 +69,20 @@ export function Contact() {
       const result = await response.json()
 
       if (result.success) {
+        // If images were attached, prompt to send via SMS
+        if (images.length > 0) {
+          const phoneNumber = "2108914174"
+          const smsBody = `Photos for quote request from ${formData.name} - ${formData.service}`
+          
+          const sendViaSms = window.confirm(
+            "Your quote request has been submitted! To send your photos, click OK to open your messaging app."
+          )
+          
+          if (sendViaSms) {
+            window.location.href = `sms:${phoneNumber}?body=${encodeURIComponent(smsBody)}`
+          }
+        }
+        
         setSubmitted(true)
         setFormData({
           name: "",
@@ -237,7 +251,7 @@ export function Contact() {
                   {/* Image Upload */}
                   <div>
                     <label className="block text-sm font-medium text-foreground/80 mb-2">
-                      Upload Photos (optional)
+                      Upload Photos (optional) - will be sent via text
                     </label>
                     <div className="space-y-3">
                       <label 
