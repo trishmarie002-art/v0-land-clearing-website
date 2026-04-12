@@ -246,10 +246,10 @@ export function Contact() {
                   {/* SMS Photos Button */}
                   <a
                     href="sms:2108914174?body=Hi, I'd like to send photos of my property for a quote."
-                    className="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-lg border-2 border-dashed border-primary/50 text-primary hover:bg-primary/10 transition-all text-sm font-medium"
+                    className="flex flex-col sm:flex-row items-center justify-center gap-2 w-full py-3 px-4 rounded-lg border-2 border-dashed border-primary/50 text-primary hover:bg-primary/10 transition-all text-sm font-medium text-center"
                   >
-                    <Phone className="w-4 h-4" />
-                    Click here to text project photos directly
+                    <Phone className="w-4 h-4 shrink-0" />
+                    <span>Click here to text project photos directly</span>
                   </a>
                 </form>
               )}
