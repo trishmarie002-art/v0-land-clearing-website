@@ -3,33 +3,34 @@
 import { useEffect, useRef, useState } from "react"
 import { CheckCircle2, MapPin } from "lucide-react"
 
+// Service cities with coordinates
 const serviceCities = [
-  "San Antonio",
-  "Boerne",
-  "New Braunfels",
-  "Seguin",
-  "Floresville",
-  "Castroville",
-  "Helotes",
-  "Leon Valley",
-  "Schertz",
-  "Cibolo",
-  "Universal City",
-  "Selma",
-  "Converse",
-  "Live Oak",
-  "Windcrest",
-  "Garden Ridge",
-  "Fair Oaks Ranch",
-  "Hollywood Park",
-  "Alamo Heights",
-  "Terrell Hills",
+  { name: "San Antonio", lat: 29.4241, lng: -98.4936, isCenter: true },
+  { name: "Boerne", lat: 29.7947, lng: -98.7320 },
+  { name: "New Braunfels", lat: 29.7030, lng: -98.1245 },
+  { name: "Seguin", lat: 29.5688, lng: -97.9647 },
+  { name: "Floresville", lat: 29.1335, lng: -98.1561 },
+  { name: "Castroville", lat: 29.3558, lng: -98.8786 },
+  { name: "Helotes", lat: 29.5780, lng: -98.6897 },
+  { name: "Leon Valley", lat: 29.4955, lng: -98.6142 },
+  { name: "Schertz", lat: 29.5521, lng: -98.2697 },
+  { name: "Cibolo", lat: 29.5616, lng: -98.2269 },
+  { name: "Universal City", lat: 29.5480, lng: -98.2911 },
+  { name: "Selma", lat: 29.5844, lng: -98.3058 },
+  { name: "Converse", lat: 29.5180, lng: -98.3164 },
+  { name: "Live Oak", lat: 29.5655, lng: -98.3367 },
+  { name: "Windcrest", lat: 29.5152, lng: -98.3806 },
+  { name: "Garden Ridge", lat: 29.6344, lng: -98.3053 },
+  { name: "Fair Oaks Ranch", lat: 29.7458, lng: -98.6428 },
+  { name: "Hollywood Park", lat: 29.5997, lng: -98.4867 },
+  { name: "Alamo Heights", lat: 29.4844, lng: -98.4656 },
+  { name: "Terrell Hills", lat: 29.4736, lng: -98.4492 },
 ]
 
 // San Antonio coordinates
 const SAN_ANTONIO_LAT = 29.4241
 const SAN_ANTONIO_LNG = -98.4936
-const RADIUS_MILES = 60
+const RADIUS_MILES = 50
 const RADIUS_METERS = RADIUS_MILES * 1609.34 // Convert miles to meters
 
 function ServiceAreaMap() {
@@ -66,7 +67,7 @@ function ServiceAreaMap() {
           }
         ).addTo(map)
 
-        // Add translucent green circle for 60-mile radius
+        // Add translucent green circle for 50-mile radius
         L.circle([SAN_ANTONIO_LAT, SAN_ANTONIO_LNG], {
           color: "rgba(34, 197, 94, 0.8)",
           fillColor: "rgba(34, 197, 94, 0.15)",
@@ -75,8 +76,8 @@ function ServiceAreaMap() {
           radius: RADIUS_METERS,
         }).addTo(map)
 
-        // Custom marker icon for San Antonio
-        const customIcon = L.divIcon({
+        // Custom marker icon for San Antonio (center)
+        const centerIcon = L.divIcon({
           className: "custom-marker",
           html: `
             <div style="position: relative; display: flex; align-items: center; justify-content: center;">
@@ -88,18 +89,54 @@ function ServiceAreaMap() {
           iconAnchor: [16, 16],
         })
 
-        // Add marker for San Antonio
-        const marker = L.marker([SAN_ANTONIO_LAT, SAN_ANTONIO_LNG], {
-          icon: customIcon,
-        }).addTo(map)
+        // Custom marker icon for service cities
+        const cityIcon = L.divIcon({
+          className: "city-marker",
+          html: `
+            <div style="position: relative; display: flex; align-items: center; justify-content: center;">
+              <div style="width: 10px; height: 10px; background: #22c55e; border-radius: 50%; border: 2px solid #1a1a2e; box-shadow: 0 2px 8px rgba(34, 197, 94, 0.6);"></div>
+            </div>
+          `,
+          iconSize: [14, 14],
+          iconAnchor: [7, 7],
+        })
 
-        // Add popup
-        marker.bindPopup(
-          `<div style="text-align: center; padding: 4px 8px;">
-            <strong style="font-size: 14px;">San Antonio, TX</strong>
-            <p style="margin: 4px 0 0; font-size: 12px; color: #666;">Service Center</p>
-          </div>`
-        )
+        // Add markers for all service cities
+        serviceCities.forEach((city) => {
+          const icon = city.isCenter ? centerIcon : cityIcon
+          const marker = L.marker([city.lat, city.lng], { icon }).addTo(map)
+
+          // Add popup with city name
+          marker.bindPopup(
+            `<div style="text-align: center; padding: 4px 8px; background: #1a1a2e; color: #fff; border-radius: 4px;">
+              <strong style="font-size: 13px;">${city.name}</strong>
+              ${city.isCenter ? '<p style="margin: 2px 0 0; font-size: 11px; color: #eab308;">Service Center</p>' : ''}
+            </div>`,
+            {
+              className: 'dark-popup',
+            }
+          )
+
+          // Add permanent label for city names
+          const labelIcon = L.divIcon({
+            className: 'city-label',
+            html: `<div style="
+              white-space: nowrap;
+              font-size: 10px;
+              font-weight: 600;
+              color: #fff;
+              text-shadow: 0 1px 3px rgba(0,0,0,0.8), 0 0 6px rgba(0,0,0,0.5);
+              padding: 2px 4px;
+              background: rgba(26, 26, 46, 0.75);
+              border-radius: 3px;
+              border: 1px solid rgba(255,255,255,0.1);
+            ">${city.name}</div>`,
+            iconSize: [0, 0],
+            iconAnchor: [-8, 4],
+          })
+
+          L.marker([city.lat, city.lng], { icon: labelIcon, interactive: false }).addTo(map)
+        })
 
         // Add custom CSS for ping animation
         const style = document.createElement("style")
@@ -160,7 +197,7 @@ function ServiceAreaMap() {
       {/* Radius label overlay */}
       <div className="absolute bottom-16 right-3 bg-card/95 backdrop-blur-sm px-3 py-2 rounded-md border border-border z-[1000]">
         <p className="text-xs text-muted-foreground">Service Radius</p>
-        <p className="text-lg font-bold text-primary font-[family-name:var(--font-display)]">60 Miles</p>
+        <p className="text-lg font-bold text-primary font-[family-name:var(--font-display)]">50 Miles</p>
       </div>
     </div>
   )
@@ -179,7 +216,7 @@ export function ServiceArea() {
             Our <span className="text-primary">Service Area</span>
           </h2>
           <p className="text-foreground/70">
-            Proudly serving San Antonio and surrounding communities within a 60-mile radius.
+            Proudly serving San Antonio and surrounding communities within a 50-mile radius.
           </p>
         </div>
 
@@ -212,12 +249,12 @@ export function ServiceArea() {
               <div className="grid grid-cols-2 gap-x-6 gap-y-3">
                 {serviceCities.map((city, index) => (
                   <div
-                    key={city}
+                    key={city.name}
                     className="flex items-center gap-2 group transition-transform hover:translate-x-1"
                     style={{ animationDelay: `${index * 50}ms` }}
                   >
                     <CheckCircle2 className="w-4 h-4 text-green-500 shrink-0 group-hover:scale-110 transition-transform" />
-                    <span className="text-foreground/80 text-sm">{city}</span>
+                    <span className="text-foreground/80 text-sm">{city.name}</span>
                   </div>
                 ))}
               </div>

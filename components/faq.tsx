@@ -10,7 +10,7 @@ const faqs = [
   },
   {
     question: "What areas do you serve near San Antonio?",
-    answer: "We proudly serve San Antonio and all surrounding areas including Bexar County, New Braunfels, Boerne, Seguin, Helotes, Castroville, Floresville, Pleasanton, Schertz, Cibolo, Universal City, Live Oak, Converse, and throughout South Texas. If you're within 60 miles of San Antonio, give us a call!"
+    answer: "We proudly serve San Antonio and all surrounding areas including Bexar County, New Braunfels, Boerne, Seguin, Helotes, Castroville, Floresville, Pleasanton, Schertz, Cibolo, Universal City, Live Oak, Converse, and throughout South Texas. If you're within 50 miles of San Antonio, give us a call!"
   },
   {
     question: "How long does land clearing take?",
