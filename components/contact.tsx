@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Phone, Mail, MapPin, Clock, CheckCircle, Send, Upload, X, ImageIcon } from "lucide-react"
+import { Phone, Mail, MapPin, Clock, CheckCircle, Send } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const services = [
@@ -24,65 +24,39 @@ export function Contact() {
     message: "",
   })
 
-  const [images, setImages] = useState<File[]>([])
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
-
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files
-    if (files) {
-      const newImages = Array.from(files).slice(0, 5 - images.length) // Max 5 images
-      setImages((prev) => [...prev, ...newImages].slice(0, 5))
-    }
-  }
-
-  const removeImage = (index: number) => {
-    setImages((prev) => prev.filter((_, i) => i !== index))
-  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
 
     try {
-      // Build FormData for FormGrid submission (text fields only)
-      const submitData = new FormData()
+      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || ""
       
-      // Add form fields
-      submitData.append("name", formData.name)
-      submitData.append("email", formData.email || "")
-      submitData.append("phone", formData.phone)
-      submitData.append("zip_code", formData.zipCode || "")
-      submitData.append("service", formData.service)
-      submitData.append("message", formData.message || "")
-      
-      // Note if images were attached
-      if (images.length > 0) {
-        submitData.append("has_images", `Yes - ${images.length} photo(s) to be sent via text`)
+      const submitData = {
+        access_key: accessKey,
+        subject: `New Quote Request from ${formData.name} - ${formData.service}`,
+        from_name: "Jay's Land Clearing Website",
+        name: formData.name,
+        email: formData.email || "Not provided",
+        phone: formData.phone,
+        zip_code: formData.zipCode || "Not provided",
+        service: formData.service,
+        message: formData.message || "No additional details",
       }
 
-      const response = await fetch("/api/submit-form", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        body: submitData,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(submitData),
       })
 
       const result = await response.json()
 
       if (result.success) {
-        // If images were attached, prompt to send via SMS
-        if (images.length > 0) {
-          const phoneNumber = "2108914174"
-          const smsBody = `Photos for quote request from ${formData.name} - ${formData.service}`
-          
-          const sendViaSms = window.confirm(
-            "Your quote request has been submitted! To send your photos, click OK to open your messaging app."
-          )
-          
-          if (sendViaSms) {
-            window.location.href = `sms:${phoneNumber}?body=${encodeURIComponent(smsBody)}`
-          }
-        }
-        
         setSubmitted(true)
         setFormData({
           name: "",
@@ -92,7 +66,6 @@ export function Contact() {
           service: "",
           message: "",
         })
-        setImages([])
       } else {
         alert("Something went wrong. Please try again.")
       }
@@ -248,60 +221,6 @@ export function Contact() {
                     />
                   </div>
 
-                  {/* Image Upload */}
-                  <div>
-                    <label className="block text-sm font-medium text-foreground/80 mb-2">
-                      Upload Photos (optional) - will be sent via text
-                    </label>
-                    <div className="space-y-3">
-                      <label 
-                        htmlFor="images"
-                        className="flex flex-col items-center justify-center w-full px-4 py-6 rounded-lg bg-secondary border-2 border-dashed border-border hover:border-primary/50 text-foreground/60 hover:text-primary cursor-pointer transition-all"
-                      >
-                        <Upload className="w-8 h-8 mb-2" />
-                        <span className="text-sm font-medium">Click to upload images</span>
-                        <span className="text-xs text-foreground/40 mt-1">JPG, PNG up to 5 images</span>
-                        <input 
-                          id="images"
-                          type="file"
-                          accept="image/*"
-                          multiple
-                          onChange={handleImageUpload}
-                          className="hidden"
-                        />
-                      </label>
-                      
-                      {/* Image Previews */}
-                      {images.length > 0 && (
-                        <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
-                          {images.map((image, index) => (
-                            <div key={index} className="relative group aspect-square rounded-lg overflow-hidden bg-secondary border border-border">
-                              <img 
-                                src={URL.createObjectURL(image)} 
-                                alt={`Upload ${index + 1}`}
-                                className="w-full h-full object-cover"
-                              />
-                              <button
-                                type="button"
-                                onClick={() => removeImage(index)}
-                                className="absolute top-1 right-1 w-5 h-5 bg-destructive text-destructive-foreground rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
-                              >
-                                <X className="w-3 h-3" />
-                              </button>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                      
-                      {images.length > 0 && (
-                        <p className="text-xs text-foreground/50 flex items-center gap-1">
-                          <ImageIcon className="w-3 h-3" />
-                          {images.length}/5 images uploaded
-                        </p>
-                      )}
-                    </div>
-                  </div>
-
                   <Button 
                     type="submit" 
                     disabled={isSubmitting}
@@ -323,6 +242,15 @@ export function Contact() {
                   <p className="text-center text-foreground/50 text-sm">
                     We respect your privacy. Your information will never be shared.
                   </p>
+
+                  {/* SMS Photos Button */}
+                  <a
+                    href="sms:2108914174?body=Hi, I'd like to send photos of my property for a quote."
+                    className="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-lg border-2 border-dashed border-primary/50 text-primary hover:bg-primary/10 transition-all text-sm font-medium"
+                  >
+                    <Phone className="w-4 h-4" />
+                    Click here to text project photos directly
+                  </a>
                 </form>
               )}
             </div>
