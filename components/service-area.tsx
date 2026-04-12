@@ -1,168 +1,52 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useState } from "react"
 import { CheckCircle2, MapPin } from "lucide-react"
 
-// Service cities with coordinates
+// Service cities list
 const serviceCities = [
-  { name: "San Antonio", lat: 29.4241, lng: -98.4936, isCenter: true },
-  { name: "Boerne", lat: 29.7947, lng: -98.7320 },
-  { name: "New Braunfels", lat: 29.7030, lng: -98.1245 },
-  { name: "Seguin", lat: 29.5688, lng: -97.9647 },
-  { name: "Floresville", lat: 29.1335, lng: -98.1561 },
-  { name: "Castroville", lat: 29.3558, lng: -98.8786 },
-  { name: "Helotes", lat: 29.5780, lng: -98.6897 },
-  { name: "Leon Valley", lat: 29.4955, lng: -98.6142 },
-  { name: "Schertz", lat: 29.5521, lng: -98.2697 },
-  { name: "Cibolo", lat: 29.5616, lng: -98.2269 },
-  { name: "Universal City", lat: 29.5480, lng: -98.2911 },
-  { name: "Selma", lat: 29.5844, lng: -98.3058 },
-  { name: "Converse", lat: 29.5180, lng: -98.3164 },
-  { name: "Live Oak", lat: 29.5655, lng: -98.3367 },
-  { name: "Windcrest", lat: 29.5152, lng: -98.3806 },
-  { name: "Garden Ridge", lat: 29.6344, lng: -98.3053 },
-  { name: "Fair Oaks Ranch", lat: 29.7458, lng: -98.6428 },
-  { name: "Hollywood Park", lat: 29.5997, lng: -98.4867 },
-  { name: "Alamo Heights", lat: 29.4844, lng: -98.4656 },
-  { name: "Terrell Hills", lat: 29.4736, lng: -98.4492 },
+  "San Antonio",
+  "Boerne",
+  "New Braunfels",
+  "Seguin",
+  "Floresville",
+  "Castroville",
+  "Helotes",
+  "Leon Valley",
+  "Schertz",
+  "Cibolo",
+  "Universal City",
+  "Selma",
+  "Converse",
+  "Live Oak",
+  "Windcrest",
+  "Garden Ridge",
+  "Fair Oaks Ranch",
+  "Hollywood Park",
+  "Alamo Heights",
+  "Terrell Hills",
 ]
 
-// San Antonio coordinates
-const SAN_ANTONIO_LAT = 29.4241
-const SAN_ANTONIO_LNG = -98.4936
-const RADIUS_MILES = 50
-const RADIUS_METERS = RADIUS_MILES * 1609.34 // Convert miles to meters
-
 function ServiceAreaMap() {
-  const mapRef = useRef<HTMLDivElement>(null)
   const [isLoaded, setIsLoaded] = useState(false)
 
-  useEffect(() => {
-    if (typeof window === "undefined" || !mapRef.current) return
-
-    // Dynamically import Leaflet
-    const loadMap = async () => {
-      const L = (await import("leaflet")).default
-      await import("leaflet/dist/leaflet.css")
-
-      // Check if map already initialized
-      if (mapRef.current && !mapRef.current.hasChildNodes()) {
-        // Create map with dark theme tile layer
-        const map = L.map(mapRef.current, {
-          center: [SAN_ANTONIO_LAT, SAN_ANTONIO_LNG],
-          zoom: 8,
-          zoomControl: true,
-          scrollWheelZoom: false,
-          attributionControl: true,
-        })
-
-        // Dark themed map tiles (Carto Dark Matter)
-        L.tileLayer(
-          "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
-          {
-            attribution:
-              '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-            subdomains: "abcd",
-            maxZoom: 19,
-          }
-        ).addTo(map)
-
-        // Add translucent green circle for 50-mile radius
-        L.circle([SAN_ANTONIO_LAT, SAN_ANTONIO_LNG], {
-          color: "rgba(34, 197, 94, 0.8)",
-          fillColor: "rgba(34, 197, 94, 0.15)",
-          fillOpacity: 0.4,
-          weight: 2,
-          radius: RADIUS_METERS,
-        }).addTo(map)
-
-        // Custom marker icon for San Antonio (center)
-        const centerIcon = L.divIcon({
-          className: "custom-marker",
-          html: `
-            <div style="position: relative; display: flex; align-items: center; justify-content: center;">
-              <div style="position: absolute; width: 32px; height: 32px; background: rgba(234, 179, 8, 0.3); border-radius: 50%; animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;"></div>
-              <div style="width: 16px; height: 16px; background: #eab308; border-radius: 50%; border: 3px solid #1a1a2e; box-shadow: 0 4px 12px rgba(234, 179, 8, 0.5);"></div>
-            </div>
-          `,
-          iconSize: [32, 32],
-          iconAnchor: [16, 16],
-        })
-
-        // Custom marker icon for service cities
-        const cityIcon = L.divIcon({
-          className: "city-marker",
-          html: `
-            <div style="position: relative; display: flex; align-items: center; justify-content: center;">
-              <div style="width: 10px; height: 10px; background: #22c55e; border-radius: 50%; border: 2px solid #1a1a2e; box-shadow: 0 2px 8px rgba(34, 197, 94, 0.6);"></div>
-            </div>
-          `,
-          iconSize: [14, 14],
-          iconAnchor: [7, 7],
-        })
-
-        // Add markers for all service cities
-        serviceCities.forEach((city) => {
-          const icon = city.isCenter ? centerIcon : cityIcon
-          const marker = L.marker([city.lat, city.lng], { icon }).addTo(map)
-
-          // Add popup with city name (shown on click)
-          marker.bindPopup(
-            `<div style="text-align: center; padding: 4px 8px; background: #1a1a2e; color: #fff; border-radius: 4px;">
-              <strong style="font-size: 13px;">${city.name}</strong>
-              ${city.isCenter ? '<p style="margin: 2px 0 0; font-size: 11px; color: #eab308;">Service Center</p>' : ''}
-            </div>`,
-            {
-              className: 'dark-popup',
-            }
-          )
-        })
-
-        // Add custom CSS for ping animation
-        const style = document.createElement("style")
-        style.textContent = `
-          @keyframes ping {
-            75%, 100% {
-              transform: scale(2);
-              opacity: 0;
-            }
-          }
-          .leaflet-container {
-            background: #1a1a2e !important;
-            font-family: inherit;
-          }
-          .leaflet-control-zoom {
-            border: 1px solid rgba(255,255,255,0.1) !important;
-          }
-          .leaflet-control-zoom a {
-            background: rgba(26, 26, 46, 0.95) !important;
-            color: #fff !important;
-            border-color: rgba(255,255,255,0.1) !important;
-          }
-          .leaflet-control-zoom a:hover {
-            background: rgba(50, 50, 70, 0.95) !important;
-          }
-          .leaflet-control-attribution {
-            background: rgba(26, 26, 46, 0.8) !important;
-            color: rgba(255,255,255,0.5) !important;
-            font-size: 10px !important;
-          }
-          .leaflet-control-attribution a {
-            color: rgba(255,255,255,0.6) !important;
-          }
-        `
-        document.head.appendChild(style)
-
-        setIsLoaded(true)
-      }
-    }
-
-    loadMap()
-  }, [])
+  // Google Maps embed URL with dark theme and San Antonio centered
+  // Using a custom styled map URL for dark theme appearance
+  const mapSrc = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d444976.7025421146!2d-98.86775082699442!3d29.45879538282698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x865c58af04d00eaf%3A0x856e13b10a016bc!2sSan%20Antonio%2C%20TX!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus`
 
   return (
     <div className="relative w-full h-full">
-      <div ref={mapRef} className="w-full h-full min-h-[300px]" />
+      {/* Google Maps Embed */}
+      <iframe
+        src={mapSrc}
+        className="w-full h-full min-h-[250px] grayscale invert contrast-90 hue-rotate-180"
+        style={{ border: 0 }}
+        allowFullScreen
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+        title="Service Area Map - San Antonio, TX"
+        onLoad={() => setIsLoaded(true)}
+      />
       
       {/* Loading state */}
       {!isLoaded && (
@@ -175,7 +59,7 @@ function ServiceAreaMap() {
       )}
 
       {/* Radius label overlay */}
-      <div className="absolute bottom-16 right-3 bg-card/95 backdrop-blur-sm px-3 py-2 rounded-md border border-border z-[1000]">
+      <div className="absolute bottom-4 right-4 bg-card/95 backdrop-blur-sm px-3 py-2 rounded-md border border-border z-10">
         <p className="text-xs text-muted-foreground">Service Radius</p>
         <p className="text-lg font-bold text-primary font-[family-name:var(--font-display)]">50 Miles</p>
       </div>
@@ -202,9 +86,9 @@ export function ServiceArea() {
 
         {/* Map and Cities Grid */}
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-          {/* Map Container */}
+          {/* Map Container - Landscape format */}
           <div className="animate-on-scroll slide-in-left">
-            <div className="relative aspect-[4/3] md:aspect-[3/2] rounded-lg overflow-hidden bg-card border border-border max-w-lg lg:max-w-none">
+            <div className="relative aspect-[16/9] rounded-lg overflow-hidden bg-card border border-border">
               <ServiceAreaMap />
             </div>
           </div>
@@ -229,12 +113,12 @@ export function ServiceArea() {
               <div className="grid grid-cols-2 gap-x-6 gap-y-3">
                 {serviceCities.map((city, index) => (
                   <div
-                    key={city.name}
+                    key={city}
                     className="flex items-center gap-2 group transition-transform hover:translate-x-1"
                     style={{ animationDelay: `${index * 50}ms` }}
                   >
                     <CheckCircle2 className="w-4 h-4 text-green-500 shrink-0 group-hover:scale-110 transition-transform" />
-                    <span className="text-foreground/80 text-sm">{city.name}</span>
+                    <span className="text-foreground/80 text-sm">{city}</span>
                   </div>
                 ))}
               </div>

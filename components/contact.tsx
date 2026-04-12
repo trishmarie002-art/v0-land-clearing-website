@@ -44,52 +44,29 @@ export function Contact() {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // If images are attached, open SMS app with pre-filled message
-    if (images.length > 0) {
-      const phoneNumber = "2108574027"
-      const smsBody = `Quote Request - Jay's Land Clearing
-
-Name: ${formData.name}
-Phone: ${formData.phone}
-Email: ${formData.email || "Not provided"}
-Zip Code: ${formData.zipCode || "Not provided"}
-Service: ${formData.service}
-Message: ${formData.message || "None"}
-
-(Attach your ${images.length} photo${images.length > 1 ? "s" : ""} before sending)`
-
-      window.location.href = `sms:${phoneNumber}?body=${encodeURIComponent(smsBody)}`
-      setIsSubmitting(false)
-      return
-    }
-
     try {
-      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || ""
+      // Build FormData for FormGrid submission (supports file uploads)
+      const submitData = new FormData()
       
-      // Build form data without file attachments (Web3Forms free tier doesn't support them)
-      const submitData = {
-        access_key: accessKey,
-        subject: `New Quote Request from ${formData.name} - ${formData.service}`,
-        from_name: "Jay's Land Clearing Website",
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        zip_code: formData.zipCode,
-        service: formData.service,
-        message: formData.message,
-      }
-
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(submitData),
+      // Add form fields
+      submitData.append("name", formData.name)
+      submitData.append("email", formData.email || "")
+      submitData.append("phone", formData.phone)
+      submitData.append("zip_code", formData.zipCode || "")
+      submitData.append("service", formData.service)
+      submitData.append("message", formData.message || "")
+      
+      // Add images if any
+      images.forEach((image, index) => {
+        submitData.append(`image_${index + 1}`, image)
       })
 
-      const result = await response.json()
+      const response = await fetch("https://formgrid.dev/api/f/c30xdwys", {
+        method: "POST",
+        body: submitData,
+      })
 
-      if (result.success) {
+      if (response.ok) {
         setSubmitted(true)
         setFormData({
           name: "",
@@ -258,7 +235,7 @@ Message: ${formData.message || "None"}
                   {/* Image Upload */}
                   <div>
                     <label className="block text-sm font-medium text-foreground/80 mb-2">
-                      Upload Photos (optional) - Opens SMS to send with attachments
+                      Upload Photos (optional)
                     </label>
                     <div className="space-y-3">
                       <label 
