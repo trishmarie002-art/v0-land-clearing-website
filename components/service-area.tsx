@@ -106,7 +106,7 @@ function ServiceAreaMap() {
           const icon = city.isCenter ? centerIcon : cityIcon
           const marker = L.marker([city.lat, city.lng], { icon }).addTo(map)
 
-          // Add popup with city name
+          // Add popup with city name (shown on click)
           marker.bindPopup(
             `<div style="text-align: center; padding: 4px 8px; background: #1a1a2e; color: #fff; border-radius: 4px;">
               <strong style="font-size: 13px;">${city.name}</strong>
@@ -116,26 +116,6 @@ function ServiceAreaMap() {
               className: 'dark-popup',
             }
           )
-
-          // Add permanent label for city names
-          const labelIcon = L.divIcon({
-            className: 'city-label',
-            html: `<div style="
-              white-space: nowrap;
-              font-size: 10px;
-              font-weight: 600;
-              color: #fff;
-              text-shadow: 0 1px 3px rgba(0,0,0,0.8), 0 0 6px rgba(0,0,0,0.5);
-              padding: 2px 4px;
-              background: rgba(26, 26, 46, 0.75);
-              border-radius: 3px;
-              border: 1px solid rgba(255,255,255,0.1);
-            ">${city.name}</div>`,
-            iconSize: [0, 0],
-            iconAnchor: [-8, 4],
-          })
-
-          L.marker([city.lat, city.lng], { icon: labelIcon, interactive: false }).addTo(map)
         })
 
         // Add custom CSS for ping animation
@@ -182,7 +162,7 @@ function ServiceAreaMap() {
 
   return (
     <div className="relative w-full h-full">
-      <div ref={mapRef} className="w-full h-full min-h-[400px]" />
+      <div ref={mapRef} className="w-full h-full min-h-[300px]" />
       
       {/* Loading state */}
       {!isLoaded && (
@@ -224,7 +204,7 @@ export function ServiceArea() {
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           {/* Map Container */}
           <div className="animate-on-scroll slide-in-left">
-            <div className="relative aspect-square lg:aspect-[4/3] rounded-lg overflow-hidden bg-card border border-border">
+            <div className="relative aspect-[4/3] md:aspect-[3/2] rounded-lg overflow-hidden bg-card border border-border max-w-lg lg:max-w-none">
               <ServiceAreaMap />
             </div>
           </div>
