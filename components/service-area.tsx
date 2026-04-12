@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { CheckCircle2, MapPin } from "lucide-react"
 
 // Service cities list
@@ -27,46 +27,122 @@ const serviceCities = [
   "Terrell Hills",
 ]
 
+// San Antonio coordinates
+const SAN_ANTONIO_LAT = 29.4241
+const SAN_ANTONIO_LNG = -98.4936
+const RADIUS_MILES = 50
+const RADIUS_METERS = RADIUS_MILES * 1609.34 // Convert miles to meters
+
 function ServiceAreaMap() {
+  const mapRef = useRef<HTMLDivElement>(null)
   const [isLoaded, setIsLoaded] = useState(false)
 
-  // Google Maps embed URL with dark theme and San Antonio centered
-  // Using a custom styled map URL for dark theme appearance
-  const mapSrc = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d444976.7025421146!2d-98.86775082699442!3d29.45879538282698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x865c58af04d00eaf%3A0x856e13b10a016bc!2sSan%20Antonio%2C%20TX!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus`
+  useEffect(() => {
+    if (typeof window === "undefined" || !mapRef.current) return
+
+    const loadMap = async () => {
+      const L = (await import("leaflet")).default
+      await import("leaflet/dist/leaflet.css")
+
+      if (mapRef.current && !mapRef.current.hasChildNodes()) {
+        const map = L.map(mapRef.current, {
+          center: [SAN_ANTONIO_LAT, SAN_ANTONIO_LNG],
+          zoom: 8,
+          zoomControl: true,
+          scrollWheelZoom: false,
+          attributionControl: true,
+        })
+
+        // Dark themed map tiles (Carto Dark Matter)
+        L.tileLayer(
+          "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+          {
+            attribution:
+              '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+            subdomains: "abcd",
+            maxZoom: 19,
+          }
+        ).addTo(map)
+
+        // Add yellow 50-mile radius circle that scales with zoom
+        L.circle([SAN_ANTONIO_LAT, SAN_ANTONIO_LNG], {
+          color: "#eab308",
+          fillColor: "#eab308",
+          fillOpacity: 0.15,
+          weight: 3,
+          radius: RADIUS_METERS,
+        }).addTo(map)
+
+        // Custom marker icon for San Antonio center
+        const centerIcon = L.divIcon({
+          className: "custom-marker",
+          html: `
+            <div style="position: relative; display: flex; align-items: center; justify-content: center;">
+              <div style="position: absolute; width: 32px; height: 32px; background: rgba(234, 179, 8, 0.3); border-radius: 50%; animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;"></div>
+              <div style="width: 16px; height: 16px; background: #eab308; border-radius: 50%; border: 3px solid #1a1a2e; box-shadow: 0 4px 12px rgba(234, 179, 8, 0.5);"></div>
+            </div>
+          `,
+          iconSize: [32, 32],
+          iconAnchor: [16, 16],
+        })
+
+        const marker = L.marker([SAN_ANTONIO_LAT, SAN_ANTONIO_LNG], {
+          icon: centerIcon,
+        }).addTo(map)
+
+        marker.bindPopup(
+          `<div style="text-align: center; padding: 4px 8px;">
+            <strong style="font-size: 14px;">San Antonio, TX</strong>
+            <p style="margin: 4px 0 0; font-size: 12px; color: #666;">Service Center</p>
+          </div>`
+        )
+
+        // Custom CSS for map styling
+        const style = document.createElement("style")
+        style.textContent = `
+          @keyframes ping {
+            75%, 100% {
+              transform: scale(2);
+              opacity: 0;
+            }
+          }
+          .leaflet-container {
+            background: #1a1a2e !important;
+            font-family: inherit;
+          }
+          .leaflet-control-zoom {
+            border: 1px solid rgba(255,255,255,0.1) !important;
+          }
+          .leaflet-control-zoom a {
+            background: rgba(26, 26, 46, 0.95) !important;
+            color: #fff !important;
+            border-color: rgba(255,255,255,0.1) !important;
+          }
+          .leaflet-control-zoom a:hover {
+            background: rgba(50, 50, 70, 0.95) !important;
+          }
+          .leaflet-control-attribution {
+            background: rgba(26, 26, 46, 0.8) !important;
+            color: rgba(255,255,255,0.5) !important;
+            font-size: 10px !important;
+          }
+          .leaflet-control-attribution a {
+            color: rgba(255,255,255,0.6) !important;
+          }
+        `
+        document.head.appendChild(style)
+
+        setIsLoaded(true)
+      }
+    }
+
+    loadMap()
+  }, [])
 
   return (
     <div className="relative w-full h-full">
-      {/* Google Maps Embed */}
-      <iframe
-        src={mapSrc}
-        className="w-full h-full min-h-[250px] grayscale invert contrast-90 hue-rotate-180"
-        style={{ border: 0 }}
-        allowFullScreen
-        loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
-        title="Service Area Map - San Antonio, TX"
-        onLoad={() => setIsLoaded(true)}
-      />
+      <div ref={mapRef} className="w-full h-full min-h-[250px]" />
 
-      {/* 50-mile radius yellow circle overlay */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div 
-          className="w-[65%] aspect-square rounded-full border-[3px] border-primary"
-          style={{
-            background: 'radial-gradient(circle, rgba(234, 179, 8, 0.12) 0%, rgba(234, 179, 8, 0.06) 60%, transparent 100%)',
-            boxShadow: '0 0 20px rgba(234, 179, 8, 0.4), inset 0 0 30px rgba(234, 179, 8, 0.1)',
-          }}
-        />
-      </div>
-
-      {/* Center marker dot */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="relative">
-          <div className="absolute inset-0 w-4 h-4 bg-primary/50 rounded-full animate-ping" />
-          <div className="relative w-4 h-4 bg-primary rounded-full border-2 border-background shadow-lg" />
-        </div>
-      </div>
-      
       {/* Loading state */}
       {!isLoaded && (
         <div className="absolute inset-0 flex items-center justify-center bg-[#1a1a2e]">
@@ -78,7 +154,7 @@ function ServiceAreaMap() {
       )}
 
       {/* Radius label overlay */}
-      <div className="absolute bottom-4 right-4 bg-primary px-4 py-2 rounded-md shadow-lg z-10">
+      <div className="absolute bottom-4 right-4 bg-primary px-4 py-2 rounded-md shadow-lg z-[1000]">
         <p className="text-xs text-primary-foreground/80 font-medium">Service Radius</p>
         <p className="text-lg font-bold text-primary-foreground font-[family-name:var(--font-display)]">50 Miles</p>
       </div>
