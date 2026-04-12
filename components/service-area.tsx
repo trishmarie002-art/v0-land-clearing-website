@@ -47,6 +47,25 @@ function ServiceAreaMap() {
         title="Service Area Map - San Antonio, TX"
         onLoad={() => setIsLoaded(true)}
       />
+
+      {/* 50-mile radius yellow circle overlay */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div 
+          className="w-[65%] aspect-square rounded-full border-[3px] border-primary"
+          style={{
+            background: 'radial-gradient(circle, rgba(234, 179, 8, 0.12) 0%, rgba(234, 179, 8, 0.06) 60%, transparent 100%)',
+            boxShadow: '0 0 20px rgba(234, 179, 8, 0.4), inset 0 0 30px rgba(234, 179, 8, 0.1)',
+          }}
+        />
+      </div>
+
+      {/* Center marker dot */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="relative">
+          <div className="absolute inset-0 w-4 h-4 bg-primary/50 rounded-full animate-ping" />
+          <div className="relative w-4 h-4 bg-primary rounded-full border-2 border-background shadow-lg" />
+        </div>
+      </div>
       
       {/* Loading state */}
       {!isLoaded && (
