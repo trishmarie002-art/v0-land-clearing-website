@@ -25,6 +25,16 @@ const serviceCities = [
   "Hollywood Park",
   "Alamo Heights",
   "Terrell Hills",
+  "Poteet",
+  "Pleasanton",
+  "Jourdanton",
+  "Lytle",
+  "Devine",
+  "Natalia",
+  "La Vernia",
+  "Stockdale",
+  "Poth",
+  "Falls City",
 ]
 
 // San Antonio coordinates
