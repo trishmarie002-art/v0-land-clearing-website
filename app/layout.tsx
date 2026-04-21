@@ -152,7 +152,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <meta name="ICBM" content="29.4241, -98.4936" />
       </head>
       
-      <body className={`${inter.variable} ${oswald.variable} font-sans antialiased`}>
+      </body> 
+        <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TBGQ2LPL"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+        
+        className={`${inter.variable} ${oswald.variable} font-sans antialiased`}>
         {children}
         <Analytics />
         
