@@ -145,11 +145,10 @@ export default function RootLayout({
         <meta name="ICBM" content="29.4241, -98.4936" />
       </head>
       
-      <body> 
-        
-        <className={`${inter.variable} ${oswald.variable} font-sans antialiased`}>
-        {children}
-        <Analytics />
+      <body className={`${inter.variable} ${oswald.variable} font-sans antialiased`}>
+  {children}
+  <Analytics />
+</body>
         
         {/* Google Tag Manager */}
         <Script
