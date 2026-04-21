@@ -147,7 +147,7 @@ export default function RootLayout({
       
       <body> 
         
-        className={`${inter.variable} ${oswald.variable} font-sans antialiased`}>
+        <className={`${inter.variable} ${oswald.variable} font-sans antialiased`}>
         {children}
         <Analytics />
         
