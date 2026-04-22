@@ -1,25 +1,32 @@
 import type { Metadata } from 'next'
 import { Oswald, Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import Script from 'next/script'
 import './globals.css'
 
-const oswald = Oswald({ 
-  subsets: ["latin"],
+const oswald = Oswald({
+  subsets: ['latin'],
   variable: '--font-oswald',
-  weight: ['400', '500', '600', '700']
-});
+  weight: ['400', '500', '600', '700'],
+})
 
-const inter = Inter({ 
-  subsets: ["latin"],
-  variable: '--font-inter'
-});
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+})
 
 export const metadata: Metadata = {
+  icons: {
+    icon: '/images/logo.png',
+    shortcut: '/images/logo.png',
+    apple: '/images/logo.png',
+  },
   title: {
     default: "Jay's Land Clearing Service & Dirt Work | San Antonio TX",
-    template: "%s | Jay's Land Clearing Service"
+    template: "%s | Jay's Land Clearing Service",
   },
-  description: 'Professional land clearing services in San Antonio and surrounding areas. Expert brush removal, dirt work, grading, excavation, and lot preparation. Serving Bexar County, New Braunfels, Boerne, Seguin & more. Call (210) 891-4174 for free estimates.',
+  description:
+    'Professional land clearing services in San Antonio and surrounding areas. Expert brush removal, dirt work, grading, excavation, and lot preparation. Serving Bexar County, New Braunfels, Boerne, Seguin & more. Call (210) 891-4174 for free estimates.',
   keywords: [
     'land clearing San Antonio',
     'land clearing services near me',
@@ -48,7 +55,7 @@ export const metadata: Metadata = {
     'land clearing Seguin TX',
     'land clearing Helotes',
     'land clearing Castroville',
-    'South Texas land clearing'
+    'South Texas land clearing',
   ],
   authors: [{ name: "Jay's Land Clearing Service & Dirt Work" }],
   creator: "Jay's Land Clearing Service & Dirt Work",
@@ -64,7 +71,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Jay's Land Clearing Service & Dirt Work | San Antonio TX",
-    description: 'Professional land clearing, brush removal, dirt work & excavation in San Antonio. Serving all surrounding areas. Free estimates! Call (210) 891-4174',
+    description:
+      'Professional land clearing, brush removal, dirt work & excavation in San Antonio. Serving all surrounding areas. Free estimates! Call (210) 891-4174',
     url: 'https://jayslandclearing.com',
     siteName: "Jay's Land Clearing Service & Dirt Work",
     locale: 'en_US',
@@ -81,7 +89,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: "Jay's Land Clearing Service | San Antonio TX",
-    description: 'Professional land clearing, brush removal & dirt work in San Antonio. Free estimates! Call (210) 891-4174',
+    description:
+      'Professional land clearing, brush removal & dirt work in San Antonio. Free estimates! Call (210) 891-4174',
     images: ['/images/hero-1.jpg'],
   },
   robots: {
@@ -95,163 +104,68 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  verification: {
-    // Add your Google Search Console verification code here
-    // google: 'your-verification-code',
-  },
   category: 'Construction',
-  icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
-  },
 }
 
-// Local Business JSON-LD structured data
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
-  '@id': 'https://jayslandclearing.com',
   name: "Jay's Land Clearing Service & Dirt Work",
-  description: 'Professional land clearing, brush removal, dirt work, grading, and excavation services in San Antonio and surrounding areas.',
   url: 'https://jayslandclearing.com',
   telephone: '+1-210-891-4174',
-  email: 'jayslandclearingservices@gmail.com',
-  image: 'https://jayslandclearing.com/images/hero-1.jpg',
-  priceRange: '$$',
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'San Antonio',
-    addressRegion: 'TX',
-    addressCountry: 'US',
-  },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: 29.4241,
-    longitude: -98.4936,
-  },
-  areaServed: [
-    {
-      '@type': 'City',
-      name: 'San Antonio',
-      '@id': 'https://www.wikidata.org/wiki/Q975',
-    },
-    {
-      '@type': 'AdministrativeArea',
-      name: 'Bexar County',
-    },
-    { '@type': 'City', name: 'New Braunfels' },
-    { '@type': 'City', name: 'Boerne' },
-    { '@type': 'City', name: 'Seguin' },
-    { '@type': 'City', name: 'Helotes' },
-    { '@type': 'City', name: 'Castroville' },
-    { '@type': 'City', name: 'Floresville' },
-    { '@type': 'City', name: 'Pleasanton' },
-    { '@type': 'City', name: 'Schertz' },
-    { '@type': 'City', name: 'Cibolo' },
-    { '@type': 'City', name: 'Universal City' },
-    { '@type': 'City', name: 'Live Oak' },
-    { '@type': 'City', name: 'Converse' },
-  ],
-  serviceType: [
-    'Land Clearing',
-    'Brush Removal',
-    'Dirt Work',
-    'Grading',
-    'Excavation',
-    'Lot Preparation',
-    'Fence Line Clearing',
-    'Tree Removal',
-    'Cedar Clearing',
-    'Hauling Services',
-  ],
-  openingHoursSpecification: [
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens: '07:00',
-      closes: '18:00',
-    },
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: 'Saturday',
-      opens: '08:00',
-      closes: '14:00',
-    },
-  ],
-  sameAs: [
-    // Add social media links here when available
-  ],
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '5',
-    reviewCount: '50',
-    bestRating: '5',
-    worstRating: '1',
-  },
-}
-
-// Service JSON-LD for rich results
-const serviceJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Service',
-  serviceType: 'Land Clearing Service',
-  provider: {
-    '@type': 'LocalBusiness',
-    name: "Jay's Land Clearing Service & Dirt Work",
-    telephone: '+1-210-891-4174',
-  },
-  areaServed: {
-    '@type': 'State',
-    name: 'Texas',
-  },
-  description: 'Professional land clearing, brush removal, dirt work, and excavation services. We clear residential and commercial properties, ranches, and lots throughout San Antonio and South Texas.',
-  offers: {
-    '@type': 'Offer',
-    availability: 'https://schema.org/InStock',
-    priceSpecification: {
-      '@type': 'PriceSpecification',
-      priceCurrency: 'USD',
-    },
-  },
 }
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
     <html lang="en">
       <head>
+        <Script id="google-tag-manager" strategy="afterInteractive">
+          {`
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-TBGQ2LPL');
+          `}
+        </Script>
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
-        />
+
         <meta name="geo.region" content="US-TX" />
         <meta name="geo.placename" content="San Antonio" />
         <meta name="geo.position" content="29.4241;-98.4936" />
         <meta name="ICBM" content="29.4241, -98.4936" />
       </head>
+
       <body className={`${inter.variable} ${oswald.variable} font-sans antialiased`}>
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-TBGQ2LPL"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
+
         {children}
         <Analytics />
+
+        <Script id="microsoft-clarity" strategy="afterInteractive">
+          {`
+            (function(c,l,a,r,i,t,y){
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "w8bxwftdzs");
+          `}
+        </Script>
       </body>
     </html>
   )

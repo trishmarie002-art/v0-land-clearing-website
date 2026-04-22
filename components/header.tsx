@@ -35,13 +35,13 @@ export function Header() {
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between h-20 md:h-28">
           {/* Logo */}
           <Link href="/" className="flex items-center group transition-transform hover:scale-105">
             <img
               src="/images/logo.png"
               alt="Jay's Land Clearing Service & Dirt Work"
-              className="h-12 md:h-16 w-auto"
+              className="h-16 md:h-24 w-auto"
             />
           </Link>
 
@@ -63,15 +63,15 @@ export function Header() {
           <div className="hidden md:flex items-center gap-4">
             <a
               href="tel:+12108914174"
-              className="flex items-center gap-2 text-primary font-semibold group"
+              className="flex items-center gap-2 text-primary font-bold text-lg group"
             >
               <span className="animate-phone-ring inline-block">
-                <Phone className="w-4 h-4" />
+                <Phone className="w-5 h-5" />
               </span>
               <span>(210) 891-4174</span>
             </a>
             <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 transition-transform hover:scale-105">
-              <Link href="#contact">Free Estimate</Link>
+              <a href="tel:+12108914174">Call Now</a>
             </Button>
           </div>
 
@@ -104,13 +104,13 @@ export function Header() {
             ))}
             <a
               href="tel:+12108914174"
-              className="flex items-center gap-2 text-primary font-semibold py-2"
+              className="flex items-center gap-2 text-primary font-bold text-lg py-2"
             >
-              <Phone className="w-4 h-4" />
+              <Phone className="w-5 h-5" />
               <span>(210) 891-4174</span>
             </a>
             <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90 mt-2">
-              <Link href="#contact">Free Estimate</Link>
+              <a href="tel:+12108914174">Call Now</a>
             </Button>
           </nav>
         </div>

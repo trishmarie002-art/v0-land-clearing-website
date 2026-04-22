@@ -87,6 +87,9 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html, body {
+    @apply overflow-x-hidden;
+  }
   body {
     @apply bg-background text-foreground;
   }
@@ -270,4 +273,121 @@
 
 .animate-on-scroll.slide-in-right {
   animation: slide-in-right 0.8s ease-out forwards;
+}
+
+/* Urgent Quote Banner Animations */
+@keyframes flash-banner {
+  0%, 100% {
+    background-color: oklch(0.9 0.18 95);
+  }
+  50% {
+    background-color: oklch(0.85 0.2 90);
+  }
+}
+
+@keyframes flash-text {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes flash-button {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(234, 179, 8, 0.7), 0 4px 15px rgba(0, 0, 0, 0.3);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 20px 10px rgba(234, 179, 8, 0.5), 0 4px 20px rgba(0, 0, 0, 0.4);
+    transform: scale(1.05);
+  }
+}
+
+@keyframes point-right {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(8px);
+  }
+}
+
+@keyframes point-left {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-8px);
+  }
+}
+
+.animate-flash-banner {
+  animation: flash-banner 1s ease-in-out infinite;
+}
+
+.animate-flash-text {
+  animation: flash-text 0.8s ease-in-out infinite;
+}
+
+.animate-flash-button {
+  animation: flash-button 1.2s ease-in-out infinite;
+}
+
+.animate-point-right {
+  animation: point-right 0.6s ease-in-out infinite;
+}
+
+.animate-point-left {
+  animation: point-left 0.6s ease-in-out infinite;
+}
+
+/* Synced flash animation for banner, text, and button */
+@keyframes flash-sync {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.02);
+    filter: brightness(1.15);
+  }
+}
+
+.animate-flash-sync {
+  animation: flash-sync 0.8s ease-in-out infinite;
+}
+
+/* Marquee scrolling animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: inline-flex;
+  animation: marquee 20s linear infinite;
+}
+
+/* Slow blink animation for text buttons */
+@keyframes slow-blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-slow-blink {
+  animation: slow-blink 2s ease-in-out infinite;
 }

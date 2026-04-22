@@ -8,17 +8,17 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 
 const heroSlides = [
   {
-    image: "/images/hero-1.jpg",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/597309592_122189063936538072_2733738572363445506_n-UOJPBnUWgzrcR6HTD4joppvqX0izck.jpg",
     title: "Professional Land Clearing",
     subtitle: "Transforming your property with expert clearing services",
   },
   {
-    image: "/images/hero-2.jpg",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/627162796_122195512712538072_1509152379615460320_n%20%281%29-FJolk2iSSpi1iXod4xk7xsCh8KB2oh.jpg",
     title: "Quality Dirt Work",
     subtitle: "Grading, excavation, and site preparation done right",
   },
   {
-    image: "/images/hero-3.jpg",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/653317281_122200574036538072_8200266081722862456_n%20%281%29-Bzw0ZQlOTF1QLSJ4IkEfqt6td2xpZ6.jpg",
     title: "Trusted in San Antonio",
     subtitle: "Serving the greater San Antonio area with pride",
   },
@@ -45,7 +45,7 @@ export function Hero() {
   }
 
   return (
-    <section className="relative h-screen min-h-[600px] max-h-[900px] overflow-hidden">
+    <section className="relative h-[calc(100vh-140px)] md:h-[calc(100vh-172px)] min-h-[500px] md:min-h-[600px] max-h-[700px] md:max-h-[900px] overflow-hidden mt-[140px] md:mt-[172px]">
       {/* Slides */}
       {heroSlides.map((slide, index) => (
         <div
@@ -61,49 +61,58 @@ export function Hero() {
             className="object-cover"
             priority={index === 0}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-transparent" />
+          <div className="absolute inset-0 bg-background/80" />
         </div>
       ))}
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 h-full flex items-center">
-        <div className="max-w-2xl pt-20">
+      <div className="relative z-10 container mx-auto px-6 sm:px-8 h-full flex items-center justify-center">
+        <div className="max-w-2xl text-center w-full">
           <div className="mb-4 animate-fade-in">
-            <span className="inline-block px-4 py-1.5 bg-primary/20 text-primary text-sm font-semibold rounded-full border border-primary/30">
+            <span className="inline-block px-3 sm:px-4 py-1.5 bg-primary/20 text-primary text-xs sm:text-sm font-semibold rounded-full border border-primary/30">
               San Antonio&apos;s Premier Land Clearing Service
             </span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 font-[family-name:var(--font-display)] uppercase tracking-tight text-balance animate-slide-up">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 font-[family-name:var(--font-display)] uppercase tracking-tight text-balance animate-slide-up px-2">
             <span className="text-primary">{heroSlides[currentSlide].title.split(" ")[0]}</span>{" "}
             {heroSlides[currentSlide].title.split(" ").slice(1).join(" ")}
           </h1>
 
-          <p className="text-lg md:text-xl text-foreground/80 mb-8 max-w-lg animate-slide-up-delay">
+          <p className="text-base sm:text-lg md:text-xl text-foreground/80 mb-8 max-w-lg mx-auto animate-slide-up-delay px-2">
             {heroSlides[currentSlide].subtitle}
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-delay">
+          <div className="flex flex-col gap-3 sm:flex-row sm:gap-4 animate-fade-in-delay justify-center px-2">
             <Button
               asChild
               size="lg"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-base px-8 transition-transform hover:scale-105"
+              className="animate-slow-blink bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-xs sm:text-sm md:text-base px-3 sm:px-6 md:px-8 transition-transform hover:scale-105 w-full sm:w-auto"
             >
-              <Link href="#contact">Get Free Estimate</Link>
+              <a href="tel:+12108914174" className="text-center">SCHEDULE YOUR FREE QUOTE NOW</a>
             </Button>
             <Button
               asChild
               variant="outline"
               size="lg"
-              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold text-base px-8 transition-transform hover:scale-105"
+              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold text-sm sm:text-base px-6 sm:px-8 transition-transform hover:scale-105 w-full sm:w-auto"
             >
               <Link href="#services">Our Services</Link>
             </Button>
           </div>
+          
+          <div className="mt-4 sm:mt-6 animate-fade-in-delay">
+            <a 
+              href="sms:+12108914174" 
+              className="inline-block bg-black/80 text-yellow-400 hover:bg-black font-semibold text-xs sm:text-sm px-4 py-3 rounded-lg transition-transform hover:scale-105 border border-yellow-400/50"
+            >
+              Text us a photo for a faster quote!
+            </a>
+          </div>
 
           {/* Trust badges */}
-          <div className="mt-12 flex items-center gap-8 text-sm text-foreground/60 animate-fade-in-delay-2">
-            {["Fully Insured", "Free Estimates", "Local Owned"].map((badge, index) => (
+          <div className="mt-6 sm:mt-8 md:mt-12 flex items-center justify-center gap-8 text-sm text-foreground/60 animate-fade-in-delay-2">
+            {["Free Estimates", "Local Owned"].map((badge, index) => (
               <div
                 key={badge}
                 className="flex items-center gap-2"

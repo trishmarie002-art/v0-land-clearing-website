@@ -6,11 +6,11 @@ import { useState } from "react"
 const faqs = [
   {
     question: "How much does land clearing cost in San Antonio?",
-    answer: "Land clearing costs in San Antonio vary based on the size of the property, density of vegetation, terrain, and accessibility. On average, expect to pay between $1,500 to $5,000 per acre for light clearing, and $3,000 to $8,000+ per acre for heavy brush and tree removal. We offer free on-site estimates to give you an accurate quote for your specific project."
+    answer: "Every property is unique, and so is every land clearing project. The cost depends on factors like your property size, the type and density of vegetation, terrain conditions, and accessibility. Rather than giving you a ballpark number that may not reflect your specific situation, we prefer to visit your property and provide a personalized quote tailored to your exact needs. We offer free, no-obligation estimates so you know exactly what to expect with no surprises."
   },
   {
     question: "What areas do you serve near San Antonio?",
-    answer: "We proudly serve San Antonio and all surrounding areas including Bexar County, New Braunfels, Boerne, Seguin, Helotes, Castroville, Floresville, Pleasanton, Schertz, Cibolo, Universal City, Live Oak, Converse, and throughout South Texas. If you're within 60 miles of San Antonio, give us a call!"
+    answer: "We proudly serve San Antonio and all surrounding areas including Bexar County, New Braunfels, Boerne, Seguin, Helotes, Castroville, Floresville, Pleasanton, Schertz, Cibolo, Universal City, Live Oak, Converse, and throughout South Texas. If you're within 50 miles of San Antonio, give us a call!"
   },
   {
     question: "How long does land clearing take?",
