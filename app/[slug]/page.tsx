@@ -158,14 +158,20 @@ export default async function LocationPage({ params }: Props) {
       />
 
       <section className="relative pt-40 md:pt-48 pb-20 md:pb-28 overflow-hidden border-b border-border">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(234,179,8,0.15),transparent_42%)]" />
-        <div className="container mx-auto px-4 relative">
-          <nav className="text-sm text-foreground/60 mb-8" aria-label="Breadcrumb">
+        <img
+          src="/images/hero-1.jpg"
+          alt={`Land clearing services and dirt work in ${location.city}, Texas`}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/70" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(234,179,8,0.22),transparent_42%)]" />
+        <div className="container mx-auto px-4 relative z-10">
+          <nav className="text-sm text-white/70 mb-8" aria-label="Breadcrumb">
             <Link href="/" className="hover:text-primary transition-colors">Home</Link>
             <span className="mx-2">/</span>
             <Link href="/service-areas" className="hover:text-primary transition-colors">Service Areas</Link>
             <span className="mx-2">/</span>
-            <span className="text-foreground">{location.city}, TX</span>
+            <span className="text-white">{location.city}, TX</span>
           </nav>
 
           <div className="max-w-4xl">
@@ -173,10 +179,10 @@ export default async function LocationPage({ params }: Props) {
               <MapPin className="w-4 h-4" />
               Serving {location.city} & {location.county}
             </div>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold uppercase leading-tight font-[family-name:var(--font-display)]">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold uppercase leading-tight text-white font-[family-name:var(--font-display)]">
               Land Clearing Services & <span className="text-primary">Dirt Work</span> in {location.city}, TX
             </h1>
-            <p className="mt-6 text-lg md:text-xl text-foreground/75 leading-relaxed max-w-3xl">
+            <p className="mt-6 text-lg md:text-xl text-white/85 leading-relaxed max-w-3xl">
               {location.intro}
             </p>
 
@@ -190,7 +196,7 @@ export default async function LocationPage({ params }: Props) {
               </a>
               <Link
                 href="/#contact"
-                className="inline-flex items-center justify-center gap-2 border border-border bg-card px-6 py-4 rounded-md font-semibold hover:border-primary hover:text-primary transition-colors"
+                className="inline-flex items-center justify-center gap-2 border border-white/30 bg-black/40 text-white px-6 py-4 rounded-md font-semibold hover:border-primary hover:text-primary transition-colors"
               >
                 Get a Free Estimate
                 <ArrowRight className="w-5 h-5" />
