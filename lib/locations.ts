@@ -278,6 +278,96 @@ export const locations: LocationPage[] = [
     localNeeds: "We can selectively clear brush, open access through wooded areas, prepare building pads and driveways, grade rough ground, and clean fence lines while working around features the owner wants to keep.",
     nearby: ["Boerne", "Helotes", "San Antonio", "Fair Oaks Ranch"],
     focus: ["Hill Country lot clearing", "Selective brush removal", "Driveway and pad work", "Grading and excavation"]
+  },
+  {
+    city: "Spring Branch",
+    slug: "land-clearing-services-dirt-work-spring-branch-tx",
+    county: "Comal County",
+    intro: "Spring Branch has wooded Hill Country acreage, rural homesites, and growing residential development north of San Antonio. Jay's Land Clearing Service & Dirt Work helps property owners reclaim overgrown land, open access, and prepare sites for construction and improvements.",
+    localNeeds: "Projects in Spring Branch often involve cedar and brush removal, selective clearing around mature trees, driveway and pad preparation, grading, and opening access through dense vegetation.",
+    nearby: ["Bulverde", "Canyon Lake", "Boerne", "New Braunfels"],
+    focus: ["Cedar and brush clearing", "Hill Country lot clearing", "Driveway and pad preparation", "Grading and site work"]
+  },
+  {
+    city: "Canyon Lake",
+    slug: "land-clearing-services-dirt-work-canyon-lake-tx",
+    county: "Comal County",
+    intro: "Canyon Lake properties often combine steep Hill Country terrain, wooded lots, vacation homes, and larger acreage. We provide land clearing, dirt work, grading, and excavation for owners preparing sites for homes, access, fencing, and other improvements.",
+    localNeeds: "Clearing around Canyon Lake commonly requires selective brush removal, cedar cleanup, access-road preparation, grading on rough ground, and careful site preparation around existing trees and structures.",
+    nearby: ["Spring Branch", "Bulverde", "New Braunfels", "Garden Ridge"],
+    focus: ["Wooded lot clearing", "Cedar and brush removal", "Access-road preparation", "Grading and excavation"]
+  },
+  {
+    city: "Fair Oaks Ranch",
+    slug: "land-clearing-services-dirt-work-fair-oaks-ranch-tx",
+    county: "Bexar, Kendall, and Comal Counties",
+    intro: "Fair Oaks Ranch sits in the Hill Country northwest of San Antonio and includes wooded residential properties, larger lots, and acreage near Boerne. Our team provides clearing and dirt work for property improvements, construction preparation, and access.",
+    localNeeds: "Common projects include selective clearing, cedar and brush removal, driveway preparation, grading, fence-line cleanup, and opening usable space while preserving desirable trees.",
+    nearby: ["Boerne", "Leon Springs", "Helotes", "Spring Branch"],
+    focus: ["Selective land clearing", "Cedar and brush removal", "Driveway preparation", "Fence-line and grading work"]
+  },
+  {
+    city: "Selma",
+    slug: "land-clearing-services-dirt-work-selma-tx",
+    county: "Bexar, Comal, and Guadalupe Counties",
+    intro: "Selma is part of the fast-growing northeast San Antonio corridor with residential, commercial, and undeveloped tracts. Jay's Land Clearing Service & Dirt Work provides clearing, excavation, grading, and site preparation for property owners and builders.",
+    localNeeds: "Projects can include clearing lots for new construction, removing brush and debris, preparing access, grading sites, and handling dirt work before residential or commercial improvements begin.",
+    nearby: ["Schertz", "Live Oak", "Universal City", "Garden Ridge"],
+    focus: ["Lot clearing", "Commercial site preparation", "Grading and excavation", "Brush and debris removal"]
+  },
+  {
+    city: "Marion",
+    slug: "land-clearing-services-dirt-work-marion-tx",
+    county: "Guadalupe County",
+    intro: "Marion is surrounded by rural acreage, farms, homesites, and growing residential development between San Antonio and Seguin. We provide land clearing and dirt work to prepare properties for building, access, fencing, and long-term use.",
+    localNeeds: "Property owners in Marion often need brush clearing, acreage cleanup, driveway and pad preparation, grading, fence-line access, and excavation for new improvements.",
+    nearby: ["Cibolo", "Schertz", "Seguin", "New Braunfels"],
+    focus: ["Acreage and lot clearing", "Driveway and pad work", "Fence-line clearing", "Grading and excavation"]
+  },
+  {
+    city: "Stockdale",
+    slug: "land-clearing-services-dirt-work-stockdale-tx",
+    county: "Wilson County",
+    intro: "Stockdale is surrounded by ranches, farms, rural homesites, and South Texas acreage. Jay's Land Clearing Service & Dirt Work helps owners clear brush, improve access, prepare building sites, and handle the dirt work needed for property improvements.",
+    localNeeds: "Common work includes mesquite and brush removal, fence-line clearing, ranch-road preparation, pad and driveway work, grading, and cleanup of overgrown acreage.",
+    nearby: ["Floresville", "La Vernia", "Poth", "Seguin"],
+    focus: ["Ranch and acreage clearing", "Brush and mesquite removal", "Ranch-road preparation", "Grading and pad work"]
+  },
+  {
+    city: "Falls City",
+    slug: "land-clearing-services-dirt-work-falls-city-tx",
+    county: "Karnes County",
+    intro: "Falls City and the surrounding rural area include ranchland, agricultural property, and homesites where dependable land clearing and dirt work are essential. We provide equipment-based clearing, grading, excavation, and site preparation for projects of different sizes.",
+    localNeeds: "Projects often involve reclaiming overgrown acreage, clearing fence lines, opening ranch access, preparing driveways and pads, and grading rough ground before construction or fencing.",
+    nearby: ["Poth", "Floresville", "Stockdale", "Pleasanton"],
+    focus: ["Ranch clearing", "Fence-line cleanup", "Driveway and pad preparation", "Dirt work and grading"]
+  },
+  {
+    city: "Bandera",
+    slug: "land-clearing-services-dirt-work-bandera-tx",
+    county: "Bandera County",
+    intro: "Bandera is surrounded by rugged Hill Country ranches, wooded acreage, and rural homesites where professional land clearing can make difficult property usable again. We provide clearing, dirt work, grading, and excavation for landowners throughout the area.",
+    localNeeds: "Bandera-area projects often require cedar and brush removal, ranch-road opening, fence-line clearing, homesite preparation, and grading on uneven Hill Country terrain.",
+    nearby: ["Pipe Creek", "Boerne", "Helotes", "Hondo"],
+    focus: ["Ranch and acreage clearing", "Cedar and brush removal", "Ranch-road preparation", "Homesite grading"]
+  },
+  {
+    city: "Pipe Creek",
+    slug: "land-clearing-services-dirt-work-pipe-creek-tx",
+    county: "Bandera County",
+    intro: "Pipe Creek sits between San Antonio and Bandera with wooded Hill Country acreage, ranch properties, and rural homesites. Jay's Land Clearing Service & Dirt Work helps owners clear dense vegetation, improve access, and prepare land for construction and other improvements.",
+    localNeeds: "Common needs include cedar and brush clearing, opening driveways and ranch roads, fence-line cleanup, selective clearing around mature trees, and grading building areas.",
+    nearby: ["Bandera", "Helotes", "Boerne", "Leon Springs"],
+    focus: ["Cedar and brush clearing", "Ranch-road and driveway work", "Fence-line clearing", "Building-site preparation"]
+  },
+  {
+    city: "Leon Valley",
+    slug: "land-clearing-services-dirt-work-leon-valley-tx",
+    county: "Bexar County",
+    intro: "Leon Valley is surrounded by established development on San Antonio's northwest side, but property improvements, redevelopment, and larger lots can still require professional clearing and dirt work. We provide equipment-based site preparation when basic landscaping is not enough.",
+    localNeeds: "Projects may include clearing overgrown sections, removing brush and debris, preparing areas for additions or new structures, grading, excavation, and improving access where site conditions allow.",
+    nearby: ["Helotes", "Leon Springs", "San Antonio", "Fair Oaks Ranch"],
+    focus: ["Property clearing", "Brush and debris removal", "Grading", "Excavation and site preparation"]
   }
 ]
 
