@@ -26,8 +26,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {}
   }
 
-  const title = `Land Clearing & Dirt Work in ${location.city}, TX`
-  const description = `Professional land clearing, brush removal, dirt work, grading and excavation in ${location.city}, TX and nearby areas. Free estimates from Jay's Land Clearing Service & Dirt Work. Call (210) 891-4174.`
+  const title = `Land Clearing Services & Dirt Work in ${location.city}, TX`
+  const description = `Land clearing services & dirt work in ${location.city}, TX from Jay's Land Clearing Service & Dirt Work. Brush clearing, grading, excavation, lot preparation and hauling. Free estimates: (210) 891-4174.`
   const url = `${baseUrl}/${location.slug}`
 
   return {
@@ -174,7 +174,7 @@ export default async function LocationPage({ params }: Props) {
               Serving {location.city} & {location.county}
             </div>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold uppercase leading-tight font-[family-name:var(--font-display)]">
-              Land Clearing & <span className="text-primary">Dirt Work</span> in {location.city}, TX
+              Land Clearing Services & <span className="text-primary">Dirt Work</span> in {location.city}, TX
             </h1>
             <p className="mt-6 text-lg md:text-xl text-foreground/75 leading-relaxed max-w-3xl">
               {location.intro}
