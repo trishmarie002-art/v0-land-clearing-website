@@ -159,7 +159,7 @@ export default async function LocationPage({ params }: Props) {
 
       <section className="relative pt-40 md:pt-48 pb-20 md:pb-28 overflow-hidden border-b border-border">
         <img
-          src="/images/hero-1.jpg"
+          src="https://res.cloudinary.com/doosan-bobcat/image/upload/ar_1.5,c_fill,f_auto,g_auto,q_auto,w_1600/v1642779103/bobcat-assets/na-bobcat-com/products/loaders/skid-steer-loaders/s66-r/images/bobcat-s66-flail-cutter-s6c5357-19f4-fc-544x362"
           alt={`Land clearing services and dirt work in ${location.city}, Texas`}
           className="absolute inset-0 w-full h-full object-cover"
         />
