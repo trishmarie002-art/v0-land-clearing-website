@@ -75,8 +75,7 @@ export function Hero() {
           </div>
 
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 font-[family-name:var(--font-display)] uppercase tracking-tight text-balance animate-slide-up px-2">
-            <span className="text-primary">{heroSlides[currentSlide].title.split(" ")[0]}</span>{" "}
-            {heroSlides[currentSlide].title.split(" ").slice(1).join(" ")}
+            <span className="text-primary">Land Clearing Service</span> & Dirt Work in San Antonio, TX
           </h1>
 
           <p className="text-base sm:text-lg md:text-xl text-foreground/80 mb-8 max-w-lg mx-auto animate-slide-up-delay px-2">
