@@ -1,40 +1,13 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import Link from "next/link"
 import { CheckCircle2, MapPin } from "lucide-react"
+import { locations } from "@/lib/locations"
 
-// Service cities list
 const serviceCities = [
-  "San Antonio",
-  "Boerne",
-  "New Braunfels",
-  "Seguin",
-  "Floresville",
-  "Castroville",
-  "Helotes",
-  "Leon Valley",
-  "Schertz",
-  "Cibolo",
-  "Universal City",
-  "Selma",
-  "Converse",
-  "Live Oak",
-  "Windcrest",
-  "Garden Ridge",
-  "Fair Oaks Ranch",
-  "Hollywood Park",
-  "Alamo Heights",
-  "Terrell Hills",
-  "Poteet",
-  "Pleasanton",
-  "Jourdanton",
-  "Lytle",
-  "Devine",
-  "Natalia",
-  "La Vernia",
-  "Stockdale",
-  "Poth",
-  "Falls City",
+  { city: "San Antonio", href: "/" },
+  ...locations.map((location) => ({ city: location.city, href: `/${location.slug}` })),
 ]
 
 // San Antonio coordinates
@@ -216,21 +189,25 @@ export function ServiceArea() {
 
               {/* Two-column grid of cities */}
               <div className="grid grid-cols-2 gap-x-6 gap-y-3">
-                {serviceCities.map((city, index) => (
-                  <div
-                    key={city}
+                {serviceCities.map((item, index) => (
+                  <Link
+                    key={item.city}
+                    href={item.href}
                     className="flex items-center gap-2 group transition-transform hover:translate-x-1"
                     style={{ animationDelay: `${index * 50}ms` }}
                   >
                     <CheckCircle2 className="w-4 h-4 text-green-500 shrink-0 group-hover:scale-110 transition-transform" />
-                    <span className="text-foreground/80 text-sm">{city}</span>
-                  </div>
+                    <span className="text-foreground/80 text-sm group-hover:text-primary transition-colors">{item.city}</span>
+                  </Link>
                 ))}
               </div>
 
               {/* Additional note */}
               <div className="mt-8 pt-6 border-t border-border">
-                <p className="text-sm text-muted-foreground">
+                <Link href="/service-areas" className="text-sm font-semibold text-primary hover:underline">
+                  View all service area pages
+                </Link>
+                <p className="text-sm text-muted-foreground mt-2">
                   {"Don't see your city listed? We may still be able to help! Contact us to discuss your project location."}
                 </p>
               </div>

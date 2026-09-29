@@ -1,25 +1,163 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
   <url>
-    <loc>https://jayslandclearingserviceanddirtwork.com/</loc>
-    <lastmod>2026-04-08</lastmod>
+    <loc>https://jayslandclearingserviceanddirtwork.com</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-
   <url>
-    <loc>https://jayslandclearingserviceanddirtwork.com/contact</loc>
-    <lastmod>2026-04-08</lastmod>
+    <loc>https://jayslandclearingserviceanddirtwork.com/service-areas</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://jayslandclearingserviceanddirtwork.com/land-clearing-services-dirt-work-helotes-tx</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://jayslandclearingserviceanddirtwork.com/services</loc>
-    <lastmod>2026-04-08</lastmod>
+    <loc>https://jayslandclearingserviceanddirtwork.com/land-clearing-services-dirt-work-boerne-tx</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
+  <url>
+    <loc>https://jayslandclearingserviceanddirtwork.com/land-clearing-services-dirt-work-bulverde-tx</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jayslandclearingserviceanddirtwork.com/land-clearing-services-dirt-work-new-braunfels-tx</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jayslandclearingserviceanddirtwork.com/land-clearing-services-dirt-work-seguin-tx</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jayslandclearingserviceanddirtwork.com/land-clearing-services-dirt-work-schertz-tx</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jayslandclearingserviceanddirtwork.com/land-clearing-services-dirt-work-cibolo-tx</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jayslandclearingserviceanddirtwork.com/land-clearing-services-dirt-work-garden-ridge-tx</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jayslandclearingserviceanddirtwork.com/land-clearing-services-dirt-work-converse-tx</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jayslandclearingserviceanddirtwork.com/land-clearing-services-dirt-work-universal-city-tx</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jayslandclearingserviceanddirtwork.com/land-clearing-services-dirt-work-live-oak-tx</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jayslandclearingserviceanddirtwork.com/land-clearing-services-dirt-work-la-vernia-tx</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jayslandclearingserviceanddirtwork.com/land-clearing-services-dirt-work-st-hedwig-tx</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jayslandclearingserviceanddirtwork.com/land-clearing-services-dirt-work-adkins-tx</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jayslandclearingserviceanddirtwork.com/land-clearing-services-dirt-work-china-grove-tx</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jayslandclearingserviceanddirtwork.com/land-clearing-services-dirt-work-elmendorf-tx</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jayslandclearingserviceanddirtwork.com/land-clearing-services-dirt-work-floresville-tx</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jayslandclearingserviceanddirtwork.com/land-clearing-services-dirt-work-poth-tx</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jayslandclearingserviceanddirtwork.com/land-clearing-services-dirt-work-somerset-tx</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jayslandclearingserviceanddirtwork.com/land-clearing-services-dirt-work-von-ormy-tx</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jayslandclearingserviceanddirtwork.com/land-clearing-services-dirt-work-atascosa-tx</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jayslandclearingserviceanddirtwork.com/land-clearing-services-dirt-work-poteet-tx</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jayslandclearingserviceanddirtwork.com/land-clearing-services-dirt-work-pleasanton-tx</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jayslandclearingserviceanddirtwork.com/land-clearing-services-dirt-work-jourdanton-tx</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jayslandclearingserviceanddirtwork.com/land-clearing-services-dirt-work-lytle-tx</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jayslandclearingserviceanddirtwork.com/land-clearing-services-dirt-work-natalia-tx</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jayslandclearingserviceanddirtwork.com/land-clearing-services-dirt-work-devine-tx</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jayslandclearingserviceanddirtwork.com/land-clearing-services-dirt-work-castroville-tx</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jayslandclearingserviceanddirtwork.com/land-clearing-services-dirt-work-hondo-tx</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jayslandclearingserviceanddirtwork.com/land-clearing-services-dirt-work-leon-springs-tx</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>

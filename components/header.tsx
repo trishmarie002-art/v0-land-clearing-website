@@ -2,16 +2,16 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import Image from "next/image"
 import { Menu, X, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const navLinks = [
-  { href: "#about", label: "About Us" },
-  { href: "#services", label: "Services" },
-  { href: "#why-us", label: "Why Choose Us" },
-  { href: "#faq", label: "FAQ" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#about", label: "About Us" },
+  { href: "/#services", label: "Services" },
+  { href: "/#why-us", label: "Why Choose Us" },
+  { href: "/#faq", label: "FAQ" },
+  { href: "/service-areas", label: "Service Areas" },
+  { href: "/#contact", label: "Contact" },
 ]
 
 export function Header() {

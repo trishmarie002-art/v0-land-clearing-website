@@ -4,11 +4,12 @@ import Link from "next/link"
 import { Phone, Mail, MapPin } from "lucide-react"
 
 const quickLinks = [
-  { href: "#about", label: "About Us" },
-  { href: "#services", label: "Services" },
-  { href: "#why-us", label: "Why Choose Us" },
-  { href: "#faq", label: "FAQ" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#about", label: "About Us" },
+  { href: "/#services", label: "Services" },
+  { href: "/#why-us", label: "Why Choose Us" },
+  { href: "/#faq", label: "FAQ" },
+  { href: "/service-areas", label: "Service Areas" },
+  { href: "/#contact", label: "Contact" },
 ]
 
 const services = [
