@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     address: true,
     telephone: true,
   },
-  metadataBase: new URL('https://jayslandclearing.com'),
+  metadataBase: new URL('https://jayslandclearingserviceanddirtwork.com'),
   alternates: {
     canonical: '/',
   },
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
     title: "Jay's Land Clearing Service & Dirt Work | San Antonio TX",
     description:
       'Professional land clearing, brush removal, dirt work & excavation in San Antonio. Serving all surrounding areas. Free estimates! Call (210) 891-4174',
-    url: 'https://jayslandclearing.com',
+    url: 'https://jayslandclearingserviceanddirtwork.com',
     siteName: "Jay's Land Clearing Service & Dirt Work",
     locale: 'en_US',
     type: 'website',
@@ -111,7 +111,7 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   name: "Jay's Land Clearing Service & Dirt Work",
-  url: 'https://jayslandclearing.com',
+  url: 'https://jayslandclearingserviceanddirtwork.com',
   telephone: '+1-210-891-4174',
 }
 
