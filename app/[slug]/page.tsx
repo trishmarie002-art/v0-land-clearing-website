@@ -27,11 +27,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   const title = `Land Clearing Services & Dirt Work in ${location.city}, TX`
-  const description = `Land clearing services & dirt work in ${location.city}, TX from Jay's Land Clearing Service & Dirt Work. Brush clearing, grading, excavation, lot preparation and hauling. Free estimates: (210) 891-4174.`
+  const description = `Land clearing services & dirt work in ${location.city}, TX. Brush clearing, grading, excavation, lot prep & hauling. Free estimates: (210) 891-4174.`
   const url = `${baseUrl}/${location.slug}`
 
   return {
-    title,
+    title: { absolute: title },
     description,
     alternates: { canonical: url },
     openGraph: {
