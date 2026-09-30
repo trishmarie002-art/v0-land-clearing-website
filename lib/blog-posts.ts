@@ -247,42 +247,6 @@ export const blogPosts: BlogPost[] = [
       "Drainage should be considered around the entire site rather than only the building footprint. Water needs a route around the future structure and away from entrances or high-traffic areas. The builder or concrete contractor may also have specific pad dimensions or elevations. Jay's Land Clearing Service & Dirt Work provides clearing, driveway preparation, excavation, grading, and pad work for shops and barns throughout San Antonio and surrounding Texas communities."
     ],
     "cta": "Planning a shop or barn? Contact us before construction for a free site-preparation estimate."
-  },
-  {
-    "title": "How Land Clearing Can Improve Property Access in Texas",
-    "slug": "how-land-clearing-can-improve-property-access-in-texas",
-    "description": "How land clearing can improve property access in Texas by opening roads, trails, gates, fence lines, building sites, and overgrown acreage.",
-    "excerpt": "Better access is one of the fastest ways to make rural property more useful.",
-    "body": [
-      "Overgrown vegetation can make a large property feel much smaller than it really is. Dense brush, cedar, mesquite, fallen limbs, and neglected roads can block vehicles, hide gates, and make it difficult to inspect fencing or reach distant areas. Strategic land clearing can reopen the routes that matter most without clearing every acre.",
-      "A good access plan usually begins with the main entrance and the routes used most often. Existing ranch roads can be widened or reopened, gates can be cleared, and trails can be created to reach fence lines, future building areas, or other important parts of the property. Selective clearing along these routes improves visibility and creates room for vehicles and equipment to move safely.",
-      "After vegetation is removed, rough access routes may also benefit from grading or dirt work. Low spots, ruts, and uneven sections can make roads difficult to use after rain. Addressing clearing and rough grading together creates a more complete improvement. Jay's Land Clearing Service & Dirt Work helps property owners throughout San Antonio, South Texas, and the Hill Country open access roads, fence lines, acreage, and future construction areas."
-    ],
-    "cta": "Need better access to your land? Send us your property location and photos for a free quote."
-  },
-  {
-    "title": "Land Clearing Before Installing a Fence in Texas",
-    "slug": "land-clearing-before-installing-a-fence-in-texas",
-    "description": "Land clearing before installing a fence in Texas creates access for crews, reveals boundaries, removes brush, and prepares a cleaner fence line.",
-    "excerpt": "Clear access can make a fencing project faster, safer, and easier to lay out.",
-    "body": [
-      "Installing a new fence is much easier when the fence line is visible and accessible. Thick brush, cedar, mesquite, vines, old wire, and fallen limbs can slow the fencing crew and make it difficult to confirm the path of the new line. Clearing the corridor first provides space for workers, equipment, posts, and materials while making the boundary easier to inspect.",
-      "Before clearing, the owner should know where the property line is located. A survey may be necessary when boundaries are uncertain. Existing utilities, pipelines, wells, septic systems, gates, and structures should also be identified. If mature trees are intended to remain along the fence, they can be marked so the clearing lane works around them.",
-      "The width of the clearing lane depends on the fencing project and how the property will be maintained afterward. Some owners want only enough room to install the fence, while others need vehicle access for inspection, mowing, or future repairs. Rough grading can also improve gate approaches and difficult sections. Jay's Land Clearing Service & Dirt Work provides fence-line clearing and access preparation throughout San Antonio and surrounding Texas communities."
-    ],
-    "cta": "Installing a fence soon? Call us first to get the fence line opened and ready."
-  },
-  {
-    "title": "Land Clearing for Commercial Property in San Antonio, TX",
-    "slug": "land-clearing-for-commercial-property-in-san-antonio-tx",
-    "description": "Land clearing for commercial property in San Antonio, TX prepares lots for construction, access, grading, excavation, staging, and future development.",
-    "excerpt": "Commercial sites need efficient clearing that supports the construction plan from day one.",
-    "body": [
-      "Commercial land clearing is usually the first physical step in turning an undeveloped tract into a workable construction site. Brush, unwanted trees, debris, old fencing, and other obstacles may need to be removed before survey stakes, utilities, grading, and foundation work can proceed efficiently. The clearing limits should follow the site plan so the contractor creates the space the project actually needs.",
-      "Access is especially important on commercial sites. Construction traffic may include dump trucks, material deliveries, concrete trucks, and heavy equipment, so entrances and staging areas need enough room for safe movement. After vegetation is removed, rough grading and excavation can begin where required. Dirt may need to be moved across the site, imported, or hauled away depending on the final elevations.",
-      "Commercial projects also require coordination. Builders, engineers, utility contractors, and other trades may have requirements that affect clearing and dirt work. Completing the early site work in the correct sequence can reduce delays later. Jay's Land Clearing Service & Dirt Work provides commercial lot clearing, grading, excavation, hauling, and site preparation throughout San Antonio and nearby communities."
-    ],
-    "cta": "Have a commercial site to prepare? Contact us for a free project review and estimate."
   }
 ]
 
