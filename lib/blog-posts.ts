@@ -267,6 +267,136 @@ export const blogPosts: BlogPost[] = [
       "Before preparing a shop or barn site, think beyond the building itself. Trailers, equipment, feed deliveries, work trucks, livestock access, and outdoor storage may require more cleared and graded space than the structure footprint suggests. Future expansion is another consideration. Leaving a practical access route and enough room around the pad can prevent expensive rework later. If the building will be used year-round, pay special attention to wet-weather access and drainage around doors and high-traffic areas. Planning those details during clearing and dirt work can make the completed shop or barn much easier to use from the first day. That extra planning can prevent the building from feeling cramped once vehicles, equipment, and everyday activity begin using the site."
     ],
     "cta": "Planning a shop or barn? Contact us before construction for a free site-preparation estimate."
+  },
+  {
+    "title": "Do You Need Land Clearing Before Installing a Septic System?",
+    "slug": "do-you-need-land-clearing-before-installing-a-septic-system",
+    "description": "Do you need land clearing before installing a septic system? Learn how access, brush removal, clearing limits, grading, and site preparation affect septic installation.",
+    "excerpt": "Septic installation often needs more working room than the tank and drain field alone.",
+    "body": [
+      "Many rural and acreage properties around San Antonio rely on septic systems, and land clearing may be needed before installation can begin. The amount of clearing depends on the septic design, the location of the tank and drain field, equipment access, and the existing vegetation. A wooded or brush-heavy site may need enough space opened for excavation equipment, material delivery, inspection, and safe movement around the work area.",
+      "Clearing should follow the approved septic layout rather than removing vegetation randomly. The drain field, reserve area, tank location, and access route may all have specific requirements. Property owners should avoid disturbing marked areas until the installer or designer confirms what needs to remain untouched. Existing utilities, wells, property lines, and future building areas should also be considered so one project does not interfere with another.",
+      "Once the necessary vegetation is removed, rough grading or access work may help equipment reach the installation area. However, grading around a septic site should be coordinated with the septic professional because changing elevations or drainage patterns can affect the system design. If a driveway, homesite, or building pad is being prepared at the same time, planning all of the early site work together can reduce duplicated clearing and machine mobilization. Jay's Land Clearing Service & Dirt Work can prepare access and clear approved work areas throughout San Antonio and surrounding communities while coordinating the clearing scope with the property owner's septic plan.",
+      "A good starting point is to have the septic layout available before requesting a clearing estimate. Photos, survey information, and a marked access route can help the contractor understand exactly which vegetation needs to be removed and which areas should remain protected."
+    ],
+    "cta": "Have a septic project coming up? Send us the layout and property photos for a free clearing estimate."
+  },
+  {
+    "title": "Land Clearing for Mobile Home and Manufactured Home Sites in Texas",
+    "slug": "land-clearing-for-mobile-home-and-manufactured-home-sites-in-texas",
+    "description": "Land clearing for mobile home and manufactured home sites in Texas includes access, brush removal, grading, pad preparation, drainage, and utility-area clearing.",
+    "excerpt": "Manufactured home sites need more than an open spot. Access, grade, and setup space all matter.",
+    "body": [
+      "Preparing land for a mobile home or manufactured home starts with creating enough usable space for delivery, setup, utilities, and long-term access. The home site itself may need brush, trees, roots, debris, and other obstacles removed before grading begins. Property owners should also think about the route the home will travel from the public road to the final location, because delivery equipment needs significantly more room than a passenger vehicle.",
+      "Turning radius, overhead branches, narrow gates, soft ground, steep approaches, and tight corners can all complicate delivery. Clearing the access route in advance can prevent delays on installation day. The final home location may also need a properly shaped pad or foundation area, depending on the setup plan and installer requirements. Water drainage should be considered before the home arrives so runoff is not directed toward the structure or high-traffic areas.",
+      "Utility access is another part of site preparation. Septic, water, electric, and other service areas may require their own work zones. Clearing only the exact footprint of the home can leave contractors without enough room to install those systems efficiently. Coordinating the home setup, access route, and utility locations before clearing begins can save time and reduce repeated equipment work.",
+      "Jay's Land Clearing Service & Dirt Work provides clearing, driveway preparation, grading, excavation, and site preparation for manufactured-home properties throughout San Antonio and surrounding South Texas communities. A site plan, installer requirements, and property photos are helpful when requesting an estimate."
+    ],
+    "cta": "Preparing land for a manufactured home? Contact us for a free site-preparation estimate."
+  },
+  {
+    "title": "How to Clear a Property for a Barndominium in Texas",
+    "slug": "how-to-clear-a-property-for-a-barndominium-in-texas",
+    "description": "How to clear a property for a barndominium in Texas: plan brush removal, driveway access, building pad preparation, drainage, grading, and construction space.",
+    "excerpt": "Barndominium projects need enough cleared room for the building, construction equipment, and future access.",
+    "body": [
+      "Barndominiums are popular on Texas acreage because they combine living space, shop space, storage, and flexible layouts. Preparing the property correctly before construction can make the build much smoother. The first step is identifying the building footprint, driveway, utility routes, septic area if applicable, and enough surrounding space for trucks and construction equipment.",
+      "Clearing should focus on the actual project layout rather than removing vegetation across the entire property. Mature trees, shade areas, and natural features can often be preserved outside the construction zone. Inside the work area, brush, unwanted trees, roots, old fencing, debris, and surface obstacles may need to be removed before excavation and grading can begin. Access is especially important because large material deliveries and concrete trucks need a stable route to the site.",
+      "Once the area is open, the building pad and surrounding grade can be evaluated. High spots may need cutting, low areas may need fill, and runoff should be directed away from the future structure. The driveway should also be planned for the vehicles and trailers the property will use after construction, not just the equipment needed during the build.",
+      "Jay's Land Clearing Service & Dirt Work can handle clearing, driveway preparation, excavation, grading, and early site work for barndominium projects across San Antonio, South Texas, and the Hill Country. Sharing the building dimensions and site plan before work begins helps the clearing and dirt-work scope match the project."
+    ],
+    "cta": "Building a barndominium? Send us your site plan and property photos for a free estimate."
+  },
+  {
+    "title": "How Much Land Should You Clear Around a New Home?",
+    "slug": "how-much-land-should-you-clear-around-a-new-home",
+    "description": "How much land should you clear around a new home? Learn how construction access, trees, drainage, yard space, utilities, fire safety, and future use affect clearing limits.",
+    "excerpt": "The right clearing boundary depends on much more than the size of the house footprint.",
+    "body": [
+      "One of the easiest mistakes on a new homesite is clearing too little or too much. Clearing only the exact house footprint may leave builders without enough room for equipment, foundation work, utility installation, grading, material staging, and drainage shaping. Clearing far beyond what is needed can remove valuable shade trees and change the character of the property unnecessarily.",
+      "The best clearing boundary depends on the construction plan and how the property will be used after the home is complete. Driveways, septic areas, utility routes, garages, shops, patios, yards, and future additions may all need space. The builder may also require working room around the foundation for equipment and access. On wooded acreage, property owners should identify mature trees they want to preserve before machinery begins.",
+      "Drainage is another reason to think beyond the structure footprint. The surrounding grade has to move water away from the home and toward an appropriate outlet. If brush and trees are left too close to areas that need major grading, the operator may not have enough room to shape the land correctly. At the same time, selective clearing can preserve desirable trees farther from the active construction zone.",
+      "Jay's Land Clearing Service & Dirt Work helps San Antonio-area property owners prepare homesites without clearing more land than necessary. A site plan, builder requirements, and property photos can help define an efficient clearing boundary that supports construction while protecting the features the owner wants to keep."
+    ],
+    "cta": "Planning a new homesite? Contact us to review how much land should be cleared before construction."
+  },
+  {
+    "title": "Land Clearing for Hunting Property in South Texas",
+    "slug": "land-clearing-for-hunting-property-in-south-texas",
+    "description": "Land clearing for hunting property in South Texas can improve access roads, trails, senderos, fence lines, visibility, and selected areas without clearing the entire ranch.",
+    "excerpt": "Strategic clearing can improve access and visibility while preserving cover on hunting acreage.",
+    "body": [
+      "Hunting property often benefits from selective clearing rather than broad removal of vegetation. South Texas brush can become so dense that roads, fence lines, senderos, blinds, feeders, and water access become difficult to reach. Strategic machine clearing can reopen those routes while preserving cover in areas where the owner wants vegetation to remain.",
+      "The first priority is usually access. Existing ranch roads and trails can be widened or reopened so vehicles and equipment can move through the property. Fence lines may also need clearing for inspection and repair. Senderos can be cut or maintained to create visibility across selected areas, but the layout should match how the land is used rather than removing brush simply because it is dense.",
+      "Property owners should identify blinds, feeders, tanks, pipelines, utility easements, old fencing, and other hidden features before equipment begins. An aerial map with desired clearing lanes marked can be extremely helpful on larger ranches. It allows the operator to understand which routes should connect and which areas should stay untouched.",
+      "After vegetation is removed, rough grading may improve washed-out roads, gate approaches, or low sections that become difficult during wet weather. Jay's Land Clearing Service & Dirt Work provides selective ranch clearing, road preparation, fence-line cleanup, and acreage services throughout San Antonio and South Texas. The goal is to improve access and usability without unnecessarily clearing valuable habitat."
+    ],
+    "cta": "Need roads, trails, or senderos opened? Send us your property map and photos for a free estimate."
+  },
+  {
+    "title": "What Is Rough Grading and When Does Your Property Need It?",
+    "slug": "what-is-rough-grading-and-when-does-your-property-need-it",
+    "description": "What is rough grading and when does your property need it? Learn how rough grading shapes land for construction, access, drainage, pads, and future finish work.",
+    "excerpt": "Rough grading establishes the basic shape of a site before finer construction work begins.",
+    "body": [
+      "Rough grading is the process of moving and shaping soil to create the basic elevations and contours a property needs before final construction or finish work. It is common after land clearing and excavation because removing vegetation exposes the ground and makes it possible to see high spots, low areas, slopes, and drainage patterns more clearly.",
+      "On a construction site, rough grading may establish the general building area, driveway route, yard elevations, access roads, or drainage features. The surface is not intended to be the final polished grade. Instead, it creates a workable shape that allows the next trades to proceed. Large elevation changes, fill placement, excavation, and broad drainage shaping generally happen during this phase.",
+      "Rough grading is also useful on rural property that is not being built on immediately. An overgrown tract may be cleared first and then shaped to improve access, smooth rough areas, correct ruts, or create a more manageable surface. Property owners should explain the future use of the area because grading a driveway, pad, pasture access, or yard requires different priorities.",
+      "Drainage should always be considered. Making an area look flat is not the same as grading it correctly. Water needs an appropriate path across and away from important areas. Jay's Land Clearing Service & Dirt Work provides rough grading, excavation, clearing, and site preparation throughout San Antonio and surrounding communities. Photos, dimensions, and the planned final use help determine the appropriate grading scope."
+    ],
+    "cta": "Need rough grading after clearing or excavation? Contact us for a free estimate."
+  },
+  {
+    "title": "How to Prepare a Rural Driveway Before Building a House",
+    "slug": "how-to-prepare-a-rural-driveway-before-building-a-house",
+    "description": "How to prepare a rural driveway before building a house: plan clearing, width, drainage, turning room, grade, base preparation, and construction access.",
+    "excerpt": "Construction traffic can destroy a poorly planned access route before the house is even built.",
+    "body": [
+      "A rural driveway often becomes the first piece of infrastructure used on a new homesite. Before the foundation, framing, or utilities begin, survey crews, excavators, concrete trucks, delivery vehicles, and contractors all need dependable access. Planning the driveway early can prevent vehicles from creating random tracks through the property or getting stuck during wet conditions.",
+      "The route should be chosen with slope, drainage, trees, utilities, and road access in mind. Clearing may be needed to create adequate width and visibility. Tight curves and narrow gates can be difficult for trailers and large trucks, so turning radius matters. At the entrance, the transition from the public road should be practical for long vehicles and should not create a dangerous drop or steep approach.",
+      "After vegetation and roots are removed, the subgrade can be shaped. Low spots, soft areas, and drainage crossings should be addressed before base material is placed. The driveway may need a crown, cross-slope, or ditching so water does not sit in the travel lane. If culverts are needed, those requirements should be coordinated with the appropriate authority or contractor.",
+      "Jay's Land Clearing Service & Dirt Work provides driveway clearing, grading, dirt work, and site access preparation throughout San Antonio and surrounding rural areas. Designing the route for construction traffic from the beginning can create an access road that continues to work well after the home is finished."
+    ],
+    "cta": "Building on rural property? Send us the proposed driveway route for a free clearing and grading estimate."
+  },
+  {
+    "title": "Land Clearing for Solar Panels on Texas Acreage",
+    "slug": "land-clearing-for-solar-panels-on-texas-acreage",
+    "description": "Land clearing for solar panels on Texas acreage can include brush removal, access, selective tree clearing, grading, equipment paths, and site preparation.",
+    "excerpt": "Solar installations need clear access and usable ground, but that does not always mean clearing the entire property.",
+    "body": [
+      "Ground-mounted solar systems require enough open area for panels, equipment access, trenching, and installation work. On Texas acreage, the proposed solar location may be covered with brush, cedar, mesquite, small trees, or uneven ground that must be addressed before installers begin. The clearing scope should follow the solar contractor's layout so unnecessary vegetation is not removed.",
+      "Access is one of the first considerations. Installation crews need a route for trucks, trailers, materials, and equipment. Clearing may be required from the property entrance to the array location, especially on rural tracts where existing roads are narrow or overgrown. The solar field itself may require selective tree removal or brush clearing to reduce shading and create working room.",
+      "Grading needs depend on the mounting system and existing terrain. Some arrays can follow mild slopes, while rough ground, erosion, ruts, or significant elevation changes may require site preparation. Drainage should be considered before grading because concentrated runoff around cleared areas can create erosion problems if water has no planned route.",
+      "Jay's Land Clearing Service & Dirt Work can provide access clearing, brush removal, selective tree clearing, grading, and site preparation for solar projects throughout San Antonio and surrounding Texas communities. Providing the proposed array layout and installer requirements before work begins helps ensure the property is cleared only where needed."
+    ],
+    "cta": "Planning a ground-mounted solar project? Send us the layout and property photos for a free estimate."
+  },
+  {
+    "title": "How to Clear an Overgrown Vacant Lot in San Antonio, TX",
+    "slug": "how-to-clear-an-overgrown-vacant-lot-in-san-antonio-tx",
+    "description": "How to clear an overgrown vacant lot in San Antonio, TX: remove brush, debris, small trees, hidden hazards, improve access, and prepare the lot for future use.",
+    "excerpt": "An overgrown vacant lot may hide more than vegetation. Clearing reveals what is really on the property.",
+    "body": [
+      "Vacant lots can become overgrown quickly in San Antonio, especially when they have not been maintained for several seasons. Tall grass, brush, vines, saplings, and small trees can make the property difficult to inspect and may hide dumped debris, old fencing, concrete, holes, or other hazards. Machine clearing can restore visibility and access much faster than trying to clean a heavily overgrown lot by hand.",
+      "Before equipment begins, the property boundaries should be understood and nearby utilities, structures, fences, and access points should be identified. If the lot is being prepared for construction, clearing should follow the future site plan so desirable trees or undisturbed areas are not removed unnecessarily. Debris handling is another important part of the scope because vegetation removal and trash cleanup are not always the same service.",
+      "Once the lot is open, the owner can evaluate the ground more accurately. Low areas, old foundations, drainage problems, rough grades, and hidden material become easier to see. That is often the right time to decide whether grading, dirt work, hauling, driveway preparation, or additional site work is needed before the next use.",
+      "Jay's Land Clearing Service & Dirt Work clears vacant lots, residential property, commercial tracts, and acreage throughout San Antonio and surrounding areas. Photos of the lot, approximate dimensions, and a description of the desired finished condition can help us prepare a more accurate free estimate."
+    ],
+    "cta": "Have an overgrown vacant lot? Text us photos and the location for a free clearing estimate."
+  },
+  {
+    "title": "How to Prepare Land for a New Fence and Gate Entrance",
+    "slug": "how-to-prepare-land-for-a-new-fence-and-gate-entrance",
+    "description": "How to prepare land for a new fence and gate entrance: clear brush, improve access, grade the approach, plan turning room, and prepare the fence line.",
+    "excerpt": "A new gate works best when the entrance and fence line are prepared before installation.",
+    "body": [
+      "Installing a new fence and gate is easier when the work area is opened before the fencing crew arrives. Brush, cedar, mesquite, vines, small trees, and old wire can block access and make the property line difficult to follow. Clearing the fence corridor gives crews room to set posts, stretch wire, move equipment, and inspect the boundary more efficiently.",
+      "The gate entrance deserves extra planning. Property owners should consider the width of trucks, trailers, tractors, and other vehicles that will use it. There should be enough room to turn in safely and, when possible, enough space to pull off the roadway before opening the gate. A steep, muddy, or uneven approach may need grading or dirt work before installation.",
+      "Existing fences and hidden wire should be identified before machine clearing begins. Old barbed wire can be wrapped around trees or buried beneath vegetation and can damage equipment. If the old fence will be removed, coordinate that work with the clearing plan. If it will remain, the operator needs to know which sections must be protected.",
+      "Jay's Land Clearing Service & Dirt Work provides fence-line clearing, gate approach preparation, grading, and rural access work throughout San Antonio and surrounding Texas communities. Preparing the corridor and entrance first can make the fencing project faster and create a cleaner, more usable finished property."
+    ],
+    "cta": "Installing a new fence or gate? Contact us to clear and prepare the work area first."
   }
 ]
 
