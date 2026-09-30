@@ -9,6 +9,7 @@ const quickLinks = [
   { href: "/#why-us", label: "Why Choose Us" },
   { href: "/#faq", label: "FAQ" },
   { href: "/service-areas", label: "Service Areas" },
+  { href: "/blog", label: "Blog" },
   { href: "/#contact", label: "Contact" },
 ]
 
