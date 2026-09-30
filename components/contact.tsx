@@ -1,35 +1,17 @@
 "use client"
 
 import { useState } from "react"
-import { MapPin, Phone, Mail, Clock, Loader2, CheckCircle } from "lucide-react"
+import { Phone, Mail, MapPin, Clock, CheckCircle, Send } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
 
-const contactInfo = [
-  {
-    icon: Phone,
-    title: "Phone",
-    value: "(210) 891-4174",
-    href: "tel:+12108914174",
-  },
-  {
-    icon: Mail,
-    title: "Email",
-    value: "jayslandclearingservices@gmail.com",
-    href: "mailto:jayslandclearingservices@gmail.com",
-  },
-  {
-    icon: MapPin,
-    title: "Service Area",
-    value: "San Antonio & Surrounding Areas",
-  },
-  {
-    icon: Clock,
-    title: "Hours",
-    value: "Mon-Sat: 7AM - 6PM",
-  },
+const services = [
+  "Land Clearing",
+  "Dirt Work & Grading",
+  "Excavation",
+  "Hauling Services",
+  "Lot Preparation",
+  "Fence Line Clearing",
+  "Other",
 ]
 
 export function Contact() {
@@ -37,224 +19,317 @@ export function Contact() {
     name: "",
     email: "",
     phone: "",
+    zipCode: "",
     service: "",
     message: "",
   })
+
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
-  const [error, setError] = useState("")
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    setError("")
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      })
-
-      if (!response.ok) {
-        throw new Error('Failed to send message')
+      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || ""
+      
+      const submitData = {
+        access_key: accessKey,
+        subject: `New Quote Request from ${formData.name} - ${formData.service}`,
+        from_name: "Jay's Land Clearing Website",
+        name: formData.name,
+        email: formData.email || "Not provided",
+        phone: formData.phone,
+        zip_code: formData.zipCode || "Not provided",
+        service: formData.service,
+        message: formData.message || "No additional details",
       }
 
-      setSubmitted(true)
-      setFormData({ name: "", email: "", phone: "", service: "", message: "" })
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(submitData),
+      })
 
-      setTimeout(() => setSubmitted(false), 5000)
-    } catch {
-      setError("Something went wrong. Please call us directly at (210) 891-4174")
-    } finally {
-      setIsSubmitting(false)
+      const result = await response.json()
+
+      if (result.success) {
+        setSubmitted(true)
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          zipCode: "",
+          service: "",
+          message: "",
+        })
+      } else {
+        alert("Something went wrong. Please try again.")
+      }
+    } catch (error) {
+      console.error(error)
+      alert("Something went wrong. Please try again.")
     }
+
+    setIsSubmitting(false)
+  }
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
   return (
-    <section id="contact" className="py-20 md:py-28 bg-background overflow-hidden">
+    <section id="contact" className="py-20 md:py-28 bg-background">
       <div className="container mx-auto px-4">
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 animate-on-scroll fade-in">
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider">
-            Contact Us
+        {/* Section Header */}
+        <div className="text-center mb-16 animate-on-scroll fade-in">
+          <span className="inline-block px-4 py-1 bg-primary/10 text-primary text-sm font-semibold rounded-full mb-4 uppercase tracking-wider">
+            Get In Touch
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-2 mb-4 font-[family-name:var(--font-display)] uppercase">
-            Get Your <span className="text-primary">Free Estimate</span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 font-[family-name:var(--font-display)] uppercase text-balance">
+            Ready to <span className="text-primary">Transform</span> Your Property?
           </h2>
-          <p className="text-foreground/70">
-            Ready to transform your property? Contact us today for a free, no-obligation estimate.
+          <p className="text-foreground/70 max-w-2xl mx-auto text-lg">
+            Get a free, no-obligation quote for your land clearing project. We respond within 24 hours.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Info */}
-          <div className="animate-on-scroll slide-in-left">
-            <h3 className="text-2xl font-bold mb-6 font-[family-name:var(--font-display)] uppercase">
-              Get in Touch
-            </h3>
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 max-w-5xl mx-auto">
+          {/* Contact Form - Left Side */}
+          <div className="order-2 lg:order-1 min-w-0">
+            <div className="bg-card border border-border rounded-xl p-4 sm:p-5 md:p-6 animate-on-scroll fade-in">
+              <h3 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 font-[family-name:var(--font-display)] uppercase">
+                Request Your Free Quote
+              </h3>
 
-            <div className="space-y-6 mb-8">
-              {contactInfo.map((item, index) => (
-                <div
-                  key={index}
-                  className="flex items-start gap-4 transition-transform hover:translate-x-2"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0 transition-all hover:bg-primary/20 hover:scale-110">
-                    <item.icon className="w-5 h-5 text-primary" />
+              {submitted ? (
+                <div className="text-center py-12">
+                  <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <CheckCircle className="w-8 h-8 text-green-500" />
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground">{item.title}</h4>
-                    {item.href ? (
-                      <a
-                        href={item.href}
-                        className="text-foreground/70 hover:text-primary transition-colors"
-                      >
-                        {item.value}
-                      </a>
-                    ) : (
-                      <p className="text-foreground/70">{item.value}</p>
-                    )}
-                  </div>
+                  <h4 className="text-xl font-bold text-foreground mb-2">Message Sent Successfully!</h4>
+                  <p className="text-foreground/70 mb-6">
+                    Thank you for contacting us. We&apos;ll get back to you within 24 hours.
+                  </p>
+                  <Button 
+                    onClick={() => setSubmitted(false)}
+                    variant="outline"
+                    className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                  >
+                    Send Another Message
+                  </Button>
                 </div>
-              ))}
-            </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                    <div>
+                      <label htmlFor="name" className="block text-xs sm:text-sm font-medium text-foreground/80 mb-1.5 sm:mb-2">
+                        Full Name *
+                      </label>
+                      <input 
+                        id="name"
+                        name="name" 
+                        required 
+                        placeholder="John Doe"
+                        value={formData.name} 
+                        onChange={handleChange}
+                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-sm sm:text-base"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="phone" className="block text-xs sm:text-sm font-medium text-foreground/80 mb-1.5 sm:mb-2">
+                        Phone Number *
+                      </label>
+                      <input 
+                        id="phone"
+                        name="phone" 
+                        type="tel"
+                        required 
+                        placeholder="(210) 555-0123"
+                        value={formData.phone} 
+                        onChange={handleChange}
+                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-sm sm:text-base"
+                      />
+                    </div>
+                  </div>
 
-            {/* Map */}
-            <div className="aspect-video bg-card rounded-lg border border-border overflow-hidden">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d444477.30153655!2d-98.82064099999999!3d29.4246002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x865c58af04d00eaf%3A0x856e13b10a016bc!2sSan%20Antonio%2C%20TX!5e0!3m2!1sen!2sus!4v1704067200000!5m2!1sen!2sus"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="San Antonio Service Area Map"
-              />
+                  <div>
+                    <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-foreground/80 mb-1.5 sm:mb-2">
+                      Email Address (optional)
+                    </label>
+                    <input 
+                      id="email"
+                      name="email" 
+                      type="email"
+                      placeholder="john@example.com"
+                      value={formData.email} 
+                      onChange={handleChange}
+                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-sm sm:text-base"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="zipCode" className="block text-xs sm:text-sm font-medium text-foreground/80 mb-1.5 sm:mb-2">
+                      Zip Code (optional)
+                    </label>
+                    <input 
+                      id="zipCode"
+                      name="zipCode" 
+                      placeholder="78201"
+                      value={formData.zipCode} 
+                      onChange={handleChange}
+                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-sm sm:text-base"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="service" className="block text-xs sm:text-sm font-medium text-foreground/80 mb-1.5 sm:mb-2">
+                      Service Needed *
+                    </label>
+                    <select 
+                      id="service"
+                      name="service" 
+                      required
+                      value={formData.service} 
+                      onChange={handleChange}
+                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-secondary border border-border text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all appearance-none cursor-pointer text-sm sm:text-base"
+                    >
+                      <option value="" className="text-foreground/40">Select a service...</option>
+                      {services.map((s) => (
+                        <option key={s} value={s} className="text-foreground bg-secondary">{s}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label htmlFor="message" className="block text-xs sm:text-sm font-medium text-foreground/80 mb-1.5 sm:mb-2">
+                      Project Details
+                    </label>
+                    <textarea 
+                      id="message"
+                      name="message" 
+                      rows={3}
+                      placeholder="Tell us about your project: property size, specific needs, timeline, etc."
+                      value={formData.message} 
+                      onChange={handleChange}
+                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none text-sm sm:text-base"
+                    />
+                  </div>
+
+                  <Button 
+                    type="submit" 
+                    disabled={isSubmitting}
+                    className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-4 sm:py-6 text-base sm:text-lg font-bold uppercase tracking-wide transition-all hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? (
+                      <span className="flex items-center justify-center gap-2">
+                        <span className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
+                        Sending...
+                      </span>
+                    ) : (
+                      <span className="flex items-center justify-center gap-2">
+                        <Send className="w-4 h-4 sm:w-5 sm:h-5" />
+                        Get Your Free Quote
+                      </span>
+                    )}
+                  </Button>
+
+                  <p className="text-center text-foreground/50 text-xs sm:text-sm">
+                    We respect your privacy. Your information will never be shared.
+                  </p>
+
+                  {/* SMS Photos Button */}
+                  <a
+                    href="sms:2108914174?body=Hi, I'd like to send photos of my property for a quote."
+                    className="flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2 w-full py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg border-2 border-dashed border-primary/50 text-primary hover:bg-primary/10 transition-all text-xs sm:text-sm font-medium text-center"
+                  >
+                    <Phone className="w-4 h-4 shrink-0" />
+                    <span>Click here to text project photos directly</span>
+                  </a>
+                </form>
+              )}
             </div>
           </div>
 
-          {/* Contact Form */}
-          <div className="bg-card border border-border rounded-lg p-8 animate-on-scroll slide-in-right">
-            <h3 className="text-2xl font-bold mb-6 font-[family-name:var(--font-display)] uppercase">
-              Request a Quote
-            </h3>
-
-            {submitted ? (
-              <div className="bg-primary/10 border border-primary/30 rounded-lg p-6 text-center animate-scale-in">
-                <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                  <CheckCircle className="w-6 h-6 text-primary-foreground" />
-                </div>
-                <h4 className="text-lg font-bold text-primary mb-2">Thank You!</h4>
-                <p className="text-foreground/70">
-                  {"We've received your message and will get back to you within 24 hours."}
-                </p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">Full Name *</Label>
-                    <Input
-                      id="name"
-                      placeholder="John Doe"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      required
-                      className="bg-background border-border transition-all focus:scale-[1.02]"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="phone">Phone Number *</Label>
-                    <Input
-                      id="phone"
-                      type="tel"
-                      placeholder="(210) 555-1234"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      required
-                      className="bg-background border-border transition-all focus:scale-[1.02]"
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email Address *</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="john@example.com"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    required
-                    className="bg-background border-border transition-all focus:scale-[1.02]"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="service">Service Interested In</Label>
-                  <select
-                    id="service"
-                    value={formData.service}
-                    onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                    className="flex h-10 w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring transition-all focus:scale-[1.02]"
-                  >
-                    <option value="">Select a service</option>
-                    <option value="Land Clearing">Land Clearing</option>
-                    <option value="Brush Removal">Brush Removal</option>
-                    <option value="Dirt Work & Grading">Dirt Work & Grading</option>
-                    <option value="Excavation">Excavation</option>
-                    <option value="Hauling Services">Hauling Services</option>
-                    <option value="Lot Preparation">Lot Preparation</option>
-                    <option value="Fence Line Clearing">Fence Line Clearing</option>
-                    <option value="Other">Other</option>
-                  </select>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="message">Project Details *</Label>
-                  <Textarea
-                    id="message"
-                    placeholder="Tell us about your project - property size, type of work needed, timeline, etc."
-                    rows={5}
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    required
-                    className="bg-background border-border resize-none transition-all focus:scale-[1.01]"
-                  />
-                </div>
-
-                {error && (
-                  <div className="bg-destructive/10 border border-destructive/30 rounded-lg p-4 text-center">
-                    <p className="text-destructive text-sm">{error}</p>
-                  </div>
-                )}
-
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-semibold transition-transform hover:scale-[1.02] active:scale-[0.98]"
-                  disabled={isSubmitting}
+          {/* Contact Info Sidebar - Right Side */}
+          <div className="order-1 lg:order-2 space-y-6">
+            {/* Contact Info Card */}
+            <div className="bg-card border border-border rounded-xl p-5 animate-on-scroll fade-in">
+              <h3 className="text-lg font-bold mb-4 font-[family-name:var(--font-display)] uppercase">
+                Contact Information
+              </h3>
+              <div className="space-y-3">
+                <a 
+                  href="tel:+12108914174" 
+                  className="flex items-center gap-3 p-3 rounded-lg bg-secondary/50 hover:bg-primary/10 transition-all group"
                 >
-                  {isSubmitting ? (
-                    <span className="flex items-center gap-2">
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                      Sending...
-                    </span>
-                  ) : (
-                    "Submit Request"
-                  )}
-                </Button>
+                  <div className="w-9 h-9 bg-primary rounded-full flex items-center justify-center shrink-0">
+                    <Phone className="w-4 h-4 text-primary-foreground" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-foreground/60">Call Us Now</p>
+                    <p className="font-semibold text-foreground group-hover:text-primary transition-colors text-sm">(210) 891-4174</p>
+                  </div>
+                </a>
+                
+                <a 
+                  href="mailto:jayslandclearingservices@gmail.com" 
+                  className="flex items-center gap-3 p-3 rounded-lg bg-secondary/50 hover:bg-primary/10 transition-all group"
+                >
+                  <div className="w-9 h-9 bg-primary rounded-full flex items-center justify-center shrink-0">
+                    <Mail className="w-4 h-4 text-primary-foreground" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-foreground/60">Email Us</p>
+                    <p className="font-semibold text-foreground group-hover:text-primary transition-colors text-xs break-all">jayslandclearingservices@gmail.com</p>
+                  </div>
+                </a>
+                
+                <div className="flex items-center gap-3 p-3 rounded-lg bg-secondary/50">
+                  <div className="w-9 h-9 bg-primary rounded-full flex items-center justify-center shrink-0">
+                    <MapPin className="w-4 h-4 text-primary-foreground" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-foreground/60">Service Area</p>
+                    <p className="font-semibold text-foreground text-sm">San Antonio, TX & Surrounding</p>
+                  </div>
+                </div>
 
-                <p className="text-xs text-foreground/50 text-center">
-                  By submitting this form, you agree to be contacted regarding your request.
-                </p>
-              </form>
-            )}
+                <div className="flex items-center gap-3 p-3 rounded-lg bg-secondary/50">
+                  <div className="w-9 h-9 bg-primary rounded-full flex items-center justify-center shrink-0">
+                    <Clock className="w-4 h-4 text-primary-foreground" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-foreground/60">Business Hours</p>
+                    <p className="font-semibold text-foreground text-sm">Mon - Sat: 7AM - 6PM</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Why Choose Us */}
+            <div className="bg-card border border-border rounded-xl p-5 animate-on-scroll fade-in">
+              <h3 className="text-lg font-bold mb-4 font-[family-name:var(--font-display)] uppercase">
+                Why Choose Us
+              </h3>
+              <ul className="space-y-3">
+                {[
+                  "Free, no-obligation estimates",
+                  "Fast response times",
+                  "Competitive pricing",
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-3 text-foreground/80">
+                    <CheckCircle className="w-5 h-5 text-primary shrink-0" />
+                    <span className="text-sm">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </div>

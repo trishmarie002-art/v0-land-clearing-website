@@ -4,11 +4,13 @@ import Link from "next/link"
 import { Phone, Mail, MapPin } from "lucide-react"
 
 const quickLinks = [
-  { href: "#about", label: "About Us" },
-  { href: "#services", label: "Services" },
-  { href: "#why-us", label: "Why Choose Us" },
-  { href: "#faq", label: "FAQ" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#about", label: "About Us" },
+  { href: "/#services", label: "Services" },
+  { href: "/#why-us", label: "Why Choose Us" },
+  { href: "/#faq", label: "FAQ" },
+  { href: "/service-areas", label: "Service Areas" },
+  { href: "/blog", label: "Blog" },
+  { href: "/#contact", label: "Contact" },
 ]
 
 const services = [
@@ -106,9 +108,20 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-foreground/50 text-sm">
-            &copy; {new Date().getFullYear()} {"Jay's Land Clearing Service & Dirt Work"}. All rights reserved.
-          </p>
+          <div className="text-foreground/50 text-sm text-center md:text-left">
+            <p>&copy; {new Date().getFullYear()} {"Jay's Land Clearing Service & Dirt Work"}. All rights reserved.</p>
+            <p className="mt-1">
+              Website created by{" "}
+              <a 
+                href="https://jayswebdesignservices.com/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary hover:underline"
+              >
+                {"Jay's Web Design Services"}
+              </a>
+            </p>
+          </div>
           <div className="flex items-center gap-6 text-sm">
             <Link href="#" className="text-foreground/50 hover:text-primary transition-colors hover:-translate-y-0.5 inline-block">
               Privacy Policy
