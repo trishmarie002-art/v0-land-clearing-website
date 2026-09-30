@@ -8,22 +8,21 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 
 const heroSlides = [
   {
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/597309592_122189063936538072_2733738572363445506_n-UOJPBnUWgzrcR6HTD4joppvqX0izck.jpg",
-    title: "Professional Land Clearing",
-    subtitle: "Transforming your property with expert clearing services",
+    image: "https://s7d2.scene7.com/is/image/Caterpillar/CM20190913-eb555-db658?$cc-pdp-t5$=&fmt=pjpeg",
+    title: "Yellow Skid Steer",
+    subtitle: "Professional skid steer work for clearing, grading, and property preparation",
   },
   {
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/627162796_122195512712538072_1509152379615460320_n%20%281%29-FJolk2iSSpi1iXod4xk7xsCh8KB2oh.jpg",
-    title: "Quality Dirt Work",
-    subtitle: "Grading, excavation, and site preparation done right",
+    image: "https://s7d2.scene7.com/is/image/Caterpillar/CM20220428-35d0f-0f964?$hero-cc-t1$=&fmt=webp",
+    title: "Brush Hog Clearing",
+    subtitle: "Heavy-duty brush cutting for overgrown lots, acreage, fence lines, and trails",
   },
   {
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/653317281_122200574036538072_8200266081722862456_n%20%281%29-Bzw0ZQlOTF1QLSJ4IkEfqt6td2xpZ6.jpg",
-    title: "Trusted in San Antonio",
-    subtitle: "Serving the greater San Antonio area with pride",
+    image: "https://s7d2.scene7.com/is/image/Caterpillar/CM20151019-51537-20839?$cc-pdp-t5$=&fmt=pjpeg",
+    title: "Mulcher Attachment",
+    subtitle: "Skid steer mulching for dense brush, saplings, and land reclamation",
   },
 ]
-
 export function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0)
 
