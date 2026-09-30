@@ -1,70 +1,25 @@
 "use client"
 
-import { useState, useEffect, useCallback } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ChevronLeft, ChevronRight } from "lucide-react"
 
-const heroSlides = [
-  {
-    image: "https://s7d2.scene7.com/is/image/Caterpillar/CM20190913-eb555-db658?$cc-pdp-t5$=&fmt=pjpeg",
-    title: "Yellow Skid Steer",
-    subtitle: "Professional skid steer work for clearing, grading, and property preparation",
-  },
-  {
-    image: "https://s7d2.scene7.com/is/image/Caterpillar/CM20220428-35d0f-0f964?$hero-cc-t1$=&fmt=webp",
-    title: "Brush Hog Clearing",
-    subtitle: "Heavy-duty brush cutting for overgrown lots, acreage, fence lines, and trails",
-  },
-  {
-    image: "https://s7d2.scene7.com/is/image/Caterpillar/CM20151019-51537-20839?$cc-pdp-t5$=&fmt=pjpeg",
-    title: "Mulcher Attachment",
-    subtitle: "Skid steer mulching for dense brush, saplings, and land reclamation",
-  },
-]
+const heroImage = "https://s7d2.scene7.com/is/image/Caterpillar/CM20151019-51537-20839?$cc-pdp-t5$=&fmt=pjpeg"
+
 export function Hero() {
-  const [currentSlide, setCurrentSlide] = useState(0)
-
-  const nextSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev + 1) % heroSlides.length)
-  }, [])
-
-  useEffect(() => {
-    const timer = setInterval(nextSlide, 5000)
-    return () => clearInterval(timer)
-  }, [nextSlide])
-
-  const goToSlide = (index: number) => {
-    setCurrentSlide(index)
-  }
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)
-  }
-
   return (
     <section className="relative h-[calc(100vh-140px)] md:h-[calc(100vh-172px)] min-h-[500px] md:min-h-[600px] max-h-[700px] md:max-h-[900px] overflow-hidden mt-[140px] md:mt-[172px]">
-      {/* Slides */}
-      {heroSlides.map((slide, index) => (
-        <div
-          key={index}
-          className={`absolute inset-0 transition-all duration-1000 ease-out ${
-            index === currentSlide ? "opacity-100 scale-100" : "opacity-0 scale-105"
-          }`}
-        >
-          <Image
-            src={slide.image}
-            alt={slide.title}
-            fill
-            className="object-cover"
-            priority={index === 0}
-          />
-          <div className="absolute inset-0 bg-background/80" />
-        </div>
-      ))}
+      <div className="absolute inset-0">
+        <Image
+          src={heroImage}
+          alt="Skid steer with mulcher attachment clearing land in San Antonio, Texas"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-background/75" />
+      </div>
 
-      {/* Content */}
       <div className="relative z-10 container mx-auto px-6 sm:px-8 h-full flex items-center justify-center">
         <div className="max-w-2xl text-center w-full">
           <div className="mb-4 animate-fade-in">
@@ -78,7 +33,7 @@ export function Hero() {
           </h1>
 
           <p className="text-base sm:text-lg md:text-xl text-foreground/80 mb-8 max-w-lg mx-auto animate-slide-up-delay px-2">
-            {heroSlides[currentSlide].subtitle}
+            Professional skid steer mulching, land clearing, grading, and property preparation throughout San Antonio and surrounding areas.
           </p>
 
           <div className="flex flex-col gap-3 sm:flex-row sm:gap-4 animate-fade-in-delay justify-center px-2">
@@ -98,70 +53,23 @@ export function Hero() {
               <Link href="#services">Our Services</Link>
             </Button>
           </div>
-          
+
           <div className="mt-4 sm:mt-6 animate-fade-in-delay">
-            <a 
-              href="sms:+12108914174" 
+            <a
+              href="sms:+12108914174"
               className="inline-block bg-black/80 text-yellow-400 hover:bg-black font-semibold text-xs sm:text-sm px-4 py-3 rounded-lg transition-transform hover:scale-105 border border-yellow-400/50"
             >
               Text us a photo for a faster quote!
             </a>
           </div>
 
-          {/* Trust badges */}
           <div className="mt-6 sm:mt-8 md:mt-12 flex items-center justify-center gap-8 text-sm text-foreground/60 animate-fade-in-delay-2">
-            {["Free Estimates", "Local Owned"].map((badge, index) => (
-              <div
-                key={badge}
-                className="flex items-center gap-2"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
+            {["Free Estimates", "Local Owned"].map((badge) => (
+              <div key={badge} className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
                 <span>{badge}</span>
               </div>
             ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Navigation arrows */}
-      <button
-        onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2 bg-background/50 hover:bg-primary text-foreground hover:text-primary-foreground rounded-full transition-all hover:scale-110"
-        aria-label="Previous slide"
-      >
-        <ChevronLeft className="w-6 h-6" />
-      </button>
-      <button
-        onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-2 bg-background/50 hover:bg-primary text-foreground hover:text-primary-foreground rounded-full transition-all hover:scale-110"
-        aria-label="Next slide"
-      >
-        <ChevronRight className="w-6 h-6" />
-      </button>
-
-      {/* Slide indicators */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-3">
-        {heroSlides.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => goToSlide(index)}
-            className={`h-3 rounded-full transition-all hover:scale-110 ${
-              index === currentSlide
-                ? "bg-primary w-8"
-                : "bg-foreground/30 hover:bg-foreground/50 w-3"
-            }`}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 right-8 z-20 hidden md:block animate-fade-in-delay-2">
-        <div className="flex flex-col items-center gap-2 text-foreground/50 animate-bounce">
-          <span className="text-xs uppercase tracking-wider">Scroll</span>
-          <div className="w-5 h-8 border-2 border-foreground/30 rounded-full flex justify-center">
-            <div className="w-1.5 h-1.5 bg-primary rounded-full mt-1.5 animate-scroll-down" />
           </div>
         </div>
       </div>
