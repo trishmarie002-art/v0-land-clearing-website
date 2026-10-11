@@ -35,6 +35,14 @@ function CustomerReviews() {
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {customerReviews.map((review) => (
             <article key={review.name} className="rounded-xl border border-border bg-card p-7 flex flex-col">
+              <div className="mb-5 flex h-20 items-center justify-center rounded-lg bg-background/60 px-4 py-2">
+                <img
+                  src="/images/logo.png"
+                  alt="Jay's Land Clearing Service & Dirt Work logo"
+                  className="h-full w-full object-contain"
+                  loading="lazy"
+                />
+              </div>
               <p className="text-foreground/75 leading-relaxed mt-5 flex-1">“{review.quote}”</p>
               <div className="mt-6 pt-5 border-t border-border">
                 <p className="font-bold text-lg">{review.name}</p>
