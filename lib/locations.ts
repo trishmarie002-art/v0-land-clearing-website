@@ -368,6 +368,186 @@ export const locations: LocationPage[] = [
     localNeeds: "Projects may include clearing overgrown sections, removing brush and debris, preparing areas for additions or new structures, grading, excavation, and improving access where site conditions allow.",
     nearby: ["Helotes", "Leon Springs", "San Antonio", "Fair Oaks Ranch"],
     focus: ["Property clearing", "Brush and debris removal", "Grading", "Excavation and site preparation"]
+  },
+  {
+    city: "Blanco",
+    slug: "land-clearing-services-dirt-work-blanco-tx",
+    county: "Blanco County",
+    intro: "Blanco includes Hill Country acreage along the US 281 corridor. Property owners planning improvements may need vegetation removed, safe equipment access, rough grading, or a clear work area before a new home, barn, shop, or driveway can be prepared. Jay's Land Clearing Service & Dirt Work handles land clearing and earthwork projects in the greater San Antonio region; contact us to confirm scheduling and travel availability for Blanco.",
+    localNeeds: "Around Blanco, projects may involve cedar growth, ranch access routes and sloped homesites. The correct scope depends on the actual vegetation, soil, slope, underground utilities, and the condition you want the site left in. We can discuss brush removal, excavation, material hauling, and grading as appropriate to the job.",
+    nearby: ["Johnson City","Spring Branch","Canyon Lake"],
+    focus: ["Blanco brush and acreage clearing","Driveway and property access preparation","Grading and excavation for site projects","Fence-line cleanup and dirt work"]
+  },
+  {
+    city: "Kendalia",
+    slug: "land-clearing-services-dirt-work-kendalia-tx",
+    county: "Kendall County",
+    intro: "Kendalia includes rural Hill Country tracts between Boerne and Blanco. Property owners planning improvements may need vegetation removed, safe equipment access, rough grading, or a clear work area before a new home, barn, shop, or driveway can be prepared. Jay's Land Clearing Service & Dirt Work handles land clearing and earthwork projects in the greater San Antonio region; contact us to confirm scheduling and travel availability for Kendalia.",
+    localNeeds: "Around Kendalia, projects may involve wooded acreage, fence corridors and challenging terrain. The correct scope depends on the actual vegetation, soil, slope, underground utilities, and the condition you want the site left in. We can discuss brush removal, excavation, material hauling, and grading as appropriate to the job.",
+    nearby: ["Boerne","Bulverde","Spring Branch"],
+    focus: ["Kendalia brush and acreage clearing","Driveway and property access preparation","Grading and excavation for site projects","Fence-line cleanup and dirt work"]
+  },
+  {
+    city: "Comfort",
+    slug: "land-clearing-services-dirt-work-comfort-tx",
+    county: "Kendall County",
+    intro: "Comfort includes Guadalupe River country and rural property west of Boerne. Property owners planning improvements may need vegetation removed, safe equipment access, rough grading, or a clear work area before a new home, barn, shop, or driveway can be prepared. Jay's Land Clearing Service & Dirt Work handles land clearing and earthwork projects in the greater San Antonio region; contact us to confirm scheduling and travel availability for Comfort.",
+    localNeeds: "Around Comfort, projects may involve brushy pastures, ranch lanes and access to outbuildings. The correct scope depends on the actual vegetation, soil, slope, underground utilities, and the condition you want the site left in. We can discuss brush removal, excavation, material hauling, and grading as appropriate to the job.",
+    nearby: ["Boerne","Fair Oaks Ranch","Bandera"],
+    focus: ["Comfort brush and acreage clearing","Driveway and property access preparation","Grading and excavation for site projects","Fence-line cleanup and dirt work"]
+  },
+  {
+    city: "Bergheim",
+    slug: "land-clearing-services-dirt-work-bergheim-tx",
+    county: "Kendall County",
+    intro: "Bergheim includes wooded rural property near the US 281 corridor. Property owners planning improvements may need vegetation removed, safe equipment access, rough grading, or a clear work area before a new home, barn, shop, or driveway can be prepared. Jay's Land Clearing Service & Dirt Work handles land clearing and earthwork projects in the greater San Antonio region; contact us to confirm scheduling and travel availability for Bergheim.",
+    localNeeds: "Around Bergheim, projects may involve rocky access drives, selective cedar thinning and shop pads. The correct scope depends on the actual vegetation, soil, slope, underground utilities, and the condition you want the site left in. We can discuss brush removal, excavation, material hauling, and grading as appropriate to the job.",
+    nearby: ["Bulverde","Boerne","Spring Branch"],
+    focus: ["Bergheim brush and acreage clearing","Driveway and property access preparation","Grading and excavation for site projects","Fence-line cleanup and dirt work"]
+  },
+  {
+    city: "Lakehills",
+    slug: "land-clearing-services-dirt-work-lakehills-tx",
+    county: "Bandera County",
+    intro: "Lakehills includes hillside neighborhoods and rural acreage near Medina Lake. Property owners planning improvements may need vegetation removed, safe equipment access, rough grading, or a clear work area before a new home, barn, shop, or driveway can be prepared. Jay's Land Clearing Service & Dirt Work handles land clearing and earthwork projects in the greater San Antonio region; contact us to confirm scheduling and travel availability for Lakehills.",
+    localNeeds: "Around Lakehills, projects may involve steep driveway approaches, brush removal and erosion-conscious grading. The correct scope depends on the actual vegetation, soil, slope, underground utilities, and the condition you want the site left in. We can discuss brush removal, excavation, material hauling, and grading as appropriate to the job.",
+    nearby: ["Pipe Creek","Bandera","Helotes"],
+    focus: ["Lakehills brush and acreage clearing","Driveway and property access preparation","Grading and excavation for site projects","Fence-line cleanup and dirt work"]
+  },
+  {
+    city: "Mico",
+    slug: "land-clearing-services-dirt-work-mico-tx",
+    county: "Medina County",
+    intro: "Mico includes wooded acreage and hill roads near Medina Lake. Property owners planning improvements may need vegetation removed, safe equipment access, rough grading, or a clear work area before a new home, barn, shop, or driveway can be prepared. Jay's Land Clearing Service & Dirt Work handles land clearing and earthwork projects in the greater San Antonio region; contact us to confirm scheduling and travel availability for Mico.",
+    localNeeds: "Around Mico, projects may involve selective clearing, rocky terrain and equipment access. The correct scope depends on the actual vegetation, soil, slope, underground utilities, and the condition you want the site left in. We can discuss brush removal, excavation, material hauling, and grading as appropriate to the job.",
+    nearby: ["Lakehills","Castroville","Helotes"],
+    focus: ["Mico brush and acreage clearing","Driveway and property access preparation","Grading and excavation for site projects","Fence-line cleanup and dirt work"]
+  },
+  {
+    city: "Rio Medina",
+    slug: "land-clearing-services-dirt-work-rio-medina-tx",
+    county: "Medina County",
+    intro: "Rio Medina includes rural residential properties and farmland west of San Antonio. Property owners planning improvements may need vegetation removed, safe equipment access, rough grading, or a clear work area before a new home, barn, shop, or driveway can be prepared. Jay's Land Clearing Service & Dirt Work handles land clearing and earthwork projects in the greater San Antonio region; contact us to confirm scheduling and travel availability for Rio Medina.",
+    localNeeds: "Around Rio Medina, projects may involve field edges, lot cleanup and ranch driveway preparation. The correct scope depends on the actual vegetation, soil, slope, underground utilities, and the condition you want the site left in. We can discuss brush removal, excavation, material hauling, and grading as appropriate to the job.",
+    nearby: ["Castroville","LaCoste","Lytle"],
+    focus: ["Rio Medina brush and acreage clearing","Driveway and property access preparation","Grading and excavation for site projects","Fence-line cleanup and dirt work"]
+  },
+  {
+    city: "LaCoste",
+    slug: "land-clearing-services-dirt-work-lacoste-tx",
+    county: "Medina County",
+    intro: "LaCoste includes farmland and homesites along the western San Antonio corridor. Property owners planning improvements may need vegetation removed, safe equipment access, rough grading, or a clear work area before a new home, barn, shop, or driveway can be prepared. Jay's Land Clearing Service & Dirt Work handles land clearing and earthwork projects in the greater San Antonio region; contact us to confirm scheduling and travel availability for LaCoste.",
+    localNeeds: "Around LaCoste, projects may involve building areas, access drives and rough grading. The correct scope depends on the actual vegetation, soil, slope, underground utilities, and the condition you want the site left in. We can discuss brush removal, excavation, material hauling, and grading as appropriate to the job.",
+    nearby: ["Castroville","Lytle","Natalia"],
+    focus: ["LaCoste brush and acreage clearing","Driveway and property access preparation","Grading and excavation for site projects","Fence-line cleanup and dirt work"]
+  },
+  {
+    city: "Bigfoot",
+    slug: "land-clearing-services-dirt-work-bigfoot-tx",
+    county: "Frio County",
+    intro: "Bigfoot includes ranchland and agricultural properties south of San Antonio. Property owners planning improvements may need vegetation removed, safe equipment access, rough grading, or a clear work area before a new home, barn, shop, or driveway can be prepared. Jay's Land Clearing Service & Dirt Work handles land clearing and earthwork projects in the greater San Antonio region; contact us to confirm scheduling and travel availability for Bigfoot.",
+    localNeeds: "Around Bigfoot, projects may involve pasture brush, fence lines and rural road maintenance. The correct scope depends on the actual vegetation, soil, slope, underground utilities, and the condition you want the site left in. We can discuss brush removal, excavation, material hauling, and grading as appropriate to the job.",
+    nearby: ["Moore","Devine","Poteet"],
+    focus: ["Bigfoot brush and acreage clearing","Driveway and property access preparation","Grading and excavation for site projects","Fence-line cleanup and dirt work"]
+  },
+  {
+    city: "Moore",
+    slug: "land-clearing-services-dirt-work-moore-tx",
+    county: "Frio County",
+    intro: "Moore includes rural tracts and agricultural land along Interstate 35. Property owners planning improvements may need vegetation removed, safe equipment access, rough grading, or a clear work area before a new home, barn, shop, or driveway can be prepared. Jay's Land Clearing Service & Dirt Work handles land clearing and earthwork projects in the greater San Antonio region; contact us to confirm scheduling and travel availability for Moore.",
+    localNeeds: "Around Moore, projects may involve entry roads, ranch clearing and equipment staging sites. The correct scope depends on the actual vegetation, soil, slope, underground utilities, and the condition you want the site left in. We can discuss brush removal, excavation, material hauling, and grading as appropriate to the job.",
+    nearby: ["Bigfoot","Devine","Natalia"],
+    focus: ["Moore brush and acreage clearing","Driveway and property access preparation","Grading and excavation for site projects","Fence-line cleanup and dirt work"]
+  },
+  {
+    city: "Charlotte",
+    slug: "land-clearing-services-dirt-work-charlotte-tx",
+    county: "Atascosa County",
+    intro: "Charlotte includes South Texas farmland and residential acreage. Property owners planning improvements may need vegetation removed, safe equipment access, rough grading, or a clear work area before a new home, barn, shop, or driveway can be prepared. Jay's Land Clearing Service & Dirt Work handles land clearing and earthwork projects in the greater San Antonio region; contact us to confirm scheduling and travel availability for Charlotte.",
+    localNeeds: "Around Charlotte, projects may involve pasture access, mesquite removal and building pads. The correct scope depends on the actual vegetation, soil, slope, underground utilities, and the condition you want the site left in. We can discuss brush removal, excavation, material hauling, and grading as appropriate to the job.",
+    nearby: ["Jourdanton","Christine","Poteet"],
+    focus: ["Charlotte brush and acreage clearing","Driveway and property access preparation","Grading and excavation for site projects","Fence-line cleanup and dirt work"]
+  },
+  {
+    city: "Christine",
+    slug: "land-clearing-services-dirt-work-christine-tx",
+    county: "Atascosa County",
+    intro: "Christine includes quiet ranch and agricultural properties south of Pleasanton. Property owners planning improvements may need vegetation removed, safe equipment access, rough grading, or a clear work area before a new home, barn, shop, or driveway can be prepared. Jay's Land Clearing Service & Dirt Work handles land clearing and earthwork projects in the greater San Antonio region; contact us to confirm scheduling and travel availability for Christine.",
+    localNeeds: "Around Christine, projects may involve overgrown fence corridors, ranch entries and dirt spreading. The correct scope depends on the actual vegetation, soil, slope, underground utilities, and the condition you want the site left in. We can discuss brush removal, excavation, material hauling, and grading as appropriate to the job.",
+    nearby: ["Charlotte","Pleasanton","Jourdanton"],
+    focus: ["Christine brush and acreage clearing","Driveway and property access preparation","Grading and excavation for site projects","Fence-line cleanup and dirt work"]
+  },
+  {
+    city: "Sutherland Springs",
+    slug: "land-clearing-services-dirt-work-sutherland-springs-tx",
+    county: "Wilson County",
+    intro: "Sutherland Springs includes country homesites and pastureland east of San Antonio. Property owners planning improvements may need vegetation removed, safe equipment access, rough grading, or a clear work area before a new home, barn, shop, or driveway can be prepared. Jay's Land Clearing Service & Dirt Work handles land clearing and earthwork projects in the greater San Antonio region; contact us to confirm scheduling and travel availability for Sutherland Springs.",
+    localNeeds: "Around Sutherland Springs, projects may involve residential acreage cleanup, cedar and brush management and driveways. The correct scope depends on the actual vegetation, soil, slope, underground utilities, and the condition you want the site left in. We can discuss brush removal, excavation, material hauling, and grading as appropriate to the job.",
+    nearby: ["La Vernia","Stockdale","Floresville"],
+    focus: ["Sutherland Springs brush and acreage clearing","Driveway and property access preparation","Grading and excavation for site projects","Fence-line cleanup and dirt work"]
+  },
+  {
+    city: "Nixon",
+    slug: "land-clearing-services-dirt-work-nixon-tx",
+    county: "Gonzales and Wilson Counties",
+    intro: "Nixon includes agricultural tracts and rural roads southeast of San Antonio. Property owners planning improvements may need vegetation removed, safe equipment access, rough grading, or a clear work area before a new home, barn, shop, or driveway can be prepared. Jay's Land Clearing Service & Dirt Work handles land clearing and earthwork projects in the greater San Antonio region; contact us to confirm scheduling and travel availability for Nixon.",
+    localNeeds: "Around Nixon, projects may involve brush clearing around fence lines and future outbuilding locations. The correct scope depends on the actual vegetation, soil, slope, underground utilities, and the condition you want the site left in. We can discuss brush removal, excavation, material hauling, and grading as appropriate to the job.",
+    nearby: ["Stockdale","Smiley","Seguin"],
+    focus: ["Nixon brush and acreage clearing","Driveway and property access preparation","Grading and excavation for site projects","Fence-line cleanup and dirt work"]
+  },
+  {
+    city: "Smiley",
+    slug: "land-clearing-services-dirt-work-smiley-tx",
+    county: "Gonzales County",
+    intro: "Smiley includes rural land and pasture properties around southern Gonzales County. Property owners planning improvements may need vegetation removed, safe equipment access, rough grading, or a clear work area before a new home, barn, shop, or driveway can be prepared. Jay's Land Clearing Service & Dirt Work handles land clearing and earthwork projects in the greater San Antonio region; contact us to confirm scheduling and travel availability for Smiley.",
+    localNeeds: "Around Smiley, projects may involve mesquite growth, ranch access and site clearing. The correct scope depends on the actual vegetation, soil, slope, underground utilities, and the condition you want the site left in. We can discuss brush removal, excavation, material hauling, and grading as appropriate to the job.",
+    nearby: ["Nixon","Stockdale","Seguin"],
+    focus: ["Smiley brush and acreage clearing","Driveway and property access preparation","Grading and excavation for site projects","Fence-line cleanup and dirt work"]
+  },
+  {
+    city: "Kingsbury",
+    slug: "land-clearing-services-dirt-work-kingsbury-tx",
+    county: "Guadalupe County",
+    intro: "Kingsbury includes open rural tracts between Seguin and Luling. Property owners planning improvements may need vegetation removed, safe equipment access, rough grading, or a clear work area before a new home, barn, shop, or driveway can be prepared. Jay's Land Clearing Service & Dirt Work handles land clearing and earthwork projects in the greater San Antonio region; contact us to confirm scheduling and travel availability for Kingsbury.",
+    localNeeds: "Around Kingsbury, projects may involve driveway entrances, pasture cleanup and homesite preparation. The correct scope depends on the actual vegetation, soil, slope, underground utilities, and the condition you want the site left in. We can discuss brush removal, excavation, material hauling, and grading as appropriate to the job.",
+    nearby: ["Seguin","Marion","Geronimo"],
+    focus: ["Kingsbury brush and acreage clearing","Driveway and property access preparation","Grading and excavation for site projects","Fence-line cleanup and dirt work"]
+  },
+  {
+    city: "McQueeney",
+    slug: "land-clearing-services-dirt-work-mcqueeney-tx",
+    county: "Guadalupe County",
+    intro: "McQueeney includes lakeside-adjacent residential lots and rural parcels. Property owners planning improvements may need vegetation removed, safe equipment access, rough grading, or a clear work area before a new home, barn, shop, or driveway can be prepared. Jay's Land Clearing Service & Dirt Work handles land clearing and earthwork projects in the greater San Antonio region; contact us to confirm scheduling and travel availability for McQueeney.",
+    localNeeds: "Around McQueeney, projects may involve selective brush clearing, tight access and lot preparation. The correct scope depends on the actual vegetation, soil, slope, underground utilities, and the condition you want the site left in. We can discuss brush removal, excavation, material hauling, and grading as appropriate to the job.",
+    nearby: ["Seguin","New Braunfels","Marion"],
+    focus: ["McQueeney brush and acreage clearing","Driveway and property access preparation","Grading and excavation for site projects","Fence-line cleanup and dirt work"]
+  },
+  {
+    city: "Geronimo",
+    slug: "land-clearing-services-dirt-work-geronimo-tx",
+    county: "Guadalupe County",
+    intro: "Geronimo includes rural homesites on the north side of Seguin. Property owners planning improvements may need vegetation removed, safe equipment access, rough grading, or a clear work area before a new home, barn, shop, or driveway can be prepared. Jay's Land Clearing Service & Dirt Work handles land clearing and earthwork projects in the greater San Antonio region; contact us to confirm scheduling and travel availability for Geronimo.",
+    localNeeds: "Around Geronimo, projects may involve wooded lot preparation, drainage grading and driveway routes. The correct scope depends on the actual vegetation, soil, slope, underground utilities, and the condition you want the site left in. We can discuss brush removal, excavation, material hauling, and grading as appropriate to the job.",
+    nearby: ["Seguin","New Braunfels","Kingsbury"],
+    focus: ["Geronimo brush and acreage clearing","Driveway and property access preparation","Grading and excavation for site projects","Fence-line cleanup and dirt work"]
+  },
+  {
+    city: "Sattler",
+    slug: "land-clearing-services-dirt-work-sattler-tx",
+    county: "Comal County",
+    intro: "Sattler includes wooded properties around Canyon Lake and the Guadalupe River. Property owners planning improvements may need vegetation removed, safe equipment access, rough grading, or a clear work area before a new home, barn, shop, or driveway can be prepared. Jay's Land Clearing Service & Dirt Work handles land clearing and earthwork projects in the greater San Antonio region; contact us to confirm scheduling and travel availability for Sattler.",
+    localNeeds: "Around Sattler, projects may involve hillside brush, tree preservation and limited-access site work. The correct scope depends on the actual vegetation, soil, slope, underground utilities, and the condition you want the site left in. We can discuss brush removal, excavation, material hauling, and grading as appropriate to the job.",
+    nearby: ["Canyon Lake","Fischer","New Braunfels"],
+    focus: ["Sattler brush and acreage clearing","Driveway and property access preparation","Grading and excavation for site projects","Fence-line cleanup and dirt work"]
+  },
+  {
+    city: "Fischer",
+    slug: "land-clearing-services-dirt-work-fischer-tx",
+    county: "Comal County",
+    intro: "Fischer includes rocky Hill Country acreage northwest of Canyon Lake. Property owners planning improvements may need vegetation removed, safe equipment access, rough grading, or a clear work area before a new home, barn, shop, or driveway can be prepared. Jay's Land Clearing Service & Dirt Work handles land clearing and earthwork projects in the greater San Antonio region; contact us to confirm scheduling and travel availability for Fischer.",
+    localNeeds: "Around Fischer, projects may involve cedar removal, rocky driveways and building-site access. The correct scope depends on the actual vegetation, soil, slope, underground utilities, and the condition you want the site left in. We can discuss brush removal, excavation, material hauling, and grading as appropriate to the job.",
+    nearby: ["Canyon Lake","Sattler","Spring Branch"],
+    focus: ["Fischer brush and acreage clearing","Driveway and property access preparation","Grading and excavation for site projects","Fence-line cleanup and dirt work"]
   }
 ]
 
