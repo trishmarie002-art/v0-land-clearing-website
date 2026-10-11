@@ -11,12 +11,12 @@ import { UrgentQuoteBanner } from "@/components/urgent-quote-banner"
 
 
 const customerReviews = [
-  { name: "Jason L.", service: "Land Clearing", quote: "I highly recommend Jay's Land Clearing Services and Dirt Work. They are very affordable and reliable." },
-  { name: "Evelyn H.", service: "2-Acre Lot Clearing", quote: "Jay's Land Clearing Services and Dirt Work came out and cleared out my 2-acre lot and made my land look very nice." },
-  { name: "Curtis S.", service: "Land Grading", quote: "I highly recommend their land grading, 100%!" },
-  { name: "Steven C.", service: "Lot Clearing", quote: "When I needed lot clearing, they came out to my property in no time and gave me an affordable price I couldn't resist." },
-  { name: "Juan G.", service: "Customer Experience", quote: "Jay is very reliable and highly recommended." },
-  { name: "Samantha K.", service: "Brush Removal", quote: "I hired them for brush removal on my half-acre lot, and they did a very nice job." },
+  { name: "Jason L.", location: "Poteet, TX", service: "Land Clearing", quote: "I highly recommend Jay's Land Clearing Services and Dirt Work. They are very affordable and reliable." },
+  { name: "Evelyn H.", location: "San Antonio, TX", service: "2-Acre Lot Clearing", quote: "Jay's Land Clearing Services and Dirt Work came out and cleared out my 2-acre lot and made my land look very nice." },
+  { name: "Curtis S.", location: "Pleasanton, TX", service: "Land Grading", quote: "I highly recommend their land grading, 100%!" },
+  { name: "Steven C.", location: "Von Ormy / Somerset, TX", service: "Lot Clearing", quote: "When I needed lot clearing, they came out to my property in no time and gave me an affordable price I couldn't resist." },
+  { name: "Juan G.", location: "La Vernia, TX", service: "Customer Experience", quote: "Jay is very reliable and highly recommended." },
+  { name: "Samantha K.", location: "Converse, TX", service: "Brush Removal", quote: "I hired them for brush removal on my half-acre lot, and they did a very nice job." },
 ]
 
 function CustomerReviews() {
@@ -38,7 +38,7 @@ function CustomerReviews() {
               <p className="text-foreground/75 leading-relaxed mt-5 flex-1">“{review.quote}”</p>
               <div className="mt-6 pt-5 border-t border-border">
                 <p className="font-bold text-lg">{review.name}</p>
-                <p className="text-sm text-foreground/60 mt-1">{review.service}</p>
+                <p className="text-sm text-foreground/60 mt-1">{review.service} · {review.location}</p>
               </div>
             </article>
           ))}
