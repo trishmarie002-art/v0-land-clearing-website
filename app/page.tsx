@@ -10,13 +10,13 @@ import { ChatWidget } from "@/components/chat-widget"
 import { UrgentQuoteBanner } from "@/components/urgent-quote-banner"
 
 
-const reviewPlaceholders = [
-  { name: "Maria G. — SAMPLE", service: "Land Clearing", quote: "We had an overgrown section of property that was hard to walk through. The crew cleared the thick brush while keeping the trees we wanted. It made planning the rest of our project much easier." },
-  { name: "James R. — SAMPLE", service: "Driveway Grading", quote: "Our gravel driveway had uneven spots that collected water after rain. The grading work made the entrance smoother and easier to use. Communication about the project was clear from start to finish." },
-  { name: "Angela M. — SAMPLE", service: "Brush Removal", quote: "We needed room along the fence line without clearing the entire property. The work opened the area up and made it much easier to see where repairs were needed. The finished space looked great." },
-  { name: "Robert T. — SAMPLE", service: "Dirt Work", quote: "We were getting a site ready for a small workshop and needed the ground shaped first. The crew explained what the dirt work would involve and left us with a much better starting point." },
-  { name: "Linda S. — SAMPLE", service: "Property Cleanup", quote: "A neglected lot had brush and scattered debris everywhere. After the cleanup, we could finally see the usable space and make plans for it. The difference in the property was noticeable." },
-  { name: "David C. — SAMPLE", service: "Site Preparation", quote: "We needed a clear access route and a prepared area before the next contractor arrived. The crew worked around the sections we wanted to preserve and made the site easier to reach." },
+const customerReviews = [
+  { name: "Jason L.", service: "Land Clearing", quote: "I highly recommend Jay's Land Clearing Services and Dirt Work. They are very affordable and reliable." },
+  { name: "Evelyn H.", service: "2-Acre Lot Clearing", quote: "Jay's Land Clearing Services and Dirt Work came out and cleared out my 2-acre lot and made my land look very nice." },
+  { name: "Curtis S.", service: "Land Grading", quote: "I highly recommend their land grading, 100%!" },
+  { name: "Steven C.", service: "Lot Clearing", quote: "When I needed lot clearing, they came out to my property in no time and gave me an affordable price I couldn't resist." },
+  { name: "Juan G.", service: "Customer Experience", quote: "Jay is very reliable and highly recommended." },
+  { name: "Samantha K.", service: "Brush Removal", quote: "I hired them for brush removal on my half-acre lot, and they did a very nice job." },
 ]
 
 function CustomerReviews() {
@@ -29,20 +29,16 @@ function CustomerReviews() {
             Customer Reviews
           </h2>
           <p className="text-foreground/70 mt-4">
-            Review layout preview. The six examples below are not actual customer testimonials.
-            Replace each sample name and quote with verified customer feedback before presenting this section as reviews.
+            Read what customers have shared about their experience with Jay's Land Clearing Service & Dirt Work.
           </p>
         </div>
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {reviewPlaceholders.map((review) => (
+          {customerReviews.map((review) => (
             <article key={review.name} className="rounded-xl border border-border bg-card p-7 flex flex-col">
-              <span className="inline-flex w-fit rounded-full bg-primary/10 text-primary px-3 py-1 text-xs font-semibold uppercase tracking-wide">
-                Example — not a real review
-              </span>
               <p className="text-foreground/75 leading-relaxed mt-5 flex-1">“{review.quote}”</p>
               <div className="mt-6 pt-5 border-t border-border">
                 <p className="font-bold text-lg">{review.name}</p>
-                <p className="text-sm text-foreground/60 mt-1">{review.service} · Illustrative entry</p>
+                <p className="text-sm text-foreground/60 mt-1">{review.service}</p>
               </div>
             </article>
           ))}
