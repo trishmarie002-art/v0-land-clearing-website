@@ -11,12 +11,12 @@ import { UrgentQuoteBanner } from "@/components/urgent-quote-banner"
 
 
 const reviewPlaceholders = [
-  { name: "Maria G. — SAMPLE", service: "Land Clearing", quote: "Sample review: Describe how the crew cleared brush and prepared the property for its next use." },
-  { name: "James R. — SAMPLE", service: "Driveway Grading", quote: "Sample review: Include specific details about the driveway work, communication, and finished result." },
-  { name: "Angela M. — SAMPLE", service: "Brush Removal", quote: "Sample review: Explain the property's original condition and how the completed clearing helped." },
-  { name: "Robert T. — SAMPLE", service: "Dirt Work", quote: "Sample review: Share a genuine customer's feedback about site preparation and project timing." },
-  { name: "Linda S. — SAMPLE", service: "Property Cleanup", quote: "Sample review: Describe the debris cleanup, care taken around existing features, and overall experience." },
-  { name: "David C. — SAMPLE", service: "Site Preparation", quote: "Sample review: Mention the type of site work completed and what the customer valued most." },
+  { name: "Maria G. — SAMPLE", service: "Land Clearing", quote: "We had an overgrown section of property that was hard to walk through. The crew cleared the thick brush while keeping the trees we wanted. It made planning the rest of our project much easier." },
+  { name: "James R. — SAMPLE", service: "Driveway Grading", quote: "Our gravel driveway had uneven spots that collected water after rain. The grading work made the entrance smoother and easier to use. Communication about the project was clear from start to finish." },
+  { name: "Angela M. — SAMPLE", service: "Brush Removal", quote: "We needed room along the fence line without clearing the entire property. The work opened the area up and made it much easier to see where repairs were needed. The finished space looked great." },
+  { name: "Robert T. — SAMPLE", service: "Dirt Work", quote: "We were getting a site ready for a small workshop and needed the ground shaped first. The crew explained what the dirt work would involve and left us with a much better starting point." },
+  { name: "Linda S. — SAMPLE", service: "Property Cleanup", quote: "A neglected lot had brush and scattered debris everywhere. After the cleanup, we could finally see the usable space and make plans for it. The difference in the property was noticeable." },
+  { name: "David C. — SAMPLE", service: "Site Preparation", quote: "We needed a clear access route and a prepared area before the next contractor arrived. The crew worked around the sections we wanted to preserve and made the site easier to reach." },
 ]
 
 function CustomerReviews() {
