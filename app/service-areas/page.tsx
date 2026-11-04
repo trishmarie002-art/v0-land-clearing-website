@@ -57,7 +57,7 @@ export default function ServiceAreasPage() {
                       {location.city}, TX
                     </h2>
                     <p className="text-sm text-foreground/65 mt-3 leading-relaxed">
-                      Land clearing, dirt work, grading, excavation and site preparation.
+                      {location.focus.slice(0, 2).join(" · ")}. Serving {location.city} and nearby properties.
                     </p>
                   </div>
                   <ArrowRight className="w-5 h-5 text-primary shrink-0 mt-1 group-hover:translate-x-1 transition-transform" />
