@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Phone, Mail, MapPin, Clock, CheckCircle, Send } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { trackLeadEvent } from "@/components/lead-tracking"
 
 const services = [
   "Land Clearing",
@@ -26,13 +27,16 @@ export function Contact() {
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const [formError, setFormError] = useState("")
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setFormError("")
 
     try {
       const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || ""
+      if (!accessKey) throw new Error("Quote form configuration missing")
       
       const submitData = {
         access_key: accessKey,
@@ -57,6 +61,7 @@ export function Contact() {
       const result = await response.json()
 
       if (result.success) {
+        trackLeadEvent("lead_form_submit_success", { service: formData.service || "Other" })
         setSubmitted(true)
         setFormData({
           name: "",
@@ -67,14 +72,15 @@ export function Contact() {
           message: "",
         })
       } else {
-        alert("Something went wrong. Please try again.")
+        throw new Error("Form provider rejected submission")
       }
     } catch (error) {
-      console.error(error)
-      alert("Something went wrong. Please try again.")
+      console.error("Quote form could not be submitted", error)
+      trackLeadEvent("lead_form_submit_error")
+      setFormError("We could not send your request. Please call (210) 891-4174 or text us your project details instead.")
+    } finally {
+      setIsSubmitting(false)
     }
-
-    setIsSubmitting(false)
   }
 
   const handleChange = (
@@ -126,6 +132,15 @@ export function Contact() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
+                  {formError && (
+                    <div role="alert" className="rounded-lg border border-red-500/50 bg-red-500/10 p-4 text-sm">
+                      <p>{formError}</p>
+                      <div className="mt-2 flex gap-4 font-semibold">
+                        <a href="tel:+12108914174" className="underline">Call now</a>
+                        <a href="sms:+12108914174" className="underline">Text us</a>
+                      </div>
+                    </div>
+                  )}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     <div>
                       <label htmlFor="name" className="block text-xs sm:text-sm font-medium text-foreground/80 mb-1.5 sm:mb-2">
