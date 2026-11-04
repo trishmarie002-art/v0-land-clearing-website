@@ -186,13 +186,19 @@ export default async function LocationPage({ params }: Props) {
               {location.intro}
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mt-8">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-4 mt-8">
               <a
                 href="tel:+12108914174"
                 className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground font-bold px-6 py-4 rounded-md hover:bg-primary/90 transition-colors"
               >
                 <Phone className="w-5 h-5" />
                 Call (210) 891-4174
+              </a>
+              <a
+                href="sms:+12108914174" className="inline-flex items-center justify-center gap-2 border border-white/30 bg-black/40 text-white px-6 py-4 rounded-md font-semibold hover:border-primary hover:text-primary transition-colors"
+              >
+                Text Project Photos
+                <ArrowRight className="w-5 h-5" />
               </a>
               <Link
                 href="/#contact"
