@@ -3,6 +3,7 @@ import { Oswald, Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import Script from 'next/script'
 import './globals.css'
+import { LeadTracking } from '@/components/lead-tracking'
 
 const oswald = Oswald({
   subsets: ['latin'],
@@ -155,6 +156,7 @@ export default function RootLayout({
         </noscript>
 
         {children}
+        <LeadTracking />
         <Analytics />
 
         <Script id="microsoft-clarity" strategy="afterInteractive">
