@@ -7,6 +7,7 @@ import { Footer } from "@/components/footer"
 import { ChatWidget } from "@/components/chat-widget"
 import { UrgentQuoteBanner } from "@/components/urgent-quote-banner"
 import { HeroQuoteForm } from "@/components/hero-quote-form"
+import { LocationProjectGuide } from "@/components/location-project-guide"
 import { locations, locationBySlug } from "@/lib/locations"
 import { relatedArticlesForLocation } from "@/lib/internal-links"
 
@@ -331,6 +332,8 @@ export default async function LocationPage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      <LocationProjectGuide location={location} />
 
       <section className="py-20 bg-primary">
         <div className="container mx-auto px-4 text-center">
