@@ -8,7 +8,7 @@ import { Contact } from "@/components/contact"
 import { ChatWidget } from "@/components/chat-widget"
 import { UrgentQuoteBanner } from "@/components/urgent-quote-banner"
 import { blogPosts, blogPostBySlug } from "@/lib/blog-posts"
-import { locations } from "@/lib/locations"
+import { relatedArticles, relatedLocationsForArticle } from "@/lib/internal-links"
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -60,6 +60,8 @@ export default async function BlogPostPage({ params }: Props) {
   if (!post) notFound()
 
   const pageUrl = `${baseUrl}/blog/${post.slug}`
+  const relevantLocations = relatedLocationsForArticle(post)
+  const furtherReading = relatedArticles(post)
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -149,33 +151,51 @@ export default async function BlogPostPage({ params }: Props) {
 
         <section className="py-14 md:py-20 bg-secondary border-y border-border">
           <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto">
+            <div className="max-w-5xl mx-auto">
               <div className="flex items-center gap-2 text-primary font-semibold uppercase tracking-wider text-sm mb-3">
                 <MapPin className="w-4 h-4" />
-                Service Areas
+                Continue Exploring
               </div>
               <h2 className="text-3xl md:text-4xl font-bold uppercase font-[family-name:var(--font-display)] mb-4">
-                Land Clearing & Dirt Work Near San Antonio
+                Land Clearing Resources & Local Services
               </h2>
-              <p className="text-foreground/70 max-w-3xl mb-8">
-                We serve San Antonio plus surrounding South Texas and Hill Country communities. Choose your area for local service information.
+              <p className="text-foreground/70 max-w-3xl mb-6">
+                Explore services in San Antonio, find your service area, or read more guides related to this project.
               </p>
-
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-                {locations.map((location) => (
+              <div className="flex flex-wrap gap-3 mb-8">
+                <Link href="/" className="rounded-md border border-primary bg-card px-5 py-3 font-semibold text-primary hover:bg-primary hover:text-primary-foreground">
+                  Land Clearing in San Antonio, TX
+                </Link>
+                <Link href="/service-areas" className="rounded-md border border-border bg-card px-5 py-3 font-semibold hover:border-primary hover:text-primary">
+                  Browse All Service Areas
+                </Link>
+                {relevantLocations.map((location) => (
                   <Link
                     key={location.slug}
                     href={`/${location.slug}`}
-                    className="bg-card border border-border rounded-md px-4 py-3 text-sm hover:border-primary hover:text-primary transition-colors"
+                    className="rounded-md border border-border bg-card px-5 py-3 font-semibold hover:border-primary hover:text-primary"
                   >
-                    {location.city}, TX
+                    Land Clearing in {location.city}, TX
                   </Link>
                 ))}
               </div>
-
-              <Link href="/service-areas" className="inline-flex items-center gap-2 mt-7 text-primary font-bold">
-                View All Service Areas <ArrowRight className="w-4 h-4" />
-              </Link>
+              {furtherReading.length > 0 && (
+                <div>
+                  <h3 className="text-xl font-bold mb-4">Related Property Guides</h3>
+                  <ul className="grid gap-3 md:grid-cols-3">
+                    {furtherReading.map((article) => (
+                      <li key={article.slug}>
+                        <Link
+                          href={`/blog/${article.slug}`}
+                          className="block h-full rounded-lg border border-border bg-card px-5 py-4 font-medium hover:border-primary hover:text-primary"
+                        >
+                          {article.title} <ArrowRight className="inline-block h-4 w-4" />
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           </div>
         </section>
