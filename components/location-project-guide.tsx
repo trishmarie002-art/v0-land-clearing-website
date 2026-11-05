@@ -35,8 +35,9 @@ export function LocationProjectGuide({ location }: { location: LocationPage }) {
             Planning Land Clearing & Dirt Work in {location.city}, TX
           </h2>
           <p className="text-foreground/70 leading-relaxed mt-4 text-lg">
-            {location.localNeeds} The most helpful first step is to explain your project's end goal,
-            not just the acreage. These are the details to consider for work in {location.city}.
+            Whether you are clearing brush, preparing access, or getting a site ready for improvements,
+            the first step is to define how the finished property should function. These project-specific
+            details can help you plan work in {location.city} before requesting an estimate.
           </p>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
