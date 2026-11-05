@@ -4,6 +4,7 @@ import { Analytics } from '@vercel/analytics/next'
 import Script from 'next/script'
 import './globals.css'
 import { LeadTracking } from '@/components/lead-tracking'
+import { SitewideQuotePopup } from '@/components/sitewide-quote-popup'
 
 const oswald = Oswald({
   subsets: ['latin'],
@@ -156,6 +157,7 @@ export default function RootLayout({
         </noscript>
 
         {children}
+        <SitewideQuotePopup />
         <LeadTracking />
         <Analytics />
 
