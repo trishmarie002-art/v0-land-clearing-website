@@ -36,13 +36,12 @@ function ServiceAreaMap() {
           attributionControl: true,
         })
 
-        // Dark themed map tiles (Carto Dark Matter)
+        // OpenStreetMap standard tiles: no API key needed. Keep required attribution visible.
         L.tileLayer(
-          "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+          "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
           {
             attribution:
-              '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-            subdomains: "abcd",
+              '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>',
             maxZoom: 19,
           }
         ).addTo(map)
@@ -137,7 +136,7 @@ function ServiceAreaMap() {
       )}
 
       {/* Radius label overlay */}
-      <div className="absolute bottom-4 right-4 bg-primary px-4 py-2 rounded-md shadow-lg z-[1000]">
+      <div className="absolute top-4 right-4 bg-primary px-4 py-2 rounded-md shadow-lg z-[500] pointer-events-none">
         <p className="text-xs text-primary-foreground/80 font-medium">Service Radius</p>
         <p className="text-lg font-bold text-primary-foreground font-[family-name:var(--font-display)]">50 Miles</p>
       </div>
