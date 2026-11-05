@@ -8,6 +8,7 @@ import { ChatWidget } from "@/components/chat-widget"
 import { UrgentQuoteBanner } from "@/components/urgent-quote-banner"
 import { HeroQuoteForm } from "@/components/hero-quote-form"
 import { locations, locationBySlug } from "@/lib/locations"
+import { relatedArticlesForLocation } from "@/lib/internal-links"
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -95,6 +96,7 @@ export default async function LocationPage({ params }: Props) {
     .filter(Boolean)
 
   const pageUrl = `${baseUrl}/${location.slug}`
+  const relevantGuides = relatedArticlesForLocation(location)
 
   const localBusinessSchema = {
     "@context": "https://schema.org",
@@ -372,6 +374,35 @@ export default async function LocationPage({ params }: Props) {
                 View All Service Areas
               </Link>
             </div>
+          </div>
+        </section>
+      )}
+
+      {relevantGuides.length > 0 && (
+        <section className="py-14 md:py-20 border-t border-border">
+          <div className="container mx-auto px-4">
+            <h2 className="text-2xl md:text-3xl font-bold uppercase font-[family-name:var(--font-display)] mb-3">
+              Helpful Land Clearing Guides for {location.city} Property Owners
+            </h2>
+            <p className="text-foreground/70 mb-6 max-w-3xl">
+              Learn about clearing, grading, and land preparation before you request an estimate.
+            </p>
+            <ul className="grid gap-4 md:grid-cols-3">
+              {relevantGuides.map((guide) => (
+                <li key={guide.slug}>
+                  <Link
+                    href={`/blog/${guide.slug}`}
+                    className="block h-full rounded-lg bg-card border border-border p-5 hover:border-primary hover:text-primary transition-colors"
+                  >
+                    <span className="font-semibold">{guide.title}</span>
+                    <ArrowRight className="inline-block w-4 h-4 ml-2" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <Link href="/blog" className="inline-flex items-center gap-2 text-primary font-semibold mt-6 hover:underline">
+              Browse All Land Clearing Guides <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </section>
       )}
