@@ -6,6 +6,7 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { ChatWidget } from "@/components/chat-widget"
 import { UrgentQuoteBanner } from "@/components/urgent-quote-banner"
+import { HeroQuoteForm } from "@/components/hero-quote-form"
 import { locations, locationBySlug } from "@/lib/locations"
 
 type Props = {
@@ -174,12 +175,13 @@ export default async function LocationPage({ params }: Props) {
             <span className="text-white">{location.city}, TX</span>
           </nav>
 
-          <div className="max-w-4xl">
+          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(380px,450px)] items-center gap-10 xl:gap-14">
+            <div className="min-w-0">
             <div className="inline-flex items-center gap-2 text-primary font-semibold text-sm uppercase tracking-wider mb-4">
               <MapPin className="w-4 h-4" />
               Serving {location.city} & {location.county}
             </div>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold uppercase leading-tight text-white font-[family-name:var(--font-display)]">
+            <h1 className="text-4xl md:text-6xl lg:text-5xl xl:text-6xl font-bold uppercase leading-tight text-white font-[family-name:var(--font-display)]">
               Land Clearing Services & <span className="text-primary">Dirt Work</span> in {location.city}, TX
             </h1>
             <p className="mt-6 text-lg md:text-xl text-white/85 leading-relaxed max-w-3xl">
@@ -207,6 +209,10 @@ export default async function LocationPage({ params }: Props) {
                 Get a Free Estimate
                 <ArrowRight className="w-5 h-5" />
               </Link>
+            </div>
+            </div>
+            <div className="hidden lg:block min-w-0">
+              <HeroQuoteForm city={location.city} />
             </div>
           </div>
         </div>
