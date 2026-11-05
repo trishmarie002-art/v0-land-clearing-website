@@ -74,7 +74,7 @@ export function HeroQuoteForm({ city, variant = "hero" }: { city?: string; varia
         <>
           <p className="text-xs font-semibold uppercase tracking-widest text-yellow-400">Fast & Easy</p>
           <h2 className="mt-1 text-2xl font-bold uppercase">{variant === "popup" ? "Get Your Free Quote Scheduled" : "Get a Free Quote"}</h2>
-          <p className="mt-1 mb-4 text-sm text-white/75">Tell us about your property. No obligation.</p>
+          <p className="mt-1 mb-4 text-sm text-white/75">Tell us what you need done, and we’ll contact you to schedule your free estimate.</p>
           <form className="space-y-3" onSubmit={submit}>
             <div className="grid grid-cols-2 gap-3">
               <div>
