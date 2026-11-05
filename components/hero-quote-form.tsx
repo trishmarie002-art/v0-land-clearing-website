@@ -6,7 +6,7 @@ import { trackLeadEvent } from "@/components/lead-tracking"
 
 const services = ["Land Clearing", "Brush Removal", "Dirt Work & Grading", "Excavation", "Lot Preparation", "Hauling", "Other"]
 
-export function HeroQuoteForm() {
+export function HeroQuoteForm({ city }: { city?: string }) {
   const [name, setName] = useState("")
   const [phone, setPhone] = useState("")
   const [location, setLocation] = useState("")
@@ -30,25 +30,25 @@ export function HeroQuoteForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           access_key: accessKey,
-          subject: `New Homepage Quick Quote - ${service || "Land Clearing"}`,
+          subject: `New ${city ? `${city} Service Area` : "Homepage"} Quick Quote - ${service || "Land Clearing"}`,
           from_name: "Jay's Land Clearing Website",
           name,
           phone,
           email: "Not provided",
           zip_code: location,
           service,
-          message: details || "Customer requested a quick quote from the homepage.",
-          form_source: "Homepage Hero Quick Quote",
+          message: details || `Customer requested a quick quote from the ${city ? `${city} service area page` : "homepage"}.`,
+          form_source: city ? `${city} Service Area Hero Quick Quote` : "Homepage Hero Quick Quote",
         }),
       })
       if (!response.ok) throw new Error("Quote service unavailable")
       const result = await response.json()
       if (!result.success) throw new Error("Quote service rejected submission")
-      trackLeadEvent("lead_form_submit_success", { service, form_location: "homepage_hero" })
+      trackLeadEvent("lead_form_submit_success", { service, form_location: city ? "service_area_hero" : "homepage_hero" })
       setSent(true)
     } catch (err) {
       console.error("Quick quote submission failed", err)
-      trackLeadEvent("lead_form_submit_error", { form_location: "homepage_hero" })
+      trackLeadEvent("lead_form_submit_error", { form_location: city ? "service_area_hero" : "homepage_hero" })
       setError("We couldn't send your request. Please call (210) 891-4174 instead.")
     } finally {
       setLoading(false)
