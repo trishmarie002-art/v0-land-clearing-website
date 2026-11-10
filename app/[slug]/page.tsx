@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { CheckCircle2, MapPin, Phone, ArrowRight, Truck, Trees, Shovel, Ruler } from "lucide-react"
+import { CheckCircle2, MapPin, Phone, ArrowRight, Truck, Trees, Shovel, Ruler, Fence, Axe, Hammer, Pickaxe, Trash2, House, HardHat } from "lucide-react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { ChatWidget } from "@/components/chat-widget"
@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   const title = `Land Clearing Services & Dirt Work in ${location.city}, TX`
-  const description = `Land clearing services & dirt work in ${location.city}, TX. Brush clearing, grading, excavation, lot prep & hauling. Free estimates: (210) 891-4174.`
+  const description = `Land clearing, dirt work, brush removal, concrete and rock removal, junk removal, cleanouts, demolition and more in ${location.city}, TX. Call (210) 891-4174.`
   const url = `${baseUrl}/${location.slug}`
 
   return {
@@ -63,24 +63,64 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 const services = [
   {
-    title: "Land & Brush Clearing",
+    title: "Land Clearing",
     icon: Trees,
-    text: "Clear thick brush, small trees, overgrowth and unwanted vegetation so your property is easier to access, maintain and improve.",
+    text: "Complete brush, tree, and vegetation removal for residential and commercial properties, from small lots to large acreage.",
   },
   {
     title: "Dirt Work & Grading",
     icon: Ruler,
-    text: "Shape and level ground for driveways, building areas, drainage improvements, access routes and general property preparation.",
+    text: "Site grading, leveling, and earthmoving for improved drainage, access, and property preparation.",
   },
   {
-    title: "Excavation & Site Prep",
+    title: "Excavation",
     icon: Shovel,
-    text: "Prepare sites for homes, shops, pads, driveways and other improvements with equipment-based excavation and earthwork.",
+    text: "Excavation for foundations, ponds, drainage projects, and other property improvements.",
   },
   {
-    title: "Hauling & Cleanup",
+    title: "Hauling Services",
     icon: Truck,
-    text: "Move dirt, remove debris and clean up material left from clearing or site preparation so the property is ready for the next phase.",
+    text: "Debris removal, material hauling, and disposal to help leave your property clean and ready for its next use.",
+  },
+  {
+    title: "Lot Preparation",
+    icon: House,
+    text: "Site preparation for residential and commercial construction, including clearing, grading, and utility trenching.",
+  },
+  {
+    title: "Fence Line Clearing",
+    icon: Fence,
+    text: "Brush and vegetation clearing along fence lines for new installations and reclaiming existing boundaries.",
+  },
+  {
+    title: "Brush Removal",
+    icon: Axe,
+    text: "Removal of overgrown brush, shrubs, and unwanted vegetation from yards, lots, and acreage.",
+  },
+  {
+    title: "Concrete Removal",
+    icon: Hammer,
+    text: "Breakup and removal of unwanted concrete driveways, patios, slabs, and other concrete surfaces.",
+  },
+  {
+    title: "Rock Removal",
+    icon: Pickaxe,
+    text: "Removal and hauling of unwanted surface rocks, stones, and rocky debris to clear and prepare your property.",
+  },
+  {
+    title: "Junk Removal",
+    icon: Trash2,
+    text: "Removal and hauling of unwanted household items, yard debris, and miscellaneous junk.",
+  },
+  {
+    title: "Hoarding Cleanouts",
+    icon: Home,
+    text: "Respectful cleanout services for heavily cluttered properties, including sorting assistance and removal of unwanted contents.",
+  },
+  {
+    title: "Demolition",
+    icon: HardHat,
+    text: "Demolition and removal of selected structures and site features, depending on project scope and conditions.",
   },
 ]
 
@@ -112,13 +152,17 @@ export default async function LocationPage({ params }: Props) {
     },
     serviceType: [
       "Land Clearing",
-      "Brush Clearing",
-      "Dirt Work",
-      "Grading",
+      "Dirt Work & Grading",
       "Excavation",
+      "Hauling Services",
       "Lot Preparation",
       "Fence Line Clearing",
-      "Hauling",
+      "Brush Removal",
+      "Concrete Removal",
+      "Rock Removal",
+      "Junk Removal",
+      "Hoarding Cleanouts",
+      "Demolition",
     ],
   }
 
@@ -279,7 +323,7 @@ export default async function LocationPage({ params }: Props) {
               Land Services Available in {location.city}
             </h2>
             <p className="text-foreground/70 mt-4">
-              One contractor for the clearing and earthwork needed to move your property project forward.
+              From land clearing and grading to debris removal, cleanouts, and demolition, explore services available for your property project.
             </p>
           </div>
 
