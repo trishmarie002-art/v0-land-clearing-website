@@ -81,9 +81,9 @@ export function Footer() {
               <li className="flex items-start gap-3 transition-transform hover:translate-x-1">
                 <Mail className="w-4 h-4 text-primary mt-0.5" />
                 <div>
-                  <a href="mailto:jayslandclearingservices@gmail.com" className="text-foreground/70 hover:text-primary transition-colors text-sm break-all">
+                  <span className="text-foreground/70 text-sm break-all">
                     jayslandclearingservices@gmail.com
-                  </a>
+                  </span>
                 </div>
               </li>
               <li className="flex items-start gap-3 transition-transform hover:translate-x-1">
