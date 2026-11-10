@@ -135,6 +135,8 @@ const jsonLd = {
     itemListElement: [
       'Land Clearing', 'Dirt Work & Grading', 'Excavation',
       'Hauling Services', 'Lot Preparation', 'Fence Line Clearing',
+      'Brush Removal', 'Concrete Removal', 'Rock Removal',
+      'Junk Removal', 'Hoarding Cleanouts', 'Demolition',
     ].map((name) => ({ '@type': 'OfferCatalog', name })),
   },
 }
