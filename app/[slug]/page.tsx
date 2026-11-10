@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { CheckCircle2, MapPin, Phone, ArrowRight, Truck, Trees, Shovel, Ruler, Fence, Axe, Hammer, Pickaxe, Trash2, House, HardHat } from "lucide-react"
+import { CheckCircle2, MapPin, Phone, ArrowRight, Truck, Trees, Shovel, Ruler, Fence, Axe, Hammer, Pickaxe, Trash2, House, Home, HardHat } from "lucide-react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { ChatWidget } from "@/components/chat-widget"
