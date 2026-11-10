@@ -4,15 +4,57 @@ import { useEffect, useRef, useState } from "react"
 import { Phone, MessageSquareText, X } from "lucide-react"
 import { HeroQuoteForm } from "@/components/hero-quote-form"
 
+const FIRST_VISIT_KEY = "jays_quote_popup_first_visit_at"
+const SEEN_KEY = "jays_quote_popup_seen"
+const POPUP_DELAY_MS = 30_000
+
 export function SitewideQuotePopup() {
   const [open, setOpen] = useState(false)
   const closeRef = useRef<HTMLButtonElement>(null)
 
-  // Visitors open the quote form deliberately; do not block the landing page on load.
+  // Show once, 30 seconds after the visitor first arrives during this browser session.
+  // Manual quote buttons continue to open the dialog at any time.
   useEffect(() => {
-    const showQuote = () => setOpen(true)
+    const markSeen = () => {
+      try { window.sessionStorage.setItem(SEEN_KEY, "1") } catch {}
+    }
+
+    const showQuote = () => {
+      markSeen()
+      setOpen(true)
+    }
     window.addEventListener("open-jays-quote", showQuote)
-    return () => window.removeEventListener("open-jays-quote", showQuote)
+
+    let timer: ReturnType<typeof setTimeout> | undefined
+    let previouslySeen = false
+    let elapsed = 0
+    try {
+      previouslySeen = window.sessionStorage.getItem(SEEN_KEY) === "1"
+      if (!previouslySeen) {
+        const now = Date.now()
+        const stored = Number(window.sessionStorage.getItem(FIRST_VISIT_KEY))
+        const started = stored > 0 && stored <= now ? stored : now
+        if (started === now) window.sessionStorage.setItem(FIRST_VISIT_KEY, String(now))
+        elapsed = now - started
+      }
+    } catch {
+      // Storage may be disabled. In that case, use the normal 30-second delay.
+    }
+
+    if (!previouslySeen) {
+      timer = setTimeout(() => {
+        try {
+          if (window.sessionStorage.getItem(SEEN_KEY) === "1") return
+        } catch {}
+        markSeen()
+        setOpen(true)
+      }, Math.max(0, POPUP_DELAY_MS - elapsed))
+    }
+
+    return () => {
+      if (timer) clearTimeout(timer)
+      window.removeEventListener("open-jays-quote", showQuote)
+    }
   }, [])
 
   useEffect(() => {
