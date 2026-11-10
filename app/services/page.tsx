@@ -7,8 +7,8 @@ import { ChatWidget } from "@/components/chat-widget"
 import { UrgentQuoteBanner } from "@/components/urgent-quote-banner"
 import { servicePages } from "@/lib/service-pages"
 export const metadata: Metadata = {
-  title: { absolute: "Land Clearing, Demolition & Property Cleanup Services | San Antonio TX" },
-  description: "Explore all 12 services from Jay's Land Clearing Service & Dirt Work in the greater San Antonio area. Compare project needs and request a free estimate.",
+  title: { absolute: "Land Clearing, Demolition & Cleanup | San Antonio & South Texas" },
+  description: "Explore all 12 services from Jay's Land Clearing Service & Dirt Work throughout the greater San Antonio area and surrounding South Texas communities. Compare project needs and request a free estimate.",
   alternates: { canonical: "https://jayslandclearingserviceanddirtwork.com/services" },
 }
 export default function ServicesPage() {
@@ -16,8 +16,8 @@ export default function ServicesPage() {
     <UrgentQuoteBanner/><Header/>
     <section className="pt-40 md:pt-48 pb-16 bg-secondary border-b border-border"><div className="container mx-auto px-4">
       <p className="uppercase tracking-wider text-primary font-semibold text-sm">What We Do</p>
-      <h1 className="mt-3 text-4xl md:text-6xl font-bold uppercase font-[family-name:var(--font-display)]">Property Services in <span className="text-primary">San Antonio</span></h1>
-      <p className="mt-6 text-lg text-foreground/70 max-w-3xl">Explore land clearing, dirt work, debris and material removal, cleanouts and demolition services. Every property is different; use each guide to plan your project and request a quote.</p>
+      <h1 className="mt-3 text-4xl md:text-6xl font-bold uppercase font-[family-name:var(--font-display)]">Property Services Across <span className="text-primary">South Texas</span></h1>
+      <p className="mt-6 text-lg text-foreground/70 max-w-3xl">Explore land clearing, dirt work, debris and material removal, cleanouts and demolition services. Serving San Antonio and surrounding communities, including Poteet, Pleasanton, Floresville, Boerne and New Braunfels. Every property is different; use each guide to plan your project and request a quote.</p>
     </div></section>
     <section className="py-16 md:py-24"><div className="container mx-auto px-4 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {servicePages.map((service)=><article key={service.slug} className="rounded-xl border border-border bg-card p-7 flex flex-col">
