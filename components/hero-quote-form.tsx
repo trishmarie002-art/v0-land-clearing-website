@@ -104,6 +104,7 @@ export function HeroQuoteForm({ city, variant = "hero" }: { city?: string; varia
                 {services.map(item => <option key={item} value={item}>{item}</option>)}
               </select>
             </div>
+            {variant !== "popup" && (
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               <div>
                 <label htmlFor={`${idPrefix}-size`} className="mb-1 block text-xs font-medium">Approximate project size (optional)</label>
@@ -128,6 +129,7 @@ export function HeroQuoteForm({ city, variant = "hero" }: { city?: string; varia
                 </select>
               </div>
             </div>
+            )}
             <div>
               <label htmlFor={`${idPrefix}-details`} className="mb-1 block text-xs font-medium">Project details (optional)</label>
               <textarea id={`${idPrefix}-details`} rows={2} maxLength={1500} className={input} value={details} onChange={e => setDetails(e.target.value)} placeholder="Approximate acreage or what you need cleared..." />
