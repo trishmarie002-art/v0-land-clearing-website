@@ -7,6 +7,7 @@ import { Footer } from "@/components/footer"
 import { ChatWidget } from "@/components/chat-widget"
 import { UrgentQuoteBanner } from "@/components/urgent-quote-banner"
 import { serviceBySlug, servicePages } from "@/lib/service-pages"
+import { serviceQuestionLibrary } from "@/lib/service-question-library"
 import { locations } from "@/lib/locations"
 
 const origin = "https://jayslandclearingserviceanddirtwork.com"
@@ -42,6 +43,7 @@ export default async function ServiceDetailPage({ params }: Props) {
   const questions = [
     { question: service.questionOne, answer: service.answerOne },
     { question: service.questionTwo, answer: service.answerTwo },
+    ...(serviceQuestionLibrary[service.slug] ?? []),
   ]
   const schema = {
     "@context": "https://schema.org",
@@ -98,11 +100,15 @@ export default async function ServiceDetailPage({ params }: Props) {
           </div>
         </div>
       </section>
-      <section className="bg-secondary py-16 md:py-24">
+      <section id="service-questions" aria-labelledby="service-questions-title" className="bg-secondary py-16 md:py-24">
         <div className="container mx-auto px-4 max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-bold uppercase font-[family-name:var(--font-display)] mb-7">Questions About {service.title}</h2>
+          <h2 id="service-questions-title" className="text-3xl md:text-4xl font-bold uppercase font-[family-name:var(--font-display)] mb-4">Questions About {service.title}</h2>
+          <p className="text-foreground/70 mb-7 leading-relaxed">Practical answers about estimates, planning, material handling, equipment access, and safety for South Texas property owners.</p>
           <div className="space-y-5">{questions.map(({question,answer}) => <article key={question} className="bg-card border border-border rounded-lg p-6"><h3 className="text-xl font-bold">{question}</h3><p className="mt-3 text-foreground/75 leading-relaxed">{answer}</p></article>)}</div>
           <p className="text-sm text-foreground/60 mt-6">General planning information, not a project-specific quote. Availability, permits, and scope must be confirmed for each job.</p>
+          {(service.slug === "excavation" || service.slug === "fence-line-clearing" || service.slug === "demolition") && (
+            <p className="mt-4 text-sm text-foreground/70">Safety references: <a href="https://texas811.org/i-want-to-dig/" rel="noopener noreferrer" target="_blank" className="font-semibold text-primary hover:underline">Texas811 utility-locate guidance</a>{service.slug === "demolition" && <> and <a href="https://www.osha.gov/demolition" rel="noopener noreferrer" target="_blank" className="font-semibold text-primary hover:underline">OSHA demolition safety guidance</a></>}.</p>
+          )}
         </div>
       </section>
       <section className="py-16 md:py-24">

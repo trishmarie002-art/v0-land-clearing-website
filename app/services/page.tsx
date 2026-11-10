@@ -25,6 +25,7 @@ export default function ServicesPage() {
         <Link href={`/services/${service.slug}`} className="mt-6 inline-flex items-center gap-2 font-bold text-primary hover:underline">Explore service <ArrowRight size={17}/></Link>
       </article>)}
     </div></section>
+    <section className="py-12 border-t border-border"><div className="container mx-auto px-4 text-center"><h2 className="text-2xl md:text-3xl font-bold">Questions before you hire a contractor?</h2><p className="mt-3 text-foreground/70">Browse 72 answers about cost factors, safe preparation, disposal and job scope.</p><Link href="/questions" className="inline-flex items-center gap-2 mt-5 font-bold text-primary hover:underline">Explore the Question Library <ArrowRight size={18}/></Link></div></section>
     <section className="bg-secondary py-12"><div className="container mx-auto px-4 text-center"><h2 className="text-2xl md:text-3xl font-bold">Need an estimate for your property?</h2><p className="mt-3 text-foreground/70">Call or text project details and photos to (210) 891-4174.</p><a href="tel:+12108914174" className="inline-flex mt-6 bg-primary text-primary-foreground rounded-lg font-bold px-6 py-3">Call (210) 891-4174</a></div></section>
     <Footer/><ChatWidget/>
   </main>
