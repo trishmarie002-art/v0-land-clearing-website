@@ -7,6 +7,7 @@ import { Footer } from "@/components/footer"
 import { ChatWidget } from "@/components/chat-widget"
 import { UrgentQuoteBanner } from "@/components/urgent-quote-banner"
 import { serviceBySlug, servicePages } from "@/lib/service-pages"
+import { locations } from "@/lib/locations"
 
 const origin = "https://jayslandclearingserviceanddirtwork.com"
 type Props = { params: Promise<{ slug: string }> }
@@ -20,8 +21,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const service = serviceBySlug[slug]
   if (!service) return {}
   const url = `${origin}/services/${service.slug}`
-  const title = `${service.title} in San Antonio, TX | Jay's Land Clearing`
-  const description = `${service.title} for San Antonio and nearby South Texas properties. Learn what affects your project and request a free estimate at (210) 891-4174.`
+  const title = `${service.title} in San Antonio & South Texas | Jay's Land Clearing`
+  const description = `${service.title} in San Antonio and surrounding South Texas communities. Explore services, project planning and free estimates: (210) 891-4174.`
   return {
     title: { absolute: title },
     description,
@@ -35,6 +36,8 @@ export default async function ServiceDetailPage({ params }: Props) {
   const service = serviceBySlug[slug]
   if (!service) notFound()
   const url = `${origin}/services/${service.slug}`
+  const featuredCities = ["Poteet", "Pleasanton", "Jourdanton", "Floresville", "La Vernia", "Boerne", "New Braunfels", "Seguin", "Castroville", "Helotes", "Devine", "Schertz"]
+  const nearbyServiceAreas = featuredCities.map((city) => locations.find((location) => location.city === city)).filter((location): location is (typeof locations)[number] => Boolean(location))
   const questions = [
     { question: service.questionOne, answer: service.answerOne },
     { question: service.questionTwo, answer: service.answerTwo },
@@ -46,7 +49,7 @@ export default async function ServiceDetailPage({ params }: Props) {
     description: service.introduction,
     url,
     serviceType: service.title,
-    areaServed: { "@type": "AdministrativeArea", name: "Greater San Antonio, Texas" },
+    areaServed: [{ "@type": "AdministrativeArea", name: "Greater San Antonio and surrounding South Texas communities" }, ...locations.map((location) => ({ "@type": "City", name: `${location.city}, Texas` }))],
     provider: { "@type": "LocalBusiness", name: "Jay's Land Clearing Service & Dirt Work", url: origin, telephone: "+1-210-891-4174" },
   }
   const breadcrumb = {
@@ -68,7 +71,7 @@ export default async function ServiceDetailPage({ params }: Props) {
           <nav aria-label="Breadcrumb" className="text-sm text-foreground/65 mb-6">
             <Link href="/" className="hover:text-primary">Home</Link> / <Link href="/services" className="hover:text-primary">Services</Link> / {service.title}
           </nav>
-          <p className="text-primary text-sm font-semibold tracking-wider uppercase">San Antonio & Surrounding Areas</p>
+          <p className="text-primary text-sm font-semibold tracking-wider uppercase">San Antonio, South Texas & Surrounding Communities</p>
           <h1 className="text-4xl md:text-6xl font-bold uppercase font-[family-name:var(--font-display)] mt-3">{service.title} <span className="text-primary">Services</span></h1>
           <p className="mt-5 text-lg md:text-xl text-foreground/75 max-w-3xl">{service.tagline}. {service.introduction}</p>
           <div className="flex flex-wrap gap-3 mt-8">
@@ -107,7 +110,14 @@ export default async function ServiceDetailPage({ params }: Props) {
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {servicePages.filter((other) => other.slug !== service.slug).map((other) => <Link key={other.slug} href={`/services/${other.slug}`} className="rounded-lg border border-border bg-card p-4 font-semibold hover:border-primary hover:text-primary">{other.title} <ArrowRight className="inline h-4 w-4"/></Link>)}
           </div>
-          <p className="text-foreground/70 mt-8">We serve San Antonio and surrounding South Texas communities. <Link href="/service-areas" className="font-semibold text-primary hover:underline">Browse the service areas</Link> or call to confirm travel to your property.</p>
+          <div className="mt-12 border-t border-border pt-9">
+            <h2 className="text-2xl font-bold uppercase font-[family-name:var(--font-display)] mb-3">Areas We Serve</h2>
+            <p className="text-foreground/70 mb-5">Jay's serves properties throughout the greater San Antonio region and surrounding South Texas communities. Project availability and travel depend on location and scope.</p>
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {nearbyServiceAreas.map((location) => <Link href={`/${location.slug}`} key={location.slug} className="rounded-lg border border-border p-3 hover:border-primary hover:text-primary">Services in {location.city}, TX <ArrowRight className="inline h-4 w-4" /></Link>)}
+            </div>
+            <Link href="/service-areas" className="inline-flex mt-6 text-primary font-bold hover:underline">Browse all service areas <ArrowRight className="ml-2 h-4 w-4" /></Link>
+          </div>
         </div>
       </section>
       <Footer />
