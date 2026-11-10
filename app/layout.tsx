@@ -72,7 +72,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://jayslandclearingserviceanddirtwork.com'),
   alternates: { canonical: '/' },
   openGraph: {
-    title: "Land Clearing Services & Dirt Work | San Antonio, TX",
+    title: "Jay's Land Clearing Service & Dirt Work | San Antonio TX",
     description:
       'Professional land clearing, brush removal, dirt work & excavation in San Antonio. Serving all surrounding areas. Free estimates! Call (210) 891-4174',
     url: 'https://jayslandclearingserviceanddirtwork.com',
@@ -90,7 +90,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Land Clearing Services & Dirt Work | San Antonio, TX",
+    title: "Jay's Land Clearing Service | San Antonio TX",
     description:
       'Professional land clearing, brush removal & dirt work in San Antonio. Free estimates! Call (210) 891-4174',
     images: ['/images/hero-1.jpg'],
