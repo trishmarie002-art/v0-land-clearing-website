@@ -29,6 +29,8 @@ export function Contact() {
     zipCode: "",
     service: "",
     message: "",
+    projectSize: "",
+    timeframe: "",
   })
 
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -54,6 +56,12 @@ export function Contact() {
         zip_code: formData.zipCode || "Not provided",
         service: formData.service,
         message: formData.message || "No additional details",
+        project_size: formData.projectSize || "Not specified",
+        preferred_timeframe: formData.timeframe || "Not specified",
+        form_source: "Full Contact Form",
+        landing_page: window.location.pathname,
+        utm_source: new URLSearchParams(window.location.search).get("utm_source")?.slice(0, 100) || "Not specified",
+        utm_campaign: new URLSearchParams(window.location.search).get("utm_campaign")?.slice(0, 100) || "Not specified",
       }
 
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -67,7 +75,7 @@ export function Contact() {
       const result = await response.json()
 
       if (result.success) {
-        trackLeadEvent("lead_form_submit_success", { service: formData.service || "Other" })
+        trackLeadEvent("lead_form_submit_success", { service: formData.service || "Other", form_location: "full_contact_form" })
         setSubmitted(true)
         setFormData({
           name: "",
@@ -76,13 +84,15 @@ export function Contact() {
           zipCode: "",
           service: "",
           message: "",
+          projectSize: "",
+          timeframe: "",
         })
       } else {
         throw new Error("Form provider rejected submission")
       }
     } catch (error) {
       console.error("Quote form could not be submitted", error)
-      trackLeadEvent("lead_form_submit_error")
+      trackLeadEvent("lead_form_submit_error", { form_location: "full_contact_form" })
       setFormError("We could not send your request. Please call (210) 891-4174 or text us your project details instead.")
     } finally {
       setIsSubmitting(false)
@@ -107,7 +117,7 @@ export function Contact() {
             Ready to <span className="text-primary">Transform</span> Your Property?
           </h2>
           <p className="text-foreground/70 max-w-2xl mx-auto text-lg">
-            Get a free, no-obligation quote for your land clearing project. We respond within 24 hours.
+            Tell us about your property and request a free, no-obligation project estimate.
           </p>
         </div>
 
@@ -126,7 +136,7 @@ export function Contact() {
                   </div>
                   <h4 className="text-xl font-bold text-foreground mb-2">Message Sent Successfully!</h4>
                   <p className="text-foreground/70 mb-6">
-                    Thank you for contacting us. We&apos;ll get back to you within 24 hours.
+                    Thank you for contacting us. We&apos;ll reach out using the contact information you provided.
                   </p>
                   <Button 
                     onClick={() => setSubmitted(false)}
@@ -225,6 +235,31 @@ export function Contact() {
                         <option key={s} value={s} className="text-foreground bg-secondary">{s}</option>
                       ))}
                     </select>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                    <div>
+                      <label htmlFor="projectSize" className="block text-xs sm:text-sm font-medium text-foreground/80 mb-1.5">Approximate project size (optional)</label>
+                      <select id="projectSize" name="projectSize" value={formData.projectSize} onChange={handleChange} className="w-full px-3 sm:px-4 py-3 rounded-lg bg-secondary border border-border text-foreground">
+                        <option value="">Choose a size</option>
+                        <option value="Under half an acre">Under ½ acre</option>
+                        <option value="Half to one acre">½–1 acre</option>
+                        <option value="1–5 acres">1–5 acres</option>
+                        <option value="5–20 acres">5–20 acres</option>
+                        <option value="Over 20 acres">20+ acres</option>
+                        <option value="Not sure / not acreage-based">Not sure / other</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label htmlFor="timeframe" className="block text-xs sm:text-sm font-medium text-foreground/80 mb-1.5">Desired timeframe (optional)</label>
+                      <select id="timeframe" name="timeframe" value={formData.timeframe} onChange={handleChange} className="w-full px-3 sm:px-4 py-3 rounded-lg bg-secondary border border-border text-foreground">
+                        <option value="">Choose a timeframe</option>
+                        <option value="As soon as possible">As soon as possible</option>
+                        <option value="Within a month">Within a month</option>
+                        <option value="1–3 months">1–3 months</option>
+                        <option value="Just planning">Just planning</option>
+                      </select>
+                    </div>
                   </div>
 
                   <div>

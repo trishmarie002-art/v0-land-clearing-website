@@ -15,6 +15,8 @@ export function HeroQuoteForm({ city, variant = "hero" }: { city?: string; varia
   const [location, setLocation] = useState("")
   const [service, setService] = useState("")
   const [details, setDetails] = useState("")
+  const [projectSize, setProjectSize] = useState("")
+  const [timeframe, setTimeframe] = useState("")
   const [loading, setLoading] = useState(false)
   const [sent, setSent] = useState(false)
   const [error, setError] = useState("")
@@ -42,6 +44,11 @@ export function HeroQuoteForm({ city, variant = "hero" }: { city?: string; varia
           service,
           message: details || `Customer requested a quick quote from ${formSource}.`,
           form_source: formSource,
+          project_size: projectSize || "Not specified",
+          preferred_timeframe: timeframe || "Not specified",
+          landing_page: window.location.pathname,
+          utm_source: new URLSearchParams(window.location.search).get("utm_source")?.slice(0, 100) || "Not specified",
+          utm_campaign: new URLSearchParams(window.location.search).get("utm_campaign")?.slice(0, 100) || "Not specified",
         }),
       })
       if (!response.ok) throw new Error("Quote service unavailable")
@@ -66,7 +73,7 @@ export function HeroQuoteForm({ city, variant = "hero" }: { city?: string; varia
           <CheckCircle2 className="h-12 w-12 text-yellow-400" />
           <h2 className="text-2xl font-bold">Quote Request Sent!</h2>
           <p className="text-sm text-white/80">Thanks! We received your request and will contact you as soon as possible.</p>
-          <button type="button" onClick={() => { setSent(false); setName(""); setPhone(""); setLocation(""); setService(""); setDetails("") }} className="font-semibold text-yellow-400 underline">
+          <button type="button" onClick={() => { setSent(false); setName(""); setPhone(""); setLocation(""); setService(""); setDetails(""); setProjectSize(""); setTimeframe("") }} className="font-semibold text-yellow-400 underline">
             Send another request
           </button>
         </div>
@@ -96,6 +103,30 @@ export function HeroQuoteForm({ city, variant = "hero" }: { city?: string; varia
                 <option value="">Select a service</option>
                 {services.map(item => <option key={item} value={item}>{item}</option>)}
               </select>
+            </div>
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              <div>
+                <label htmlFor={`${idPrefix}-size`} className="mb-1 block text-xs font-medium">Approximate project size (optional)</label>
+                <select id={`${idPrefix}-size`} className={input} value={projectSize} onChange={e => setProjectSize(e.target.value)}>
+                  <option value="">Choose a size</option>
+                  <option value="Under half an acre">Under ½ acre</option>
+                  <option value="Half to one acre">½–1 acre</option>
+                  <option value="1–5 acres">1–5 acres</option>
+                  <option value="5–20 acres">5–20 acres</option>
+                  <option value="Over 20 acres">20+ acres</option>
+                  <option value="Not sure / not acreage-based">Not sure / other</option>
+                </select>
+              </div>
+              <div>
+                <label htmlFor={`${idPrefix}-timeframe`} className="mb-1 block text-xs font-medium">When are you planning? (optional)</label>
+                <select id={`${idPrefix}-timeframe`} className={input} value={timeframe} onChange={e => setTimeframe(e.target.value)}>
+                  <option value="">Choose a timeframe</option>
+                  <option value="As soon as possible">As soon as possible</option>
+                  <option value="Within a month">Within a month</option>
+                  <option value="1–3 months">1–3 months</option>
+                  <option value="Just planning">Just planning</option>
+                </select>
+              </div>
             </div>
             <div>
               <label htmlFor={`${idPrefix}-details`} className="mb-1 block text-xs font-medium">Project details (optional)</label>
