@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     template: "%s | Jay's Land Clearing Service",
   },
   description:
-    'Professional land clearing services in San Antonio and surrounding areas. Expert brush removal, dirt work, grading, excavation, and lot preparation. Serving Bexar County, New Braunfels, Boerne, Seguin & more. Call (210) 891-4174 for free estimates.',
+    'Land clearing, grading, excavation, brush removal, concrete removal, rock removal, junk removal, cleanouts and demolition in greater San Antonio. Free estimates: (210) 891-4174.',
   keywords: [
     'land clearing San Antonio',
     'land clearing services near me',
@@ -115,20 +115,11 @@ const jsonLd = {
   email: 'jayslandclearingservices@gmail.com',
   description: 'Land clearing, brush removal, grading, excavation, hauling, lot preparation, and fence line clearing in San Antonio and surrounding South Texas communities.',
   image: 'https://jayslandclearingserviceanddirtwork.com/images/logo.png',
-  priceRange: 'Contact for a free estimate',
   areaServed: [
     'San Antonio, TX', 'Bexar County, TX', 'Poteet, TX', 'Pleasanton, TX',
     'Boerne, TX', 'New Braunfels, TX', 'Seguin, TX', 'Floresville, TX',
     'Castroville, TX', 'La Vernia, TX',
   ].map((name) => ({ '@type': 'Place', name })),
-  openingHoursSpecification: [
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-      opens: '07:00',
-      closes: '18:00',
-    },
-  ],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: 'Land Clearing and Dirt Work Services',
