@@ -68,8 +68,11 @@ export default async function BlogPostPage({ params }: Props) {
     headline: post.title,
     description: post.description,
     mainEntityOfPage: pageUrl,
+    image: `${baseUrl}/images/hero-2.jpg`,
+    inLanguage: "en-US",
     author: {
       "@type": "Organization",
+      "@id": `${baseUrl}/#business`,
       name: "Jay's Land Clearing Service & Dirt Work",
     },
     publisher: {
