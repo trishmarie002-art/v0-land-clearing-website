@@ -38,6 +38,7 @@ export default async function ServiceDetailPage({ params }: Props) {
   const url = `${origin}/services/${service.slug}`
   const featuredCities = ["Poteet", "Pleasanton", "Jourdanton", "Floresville", "La Vernia", "Boerne", "New Braunfels", "Seguin", "Castroville", "Helotes", "Devine", "Schertz"]
   const nearbyServiceAreas = featuredCities.map((city) => locations.find((location) => location.city === city)).filter((location): location is (typeof locations)[number] => Boolean(location))
+  const otherServiceAreas = locations.filter((location) => !featuredCities.includes(location.city)).sort((a, b) => a.city.localeCompare(b.city))
   const questions = [
     { question: service.questionOne, answer: service.answerOne },
     { question: service.questionTwo, answer: service.answerTwo },
@@ -116,7 +117,19 @@ export default async function ServiceDetailPage({ params }: Props) {
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {nearbyServiceAreas.map((location) => <Link href={`/${location.slug}`} key={location.slug} className="rounded-lg border border-border p-3 hover:border-primary hover:text-primary">Services in {location.city}, TX <ArrowRight className="inline h-4 w-4" /></Link>)}
             </div>
-            <Link href="/service-areas" className="inline-flex mt-6 text-primary font-bold hover:underline">Browse all service areas <ArrowRight className="ml-2 h-4 w-4" /></Link>
+            <details className="mt-6 rounded-xl border border-border bg-card p-5 group">
+              <summary className="cursor-pointer font-bold text-primary">View all {locations.length} service-area communities</summary>
+              <p className="mt-4 mb-4 text-sm text-foreground/70">Choose a community for local property and project planning details. Availability for each service is confirmed by project scope and location.</p>
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {otherServiceAreas.map((location) => (
+                  <Link href={`/${location.slug}`} key={location.slug} className="rounded-lg border border-border px-3 py-3 hover:border-primary hover:text-primary">
+                    <span className="font-semibold block">{location.city}, TX</span>
+                    <span className="text-xs text-foreground/60">{location.county}</span>
+                  </Link>
+                ))}
+              </div>
+            </details>
+            <Link href="/service-areas" className="inline-flex mt-6 text-primary font-bold hover:underline">Browse our service area directory <ArrowRight className="ml-2 h-4 w-4" /></Link>
           </div>
         </div>
       </section>
