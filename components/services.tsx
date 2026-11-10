@@ -1,67 +1,80 @@
 "use client"
 
 import { Trees, Mountain, Home, Truck, Shovel, Fence, Axe, Hammer, Pickaxe, Trash2, House, HardHat } from "lucide-react"
+import Link from "next/link"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 const services = [
   {
     icon: Trees,
     title: "Land Clearing",
+    slug: "land-clearing",
     description: "Complete brush, tree, and vegetation removal for residential and commercial properties. We handle everything from small lots to large acreage.",
   },
   {
     icon: Shovel,
     title: "Dirt Work & Grading",
+    slug: "dirt-work-grading",
     description: "Professional site grading, leveling, and earthmoving services. We ensure proper drainage and a solid foundation for your project.",
   },
   {
     icon: Mountain,
     title: "Excavation",
+    slug: "excavation",
     description: "Expert excavation services for foundations, ponds, drainage systems, and more. Precision work with attention to detail.",
   },
   {
     icon: Truck,
     title: "Hauling Services",
+    slug: "hauling-services",
     description: "Debris removal, material hauling, and disposal services. We keep your site clean and handle all waste responsibly.",
   },
   {
     icon: Home,
     title: "Lot Preparation",
+    slug: "lot-preparation",
     description: "Complete site preparation for new construction, including clearing, grading, and utility trenching.",
   },
   {
     icon: Fence,
     title: "Fence Line Clearing",
+    slug: "fence-line-clearing",
     description: "Clear brush and vegetation along fence lines for new installations or to reclaim existing boundaries.",
   },
   {
     icon: Axe,
     title: "Brush Removal",
+    slug: "brush-removal",
     description: "Removal of overgrown brush, shrubs, and unwanted vegetation to reclaim yards, lots, and acreage and improve property access.",
   },
   {
     icon: Hammer,
     title: "Concrete Removal",
+    slug: "concrete-removal",
     description: "Breakup and removal of unwanted concrete driveways, patios, slabs, and other concrete surfaces to make room for your next project.",
   },
   {
     icon: Pickaxe,
     title: "Rock Removal",
+    slug: "rock-removal",
     description: "Removal and hauling of unwanted surface rocks, stones, and rocky debris to help clear and prepare your property.",
   },
   {
     icon: Trash2,
     title: "Junk Removal",
+    slug: "junk-removal",
     description: "Removal and hauling of unwanted household items, yard debris, and miscellaneous junk from residential and commercial properties.",
   },
   {
     icon: House,
     title: "Hoarding Cleanouts",
+    slug: "hoarding-cleanouts",
     description: "Respectful, thorough cleanout services for heavily cluttered properties, including sorting assistance and removal of unwanted contents.",
   },
   {
     icon: HardHat,
     title: "Demolition",
+    slug: "demolition",
     description: "Demolition and removal services for selected structures and site features. Contact us to discuss the project scope and site conditions.",
   },
 ]
@@ -105,6 +118,7 @@ export function Services() {
                     {service.description}
                   </CardDescription>
                 </CardContent>
+                <CardContent className="pt-0"><Link href={`/services/${service.slug}`} className="font-semibold text-primary hover:underline" aria-label={`Learn more about ${service.title}`}>Explore {service.title} →</Link></CardContent>
               </Card>
             </div>
           ))}
