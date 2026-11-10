@@ -3,6 +3,7 @@ import { Oswald, Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import Script from 'next/script'
 import './globals.css'
+import { locations } from '@/lib/locations'
 import { LeadTracking } from '@/components/lead-tracking'
 import { SitewideQuotePopup } from '@/components/sitewide-quote-popup'
 
@@ -68,6 +69,7 @@ export const metadata: Metadata = {
     telephone: true,
   },
   metadataBase: new URL('https://jayslandclearingserviceanddirtwork.com'),
+  alternates: { canonical: '/' },
   openGraph: {
     title: "Jay's Land Clearing Service & Dirt Work | San Antonio TX",
     description:
@@ -109,17 +111,17 @@ export const metadata: Metadata = {
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
+  '@id': 'https://jayslandclearingserviceanddirtwork.com/#business',
   name: "Jay's Land Clearing Service & Dirt Work",
   url: 'https://jayslandclearingserviceanddirtwork.com',
   telephone: '+1-210-891-4174',
   email: 'jayslandclearingservices@gmail.com',
-  description: 'Land clearing, brush removal, grading, excavation, hauling, lot preparation, and fence line clearing in San Antonio and surrounding South Texas communities.',
+  description: 'Land clearing, dirt work, excavation, hauling, concrete removal, junk removal, cleanouts, demolition and other property services across the greater San Antonio region and South Texas.',
   image: 'https://jayslandclearingserviceanddirtwork.com/images/logo.png',
   areaServed: [
-    'San Antonio, TX', 'Bexar County, TX', 'Poteet, TX', 'Pleasanton, TX',
-    'Boerne, TX', 'New Braunfels, TX', 'Seguin, TX', 'Floresville, TX',
-    'Castroville, TX', 'La Vernia, TX',
-  ].map((name) => ({ '@type': 'Place', name })),
+    { '@type': 'City', name: 'San Antonio, Texas' },
+    ...locations.map((location) => ({ '@type': 'City', name: `${location.city}, Texas` })),
+  ],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: 'Land Clearing and Dirt Work Services',
@@ -128,7 +130,7 @@ const jsonLd = {
       'Hauling Services', 'Lot Preparation', 'Fence Line Clearing',
       'Brush Removal', 'Concrete Removal', 'Rock Removal',
       'Junk Removal', 'Hoarding Cleanouts', 'Demolition',
-    ].map((name) => ({ '@type': 'OfferCatalog', name })),
+    ].map((name) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name } })),
   },
 }
 
@@ -155,10 +157,6 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
 
-        <meta name="geo.region" content="US-TX" />
-        <meta name="geo.placename" content="San Antonio" />
-        <meta name="geo.position" content="29.4241;-98.4936" />
-        <meta name="ICBM" content="29.4241, -98.4936" />
       </head>
 
       <body className={`${inter.variable} ${oswald.variable} font-sans antialiased`}>
