@@ -37,6 +37,7 @@ export default function ServiceAreasPage() {
               hauling and site preparation throughout surrounding South Texas and Hill Country communities.
               Choose your area below for local service information.
             </p>
+            <Link href="/services" className="inline-flex items-center gap-2 mt-6 text-primary font-bold hover:underline">View all 12 services <ArrowRight size={18}/></Link>
           </div>
         </div>
       </section>
