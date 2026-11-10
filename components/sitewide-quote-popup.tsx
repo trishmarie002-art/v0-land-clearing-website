@@ -4,18 +4,15 @@ import { useEffect, useRef, useState } from "react"
 import { Phone, MessageSquareText, X } from "lucide-react"
 import { HeroQuoteForm } from "@/components/hero-quote-form"
 
-const DISMISSED_KEY = "jays_quote_popup_dismissed"
-
 export function SitewideQuotePopup() {
   const [open, setOpen] = useState(false)
   const closeRef = useRef<HTMLButtonElement>(null)
 
+  // Visitors open the quote form deliberately; do not block the landing page on load.
   useEffect(() => {
-    try {
-      if (window.sessionStorage.getItem(DISMISSED_KEY) !== "1") setOpen(true)
-    } catch {
-      setOpen(true)
-    }
+    const showQuote = () => setOpen(true)
+    window.addEventListener("open-jays-quote", showQuote)
+    return () => window.removeEventListener("open-jays-quote", showQuote)
   }, [])
 
   useEffect(() => {
@@ -53,7 +50,6 @@ export function SitewideQuotePopup() {
   }, [open])
 
   function dismiss() {
-    try { window.sessionStorage.setItem(DISMISSED_KEY, "1") } catch {}
     setOpen(false)
   }
 
