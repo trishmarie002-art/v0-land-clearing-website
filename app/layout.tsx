@@ -4,6 +4,7 @@ import { Analytics } from '@vercel/analytics/next'
 import Script from 'next/script'
 import './globals.css'
 import { locations } from '@/lib/locations'
+import { servicePages } from '@/lib/service-pages'
 import { LeadTracking } from '@/components/lead-tracking'
 import { SitewideQuotePopup } from '@/components/sitewide-quote-popup'
 
@@ -124,13 +125,15 @@ const jsonLd = {
   ],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
-    name: 'Land Clearing and Dirt Work Services',
-    itemListElement: [
-      'Land Clearing', 'Dirt Work & Grading', 'Excavation',
-      'Hauling Services', 'Lot Preparation', 'Fence Line Clearing',
-      'Brush Removal', 'Concrete Removal', 'Rock Removal',
-      'Junk Removal', 'Hoarding Cleanouts', 'Demolition',
-    ].map((name) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name } })),
+    name: 'Land Clearing and Property Services',
+    itemListElement: servicePages.map((service) => ({
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: service.title,
+        url: `https://jayslandclearingserviceanddirtwork.com/services/${service.slug}`,
+      },
+    })),
   },
 }
 
