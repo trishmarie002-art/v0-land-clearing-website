@@ -75,7 +75,7 @@ function ServiceAreaMap() {
         marker.bindPopup(
           `<div style="text-align: center; padding: 4px 8px;">
             <strong style="font-size: 14px;">San Antonio, TX</strong>
-            <p style="margin: 4px 0 0; font-size: 12px; color: #666;">Service Center</p>
+            <p style="margin: 4px 0 0; font-size: 12px; color: #666;">Map Reference Point</p>
           </div>`
         )
 
@@ -137,8 +137,8 @@ function ServiceAreaMap() {
 
       {/* Radius label overlay */}
       <div className="absolute top-4 right-4 bg-primary px-4 py-2 rounded-md shadow-lg z-[500] pointer-events-none">
-        <p className="text-xs text-primary-foreground/80 font-medium">Service Radius</p>
-        <p className="text-lg font-bold text-primary-foreground font-[family-name:var(--font-display)]">50 Miles</p>
+        <p className="text-xs text-primary-foreground/80 font-medium">Map Guide</p>
+        <p className="text-lg font-bold text-primary-foreground font-[family-name:var(--font-display)]">50-Mile Radius</p>
       </div>
     </div>
   )
@@ -157,7 +157,7 @@ export function ServiceArea() {
             Our <span className="text-primary">Service Area</span>
           </h2>
           <p className="text-foreground/70">
-            Proudly serving San Antonio and surrounding communities within a 50-mile radius.
+            Our map shows a 50-mile reference circle centered on San Antonio. We also consider projects in surrounding South Texas communities based on location and job scope.
           </p>
         </div>
 
@@ -183,7 +183,7 @@ export function ServiceArea() {
               </div>
 
               <p className="text-foreground/70 mb-6 leading-relaxed">
-                We provide land clearing, dirt work, and excavation services throughout the greater San Antonio metropolitan area and beyond.
+                Explore our San Antonio-area and South Texas service communities below. Travel and equipment availability vary by project.
               </p>
 
               {/* Two-column grid of cities */}
