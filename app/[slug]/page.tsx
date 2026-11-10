@@ -64,61 +64,73 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 const services = [
   {
     title: "Land Clearing",
+    slug: "land-clearing",
     icon: Trees,
     text: "Complete brush, tree, and vegetation removal for residential and commercial properties, from small lots to large acreage.",
   },
   {
     title: "Dirt Work & Grading",
+    slug: "dirt-work-grading",
     icon: Ruler,
     text: "Site grading, leveling, and earthmoving for improved drainage, access, and property preparation.",
   },
   {
     title: "Excavation",
+    slug: "excavation",
     icon: Shovel,
     text: "Excavation for foundations, ponds, drainage projects, and other property improvements.",
   },
   {
     title: "Hauling Services",
+    slug: "hauling-services",
     icon: Truck,
     text: "Debris removal, material hauling, and disposal to help leave your property clean and ready for its next use.",
   },
   {
     title: "Lot Preparation",
+    slug: "lot-preparation",
     icon: House,
     text: "Site preparation for residential and commercial construction, including clearing, grading, and utility trenching.",
   },
   {
     title: "Fence Line Clearing",
+    slug: "fence-line-clearing",
     icon: Fence,
     text: "Brush and vegetation clearing along fence lines for new installations and reclaiming existing boundaries.",
   },
   {
     title: "Brush Removal",
+    slug: "brush-removal",
     icon: Axe,
     text: "Removal of overgrown brush, shrubs, and unwanted vegetation from yards, lots, and acreage.",
   },
   {
     title: "Concrete Removal",
+    slug: "concrete-removal",
     icon: Hammer,
     text: "Breakup and removal of unwanted concrete driveways, patios, slabs, and other concrete surfaces.",
   },
   {
     title: "Rock Removal",
+    slug: "rock-removal",
     icon: Pickaxe,
     text: "Removal and hauling of unwanted surface rocks, stones, and rocky debris to clear and prepare your property.",
   },
   {
     title: "Junk Removal",
+    slug: "junk-removal",
     icon: Trash2,
     text: "Removal and hauling of unwanted household items, yard debris, and miscellaneous junk.",
   },
   {
     title: "Hoarding Cleanouts",
+    slug: "hoarding-cleanouts",
     icon: Home,
     text: "Respectful cleanout services for heavily cluttered properties, including sorting assistance and removal of unwanted contents.",
   },
   {
     title: "Demolition",
+    slug: "demolition",
     icon: HardHat,
     text: "Demolition and removal of selected structures and site features, depending on project scope and conditions.",
   },
@@ -339,6 +351,7 @@ export default async function LocationPage({ params }: Props) {
                     {service.title}
                   </h3>
                   <p className="text-foreground/70 leading-relaxed">{service.text}</p>
+                  <Link href={`/services/${service.slug}`} className="inline-flex mt-4 text-primary font-semibold hover:underline">Learn more about {service.title} <ArrowRight className="ml-2 w-4 h-4"/></Link>
                 </div>
               )
             })}
