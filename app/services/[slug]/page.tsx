@@ -53,7 +53,7 @@ export default async function ServiceDetailPage({ params }: Props) {
     url,
     serviceType: service.title,
     areaServed: [{ "@type": "AdministrativeArea", name: "Greater San Antonio and surrounding South Texas communities" }, ...locations.map((location) => ({ "@type": "City", name: `${location.city}, Texas` }))],
-    provider: { "@type": "LocalBusiness", name: "Jay's Land Clearing Service & Dirt Work", url: origin, telephone: "+1-210-891-4174" },
+    provider: { "@type": "LocalBusiness", "@id": `${origin}/#business` },
   }
   const breadcrumb = {
     "@context": "https://schema.org", "@type": "BreadcrumbList",
