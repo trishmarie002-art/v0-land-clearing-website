@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     apple: '/images/logo.png',
   },
   title: {
-    default: "Jay's Land Clearing Service & Dirt Work | San Antonio TX",
+    default: "Land Clearing Services & Dirt Work | San Antonio, TX",
     template: "%s | Jay's Land Clearing Service",
   },
   description:
