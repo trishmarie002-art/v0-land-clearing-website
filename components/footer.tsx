@@ -20,6 +20,12 @@ const services = [
   "Hauling Services",
   "Lot Preparation",
   "Fence Line Clearing",
+  "Brush Removal",
+  "Concrete Removal",
+  "Rock Removal",
+  "Junk Removal",
+  "Hoarding Cleanouts",
+  "Demolition",
 ]
 
 export function Footer() {
