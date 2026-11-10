@@ -84,6 +84,8 @@ export function Contact() {
           zipCode: "",
           service: "",
           message: "",
+          projectSize: "",
+          timeframe: "",
         })
       } else {
         throw new Error("Form provider rejected submission")
