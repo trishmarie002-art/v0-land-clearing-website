@@ -7,6 +7,7 @@ import { locations } from '@/lib/locations'
 import { servicePages } from '@/lib/service-pages'
 import { LeadTracking } from '@/components/lead-tracking'
 import { SitewideQuotePopup } from '@/components/sitewide-quote-popup'
+import { MobileLeadBar } from '@/components/mobile-lead-bar'
 
 const oswald = Oswald({
   subsets: ['latin'],
@@ -162,7 +163,7 @@ export default function RootLayout({
 
       </head>
 
-      <body className={`${inter.variable} ${oswald.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} ${oswald.variable} font-sans antialiased pb-16 md:pb-0`}>
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-TBGQ2LPL"
@@ -174,6 +175,7 @@ export default function RootLayout({
 
         {children}
         <SitewideQuotePopup />
+        <MobileLeadBar />
         <LeadTracking />
         <Analytics />
 
