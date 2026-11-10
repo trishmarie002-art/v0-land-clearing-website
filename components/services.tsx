@@ -1,6 +1,6 @@
 "use client"
 
-import { Trees, Mountain, Home, Truck, Shovel, Fence } from "lucide-react"
+import { Trees, Mountain, Home, Truck, Shovel, Fence, Axe, Hammer, Pickaxe, Trash2, House, HardHat } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 const services = [
@@ -34,6 +34,36 @@ const services = [
     title: "Fence Line Clearing",
     description: "Clear brush and vegetation along fence lines for new installations or to reclaim existing boundaries.",
   },
+  {
+    icon: Axe,
+    title: "Brush Removal",
+    description: "Removal of overgrown brush, shrubs, and unwanted vegetation to reclaim yards, lots, and acreage and improve property access.",
+  },
+  {
+    icon: Hammer,
+    title: "Concrete Removal",
+    description: "Breakup and removal of unwanted concrete driveways, patios, slabs, and other concrete surfaces to make room for your next project.",
+  },
+  {
+    icon: Pickaxe,
+    title: "Rock Removal",
+    description: "Removal and hauling of unwanted surface rocks, stones, and rocky debris to help clear and prepare your property.",
+  },
+  {
+    icon: Trash2,
+    title: "Junk Removal",
+    description: "Removal and hauling of unwanted household items, yard debris, and miscellaneous junk from residential and commercial properties.",
+  },
+  {
+    icon: House,
+    title: "Hoarding Cleanouts",
+    description: "Respectful, thorough cleanout services for heavily cluttered properties, including sorting assistance and removal of unwanted contents.",
+  },
+  {
+    icon: HardHat,
+    title: "Demolition",
+    description: "Demolition and removal services for selected structures and site features. Contact us to discuss the project scope and site conditions.",
+  },
 ]
 
 export function Services() {
@@ -49,7 +79,7 @@ export function Services() {
             Our <span className="text-primary">Services</span>
           </h2>
           <p className="text-foreground/70">
-            From initial land clearing to final grading, we provide comprehensive services to transform your property.
+            From land clearing and grading to removal, cleanouts, and demolition, we help get your property ready for what's next.
           </p>
         </div>
 

@@ -4,7 +4,7 @@ import { useState, type FormEvent } from "react"
 import { CheckCircle2, Send } from "lucide-react"
 import { trackLeadEvent } from "@/components/lead-tracking"
 
-const services = ["Land Clearing", "Brush Removal", "Dirt Work & Grading", "Excavation", "Lot Preparation", "Hauling", "Other"]
+const services = ["Land Clearing", "Dirt Work & Grading", "Excavation", "Hauling Services", "Lot Preparation", "Fence Line Clearing", "Brush Removal", "Concrete Removal", "Rock Removal", "Junk Removal", "Hoarding Cleanouts", "Demolition", "Other"]
 
 export function HeroQuoteForm({ city, variant = "hero" }: { city?: string; variant?: "hero" | "popup" }) {
   const idPrefix = variant === "popup" ? "popup-quote" : "hero-quote"
