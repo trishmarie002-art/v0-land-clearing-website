@@ -73,7 +73,7 @@ export function Header() {
               <span>(210) 891-4174</span>
             </a>
             <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 transition-transform hover:scale-105">
-              <a href="tel:+12108914174">Call Now</a>
+              <button type="button" onClick={() => { window.dispatchEvent(new Event("open-jays-quote")); setMobileMenuOpen(false) }}>Get Free Quote</button>
             </Button>
           </div>
 
@@ -112,7 +112,7 @@ export function Header() {
               <span>(210) 891-4174</span>
             </a>
             <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90 mt-2">
-              <a href="tel:+12108914174">Call Now</a>
+              <button type="button" onClick={() => { window.dispatchEvent(new Event("open-jays-quote")); setMobileMenuOpen(false) }}>Get Free Quote</button>
             </Button>
           </nav>
         </div>
