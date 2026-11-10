@@ -1,5 +1,6 @@
 import { blogPosts, type BlogPost } from "@/lib/blog-posts"
 import { locations, type LocationPage } from "@/lib/locations"
+import { servicePages, type ServicePage } from "@/lib/service-pages"
 
 // Link only to real, existing pages. Keep sitewide navigation separate from topical recommendations.
 const topics = [
@@ -52,5 +53,39 @@ export function relatedLocationsForArticle(post: BlogPost, limit = 4): LocationP
   // Never manufacture geographical relevance: show only cities actually named by the article.
   return locations
     .filter(({ city }) => new RegExp("(^|[^a-z])" + city.replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/\\ /g, "\\s+") + "([^a-z]|$)", "i").test(text))
+    .slice(0, limit)
+}
+
+const serviceTopics = [
+  { slug: "concrete-removal", terms: /concrete|slab/i },
+  { slug: "hoarding-cleanouts", terms: /hoard|cluttered/i },
+  { slug: "junk-removal", terms: /junk|trash|unwanted items/i },
+  { slug: "demolition", terms: /demolition|tear.?down/i },
+  { slug: "rock-removal", terms: /rock removal|boulder|large rock/i },
+  { slug: "fence-line-clearing", terms: /fence|fencing/i },
+  { slug: "hauling-services", terms: /hauling|debris removal|material hauling/i },
+  { slug: "excavation", terms: /excavat|trench|digging/i },
+  { slug: "lot-preparation", terms: /lot prepar|site prep|home.?site|building pad|construction site/i },
+  { slug: "dirt-work-grading", terms: /grading|grade|dirt work|drainage|driveway/i },
+  { slug: "brush-removal", terms: /brush|cedar|mesquite|mulch|overgrown vegetation/i },
+  { slug: "land-clearing", terms: /land clearing|acreage|clear an acre|ranch clearing/i },
+] as const
+
+/** Link articles to real service pages only when their subject directly matches the service. */
+export function relatedServicesForArticle(post: BlogPost, limit = 3): ServicePage[] {
+  const subject = `${post.title} ${post.excerpt}`
+  const matching = serviceTopics.filter(({ terms }) => terms.test(subject)).map(({ slug }) => slug)
+  return matching
+    .slice(0, limit)
+    .map((slug) => servicePages.find((service) => service.slug === slug))
+    .filter((service): service is ServicePage => Boolean(service))
+}
+
+/** Select article titles with a direct topical match to this service page. */
+export function relatedArticlesForService(service: ServicePage, limit = 3): BlogPost[] {
+  const terms = serviceTopics.find((topic) => topic.slug === service.slug)?.terms
+  if (!terms) return []
+  return blogPosts
+    .filter((post) => terms.test(post.title))
     .slice(0, limit)
 }

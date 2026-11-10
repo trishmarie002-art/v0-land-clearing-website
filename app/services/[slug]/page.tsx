@@ -9,6 +9,7 @@ import { UrgentQuoteBanner } from "@/components/urgent-quote-banner"
 import { serviceBySlug, servicePages } from "@/lib/service-pages"
 import { serviceQuestionLibrary } from "@/lib/service-question-library"
 import { locations } from "@/lib/locations"
+import { relatedArticlesForService } from "@/lib/internal-links"
 
 const origin = "https://jayslandclearingserviceanddirtwork.com"
 type Props = { params: Promise<{ slug: string }> }
@@ -40,6 +41,7 @@ export default async function ServiceDetailPage({ params }: Props) {
   const featuredCities = ["Poteet", "Pleasanton", "Jourdanton", "Floresville", "La Vernia", "Boerne", "New Braunfels", "Seguin", "Castroville", "Helotes", "Devine", "Schertz"]
   const nearbyServiceAreas = featuredCities.map((city) => locations.find((location) => location.city === city)).filter((location): location is (typeof locations)[number] => Boolean(location))
   const otherServiceAreas = locations.filter((location) => !featuredCities.includes(location.city)).sort((a, b) => a.city.localeCompare(b.city))
+  const relevantGuides = relatedArticlesForService(service)
   const questions = [
     { question: service.questionOne, answer: service.answerOne },
     { question: service.questionTwo, answer: service.answerTwo },
@@ -53,7 +55,7 @@ export default async function ServiceDetailPage({ params }: Props) {
     url,
     serviceType: service.title,
     areaServed: [{ "@type": "AdministrativeArea", name: "Greater San Antonio and surrounding South Texas communities" }, ...locations.map((location) => ({ "@type": "City", name: `${location.city}, Texas` }))],
-    provider: { "@type": "LocalBusiness", name: "Jay's Land Clearing Service & Dirt Work", url: origin, telephone: "+1-210-891-4174" },
+    provider: { "@type": "LocalBusiness", "@id": `${origin}/#business` },
   }
   const breadcrumb = {
     "@context": "https://schema.org", "@type": "BreadcrumbList",
@@ -139,6 +141,22 @@ export default async function ServiceDetailPage({ params }: Props) {
           </div>
         </div>
       </section>
+      {relevantGuides.length > 0 && (
+        <section className="bg-secondary border-t border-border py-16 md:py-20">
+          <div className="container mx-auto px-4 max-w-6xl">
+            <h2 className="text-3xl font-bold uppercase font-[family-name:var(--font-display)] mb-4">Practical {service.title} Guides</h2>
+            <p className="text-foreground/70 mb-7">Explore project planning topics before asking for an estimate.</p>
+            <div className="grid gap-4 md:grid-cols-3">
+              {relevantGuides.map((post) => (
+                <Link key={post.slug} href={`/blog/${post.slug}`} className="block h-full rounded-lg border border-border bg-card p-5 hover:border-primary hover:text-primary">
+                  <span className="font-semibold">{post.title}</span>
+                  <ArrowRight className="inline-block w-4 h-4 ml-2" />
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
       <Footer />
       <ChatWidget />
     </main>

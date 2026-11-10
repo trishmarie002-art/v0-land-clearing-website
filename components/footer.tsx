@@ -6,7 +6,7 @@ import { Phone, Mail, MapPin } from "lucide-react"
 
 const quickLinks = [
   { href: "/#about", label: "About Us" },
-  { href: "/#services", label: "Services" },
+  { href: "/services", label: "Services" },
   { href: "/#why-us", label: "Why Choose Us" },
   { href: "/questions", label: "Q&A Library" },
   { href: "/service-areas", label: "Service Areas" },
@@ -114,14 +114,7 @@ export function Footer() {
               </a>
             </p>
           </div>
-          <div className="flex items-center gap-6 text-sm">
-            <Link href="#" className="text-foreground/50 hover:text-primary transition-colors hover:-translate-y-0.5 inline-block">
-              Privacy Policy
-            </Link>
-            <Link href="#" className="text-foreground/50 hover:text-primary transition-colors hover:-translate-y-0.5 inline-block">
-              Terms of Service
-            </Link>
-          </div>
+          <p className="text-foreground/50 text-sm text-center md:text-right">Questions about website privacy or terms? Call (210) 891-4174.</p>
         </div>
       </div>
     </footer>

@@ -151,13 +151,16 @@ export default async function LocationPage({ params }: Props) {
   const pageUrl = `${baseUrl}/${location.slug}`
   const relevantGuides = relatedArticlesForLocation(location)
 
-  const localBusinessSchema = {
+  const locationServiceSchema = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    name: "Jay's Land Clearing Service & Dirt Work",
+    "@type": "Service",
+    name: `Land Clearing and Property Services in ${location.city}, TX`,
     url: pageUrl,
-    telephone: "+1-210-891-4174",
-    email: "jayslandclearingservices@gmail.com",
+    provider: {
+      "@type": "LocalBusiness",
+      "@id": `${baseUrl}/#business`,
+    },
+    description: `Land clearing, excavation, grading and property services in ${location.city}, Texas. Project availability depends on scope and location.`,
     areaServed: {
       "@type": "City",
       name: `${location.city}, Texas`,
@@ -210,7 +213,7 @@ export default async function LocationPage({ params }: Props) {
 
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(locationServiceSchema) }}
       />
       <script
         type="application/ld+json"

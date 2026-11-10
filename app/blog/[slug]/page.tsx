@@ -8,7 +8,7 @@ import { Contact } from "@/components/contact"
 import { ChatWidget } from "@/components/chat-widget"
 import { UrgentQuoteBanner } from "@/components/urgent-quote-banner"
 import { blogPosts, blogPostBySlug } from "@/lib/blog-posts"
-import { relatedArticles, relatedLocationsForArticle } from "@/lib/internal-links"
+import { relatedArticles, relatedLocationsForArticle, relatedServicesForArticle } from "@/lib/internal-links"
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -62,14 +62,18 @@ export default async function BlogPostPage({ params }: Props) {
   const pageUrl = `${baseUrl}/blog/${post.slug}`
   const relevantLocations = relatedLocationsForArticle(post)
   const furtherReading = relatedArticles(post)
+  const matchingServices = relatedServicesForArticle(post)
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: post.title,
     description: post.description,
     mainEntityOfPage: pageUrl,
+    image: `${baseUrl}/images/hero-2.jpg`,
+    inLanguage: "en-US",
     author: {
       "@type": "Organization",
+      "@id": `${baseUrl}/#business`,
       name: "Jay's Land Clearing Service & Dirt Work",
     },
     publisher: {
@@ -179,6 +183,19 @@ export default async function BlogPostPage({ params }: Props) {
                   </Link>
                 ))}
               </div>
+              {matchingServices.length > 0 && (
+                <div className="mb-9">
+                  <h3 className="text-xl font-bold mb-4">Services Related to This Guide</h3>
+                  <div className="flex flex-wrap gap-3">
+                    {matchingServices.map((service) => (
+                      <Link key={service.slug} href={`/services/${service.slug}`}
+                        className="inline-flex items-center gap-2 rounded-md border border-primary/50 bg-card px-5 py-3 font-semibold text-primary hover:bg-primary hover:text-primary-foreground">
+                        {service.title} <ArrowRight className="h-4 w-4" />
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
               {furtherReading.length > 0 && (
                 <div>
                   <h3 className="text-xl font-bold mb-4">Related Property Guides</h3>
