@@ -298,10 +298,7 @@ export function Contact() {
                   </div>
                 </a>
                 
-                <a 
-                  href="mailto:jayslandclearingservices@gmail.com" 
-                  className="flex items-center gap-3 p-3 rounded-lg bg-secondary/50 hover:bg-primary/10 transition-all group"
-                >
+                <div className="flex items-center gap-3 p-3 rounded-lg bg-secondary/50">
                   <div className="w-9 h-9 bg-primary rounded-full flex items-center justify-center shrink-0">
                     <Mail className="w-4 h-4 text-primary-foreground" />
                   </div>
@@ -309,7 +306,7 @@ export function Contact() {
                     <p className="text-xs text-foreground/60">Email Us</p>
                     <p className="font-semibold text-foreground group-hover:text-primary transition-colors text-xs break-all">jayslandclearingservices@gmail.com</p>
                   </div>
-                </a>
+                </div>
                 
                 <div className="flex items-center gap-3 p-3 rounded-lg bg-secondary/50">
                   <div className="w-9 h-9 bg-primary rounded-full flex items-center justify-center shrink-0">
