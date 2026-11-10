@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import { servicePages } from "@/lib/service-pages"
 import { Phone, Mail, MapPin } from "lucide-react"
 
 const quickLinks = [
@@ -11,21 +12,6 @@ const quickLinks = [
   { href: "/service-areas", label: "Service Areas" },
   { href: "/blog", label: "Blog" },
   { href: "/#contact", label: "Contact" },
-]
-
-const services = [
-  "Land Clearing",
-  "Dirt Work & Grading",
-  "Excavation",
-  "Hauling Services",
-  "Lot Preparation",
-  "Fence Line Clearing",
-  "Brush Removal",
-  "Concrete Removal",
-  "Rock Removal",
-  "Junk Removal",
-  "Hoarding Cleanouts",
-  "Demolition",
 ]
 
 export function Footer() {
@@ -72,9 +58,9 @@ export function Footer() {
           <div>
             <h4 className="font-bold text-lg mb-4 font-[family-name:var(--font-display)] uppercase">Services</h4>
             <ul className="space-y-2">
-              {services.map((service) => (
-                <li key={service}>
-                  <span className="text-foreground/70 text-sm">{service}</span>
+              {servicePages.map((service) => (
+                <li key={service.slug}>
+                  <Link href={`/services/${service.slug}`} className="text-foreground/70 hover:text-primary text-sm">{service.title}</Link>
                 </li>
               ))}
             </ul>
