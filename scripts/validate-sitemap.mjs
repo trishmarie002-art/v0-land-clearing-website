@@ -22,6 +22,7 @@ const expected = [
   `${site}/service-areas`,
   `${site}/services`,
   `${site}/questions`,
+  `${site}/contact`,
   ...slugs("lib/locations.ts").map((slug) => `${site}/${slug}`),
   ...slugs("lib/blog-posts.ts").map((slug) => `${site}/blog/${slug}`),
   ...slugs("lib/service-pages.ts").map((slug) => `${site}/services/${slug}`),
