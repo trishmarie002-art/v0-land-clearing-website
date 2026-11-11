@@ -21,7 +21,7 @@ const services = [
   "Other",
 ]
 
-export function Contact() {
+export function Contact({ hideProjectQuestions = false }: { hideProjectQuestions?: boolean } = {}) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -237,6 +237,7 @@ export function Contact() {
                     </select>
                   </div>
 
+                  {!hideProjectQuestions && (
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     <div>
                       <label htmlFor="projectSize" className="block text-xs sm:text-sm font-medium text-foreground/80 mb-1.5">Approximate project size (optional)</label>
@@ -261,6 +262,8 @@ export function Contact() {
                       </select>
                     </div>
                   </div>
+
+                  )}
 
                   <div>
                     <label htmlFor="message" className="block text-xs sm:text-sm font-medium text-foreground/80 mb-1.5 sm:mb-2">
