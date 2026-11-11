@@ -1,23 +1,16 @@
 "use client"
 
 import Link from "next/link"
+import { servicePages } from "@/lib/service-pages"
 import { Phone, Mail, MapPin } from "lucide-react"
 
 const quickLinks = [
-  { href: "#about", label: "About Us" },
-  { href: "#services", label: "Services" },
-  { href: "#why-us", label: "Why Choose Us" },
-  { href: "#faq", label: "FAQ" },
-  { href: "#contact", label: "Contact" },
-]
-
-const services = [
-  "Land Clearing",
-  "Dirt Work & Grading",
-  "Excavation",
-  "Hauling Services",
-  "Lot Preparation",
-  "Fence Line Clearing",
+  { href: "/about#about", label: "About Us" },
+  { href: "/services", label: "Services" },
+  { href: "/questions", label: "Q&A Library" },
+  { href: "/service-areas", label: "Service Areas" },
+  { href: "/blog", label: "Blog" },
+  { href: "/contact", label: "Contact" },
 ]
 
 export function Footer() {
@@ -64,9 +57,9 @@ export function Footer() {
           <div>
             <h4 className="font-bold text-lg mb-4 font-[family-name:var(--font-display)] uppercase">Services</h4>
             <ul className="space-y-2">
-              {services.map((service) => (
-                <li key={service}>
-                  <span className="text-foreground/70 text-sm">{service}</span>
+              {servicePages.map((service) => (
+                <li key={service.slug}>
+                  <Link href={`/services/${service.slug}`} className="text-foreground/70 hover:text-primary text-sm">{service.title}</Link>
                 </li>
               ))}
             </ul>
@@ -87,9 +80,9 @@ export function Footer() {
               <li className="flex items-start gap-3 transition-transform hover:translate-x-1">
                 <Mail className="w-4 h-4 text-primary mt-0.5" />
                 <div>
-                  <a href="mailto:jayslandclearingservices@gmail.com" className="text-foreground/70 hover:text-primary transition-colors text-sm break-all">
+                  <span className="text-foreground/70 text-sm break-all">
                     jayslandclearingservices@gmail.com
-                  </a>
+                  </span>
                 </div>
               </li>
               <li className="flex items-start gap-3 transition-transform hover:translate-x-1">
@@ -106,17 +99,21 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-foreground/50 text-sm">
-            &copy; {new Date().getFullYear()} {"Jay's Land Clearing Service & Dirt Work"}. All rights reserved.
-          </p>
-          <div className="flex items-center gap-6 text-sm">
-            <Link href="#" className="text-foreground/50 hover:text-primary transition-colors hover:-translate-y-0.5 inline-block">
-              Privacy Policy
-            </Link>
-            <Link href="#" className="text-foreground/50 hover:text-primary transition-colors hover:-translate-y-0.5 inline-block">
-              Terms of Service
-            </Link>
+          <div className="text-foreground/50 text-sm text-center md:text-left">
+            <p>&copy; {new Date().getFullYear()} {"Jay's Land Clearing Service & Dirt Work"}. All rights reserved.</p>
+            <p className="mt-1">
+              Website created by{" "}
+              <a 
+                href="https://jayswebdesignservices.com/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary hover:underline"
+              >
+                {"Jay's Web Design Services"}
+              </a>
+            </p>
           </div>
+          <p className="text-foreground/50 text-sm text-center md:text-right">Questions about website privacy or terms? Call (210) 891-4174.</p>
         </div>
       </div>
     </footer>
