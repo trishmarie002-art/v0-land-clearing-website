@@ -1,6 +1,5 @@
 import { Header } from "@/components/header"
 import { Hero } from "@/components/hero"
-import { About } from "@/components/about"
 import { Services } from "@/components/services"
 import { HomeProjectPlanning } from "@/components/home-project-planning"
 import { ServiceArea } from "@/components/service-area"
@@ -67,7 +66,6 @@ export default function Home() {
       <UrgentQuoteBanner />
       <Header />
       <Hero />
-      <About />
       <HomeQuoteBanner variant="clearing" />
       <Services />
       <HomeProjectPlanning />
