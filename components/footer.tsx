@@ -11,7 +11,7 @@ const quickLinks = [
   { href: "/questions", label: "Q&A Library" },
   { href: "/service-areas", label: "Service Areas" },
   { href: "/blog", label: "Blog" },
-  { href: "/#contact", label: "Contact" },
+  { href: "/contact", label: "Contact" },
 ]
 
 export function Footer() {
