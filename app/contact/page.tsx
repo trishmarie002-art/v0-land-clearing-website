@@ -93,7 +93,7 @@ export default function ContactPage() {
           </Link>
         </div>
       </section>
-      <Contact />
+      <Contact hideProjectQuestions />
       <Footer />
       <ChatWidget />
     </main>
