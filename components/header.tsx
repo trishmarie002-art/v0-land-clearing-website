@@ -9,7 +9,6 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about#about", label: "About Us" },
   { href: "/services", label: "Services" },
-  { href: "/about#why-us", label: "Why Choose Us" },
   { href: "/questions", label: "Q&A Library" },
   { href: "/service-areas", label: "Service Areas" },
   { href: "/blog", label: "Blog" },
