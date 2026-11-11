@@ -9,6 +9,7 @@ import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
 import { ChatWidget } from "@/components/chat-widget"
 import { UrgentQuoteBanner } from "@/components/urgent-quote-banner"
+import { HomeQuoteBanner } from "@/components/home-quote-banner"
 
 
 const customerReviews = [
@@ -67,10 +68,13 @@ export default function Home() {
       <Header />
       <Hero />
       <About />
+      <HomeQuoteBanner variant="clearing" />
       <Services />
       <HomeProjectPlanning />
+      <HomeQuoteBanner variant="planning" />
       <ServiceArea />
       <CustomerReviews />
+      <HomeQuoteBanner variant="estimate" />
       <FAQ />
       <Contact />
       <Footer />
