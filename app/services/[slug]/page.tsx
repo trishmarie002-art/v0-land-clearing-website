@@ -12,6 +12,21 @@ import { locations } from "@/lib/locations"
 import { relatedArticlesForService } from "@/lib/internal-links"
 
 const origin = "https://jayslandclearingserviceanddirtwork.com"
+const serviceMetaTitles: Record<string, string> = {
+  "land-clearing": "Land Clearing San Antonio, TX | Jay's",
+  "dirt-work-grading": "Dirt Work & Grading San Antonio, TX | Jay's",
+  "excavation": "Excavation Services San Antonio, TX | Jay's",
+  "hauling-services": "Hauling Services San Antonio, TX | Jay's",
+  "lot-preparation": "Lot Preparation San Antonio, TX | Jay's",
+  "fence-line-clearing": "Fence Line Clearing San Antonio, TX | Jay's",
+  "brush-removal": "Brush Removal San Antonio, TX | Jay's",
+  "concrete-removal": "Concrete Removal San Antonio, TX | Jay's",
+  "rock-removal": "Rock Removal San Antonio, TX | Jay's",
+  "junk-removal": "Junk Removal San Antonio, TX | Jay's",
+  "hoarding-cleanouts": "Hoarding Cleanouts San Antonio, TX | Jay's",
+  "demolition": "Demolition Services San Antonio, TX | Jay's",
+}
+
 type Props = { params: Promise<{ slug: string }> }
 
 export function generateStaticParams() {
@@ -23,7 +38,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const service = serviceBySlug[slug]
   if (!service) return {}
   const url = `${origin}/services/${service.slug}`
-  const title = `${service.title} in San Antonio & South Texas | Jay's Land Clearing`
+  const title = serviceMetaTitles[service.slug] ?? `${service.title} San Antonio, TX | Jay's`
   const description = `${service.title} in San Antonio and surrounding South Texas communities. Explore services, project planning and free estimates: (210) 891-4174.`
   return {
     title: { absolute: title },
