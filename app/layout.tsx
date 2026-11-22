@@ -27,11 +27,11 @@ export const metadata: Metadata = {
     apple: '/images/logo.png',
   },
   title: {
-    default: "Land Clearing Services & Dirt Work | San Antonio, TX",
+    default: "Land Clearing San Antonio, TX | Jay's Land Clearing",
     template: "%s | Jay's Land Clearing Service",
   },
   description:
-    'Land clearing, grading, excavation, brush removal, concrete removal, rock removal, junk removal, cleanouts and demolition in greater San Antonio. Free estimates: (210) 891-4174.',
+    'Need land clearing in San Antonio, TX? Jay\'s handles brush removal, dirt work, grading and lot preparation. Call (210) 891-4174 for a free estimate.',
   keywords: [
     'land clearing San Antonio',
     'land clearing services near me',
