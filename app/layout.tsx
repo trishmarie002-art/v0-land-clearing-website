@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     apple: '/images/logo.png',
   },
   title: {
-    default: "Land Clearing San Antonio, TX | Jay's Land Clearing",
+    default: "Land clearing service in San Antonio tx | Land Clearing San Antonio",
     template: "%s | Jay's Land Clearing Service",
   },
   description:
