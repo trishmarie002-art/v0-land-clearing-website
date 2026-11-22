@@ -31,7 +31,7 @@ export function Hero() {
           </div>
 
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold mb-4 font-[family-name:var(--font-display)] uppercase tracking-tight text-balance animate-slide-up px-2">
-            <span className="text-primary">Land Clearing Service</span> & Dirt Work in San Antonio, TX
+            <span className="text-primary">Land Clearing Service</span> In San Antonio TX | Land Clearing San Antonio
           </h1>
 
           <p className="text-base sm:text-lg md:text-xl text-foreground/80 mb-8 max-w-lg mx-auto lg:ml-0 animate-slide-up-delay px-2">
