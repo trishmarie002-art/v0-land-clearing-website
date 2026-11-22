@@ -16,10 +16,10 @@ export function ChatWidget() {
   if (!isVisible) return null
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className="fixed bottom-[calc(5.5rem+env(safe-area-inset-bottom))] right-4 z-50 md:bottom-6 md:right-6">
       {/* Chat Panel */}
       <div
-        className={`absolute bottom-20 right-0 w-80 bg-card border border-border rounded-lg shadow-2xl overflow-hidden transition-all duration-300 origin-bottom-right ${
+        className={`absolute bottom-20 right-0 w-80 max-w-[calc(100vw-2rem)] bg-card border border-border rounded-lg shadow-2xl overflow-hidden transition-all duration-300 origin-bottom-right ${
           isOpen ? "scale-100 opacity-100 translate-y-0" : "scale-90 opacity-0 translate-y-4 pointer-events-none"
         }`}
       >

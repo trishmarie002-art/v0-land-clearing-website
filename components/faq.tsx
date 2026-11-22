@@ -1,116 +1,61 @@
-"use client"
+import Link from "next/link"
+import { ArrowRight } from "lucide-react"
 
-import { Plus, Minus } from "lucide-react"
-import { useState } from "react"
-
+// Native details render the answers as accessible HTML without requiring client-side JavaScript.
+// Project-dependent conditions are deliberately not presented as fixed prices or guarantees.
 const faqs = [
   {
-    question: "How much does land clearing cost in San Antonio?",
-    answer: "Land clearing costs in San Antonio vary based on the size of the property, density of vegetation, terrain, and accessibility. On average, expect to pay between $1,500 to $5,000 per acre for light clearing, and $3,000 to $8,000+ per acre for heavy brush and tree removal. We offer free on-site estimates to give you an accurate quote for your specific project."
+    question: "How much does land clearing cost in San Antonio and South Texas?",
+    answer: "A clearing estimate depends on acreage, brush and tree density, slope, access, debris hauling, stump work and the finish you need. A lightly overgrown lot and wooded acreage are different jobs, even when their sizes match. Share photos, approximate acreage and your intended use for a project-specific quote.",
   },
   {
-    question: "What areas do you serve near San Antonio?",
-    answer: "We proudly serve San Antonio and all surrounding areas including Bexar County, New Braunfels, Boerne, Seguin, Helotes, Castroville, Floresville, Pleasanton, Schertz, Cibolo, Universal City, Live Oak, Converse, and throughout South Texas. If you're within 60 miles of San Antonio, give us a call!"
+    question: "What communities does Jay's serve?",
+    answer: "Jay's discusses projects across San Antonio and surrounding South Texas communities, including Poteet, Pleasanton, Floresville, Boerne and New Braunfels. Travel and scheduling depend on the project location, scope and equipment needs. Confirm availability for your property when you request an estimate.",
   },
   {
     question: "How long does land clearing take?",
-    answer: "The timeline depends on the property size and vegetation density. A small residential lot (under 1 acre) with light brush can typically be cleared in 1-2 days. Larger properties or dense vegetation may take 3-7 days or more. We'll provide a timeline estimate during your free consultation."
+    answer: "The schedule depends on vegetation density, acreage, weather, terrain, access and whether debris must be loaded and hauled. Acreage alone does not establish a reliable timeline. The contractor can discuss a schedule once the actual work and desired finished condition are clear.",
   },
   {
-    question: "Do you handle brush and debris removal?",
-    answer: "Yes! We provide complete land clearing services including all brush, tree, and debris removal. We haul away everything, leaving you with a clean, clear property ready for your next project. We can also provide mulching services to leave organic material on-site if preferred."
+    question: "Is brush and debris hauling included with land clearing?",
+    answer: "Not automatically. Cutting, mulching, piling, loading, hauling and disposal can be separate scope items. Tell the estimator whether you want material left on-site, processed in place or removed, and ask for those details in the written quote.",
   },
   {
-    question: "Can you clear land for new construction?",
-    answer: "Absolutely. We specialize in lot preparation for new construction, including residential homes, commercial buildings, and agricultural structures. Our services include clearing, grading, and preparing the site to meet your builder's specifications."
+    question: "Can a cleared lot be made ready for new construction?",
+    answer: "Clearing is often the first step. Construction preparation may also require excavation, rough grading, drainage planning and work to a builder's specifications. Provide the planned building footprint, access location and available site plans before agreeing on the scope.",
   },
   {
-    question: "Do you offer free estimates for land clearing?",
-    answer: "Yes, we offer 100% free estimates with no obligation. We'll visit your property, assess the scope of work, and provide a detailed written quote. Call us at (210) 891-4174 or fill out our contact form to schedule your free estimate."
+    question: "How do I request a free project estimate?",
+    answer: "Use the quote form or call (210) 891-4174. Include your property city or ZIP, approximate size, photos showing the work area and equipment access, the service requested and your preferred finished condition.",
   },
 ]
 
-// FAQ JSON-LD for structured data
-const faqJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: faqs.map((faq) => ({
-    '@type': 'Question',
-    name: faq.question,
-    acceptedAnswer: {
-      '@type': 'Answer',
-      text: faq.answer,
-    },
-  })),
-}
-
 export function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0)
-
   return (
-    <section id="faq" className="py-20 bg-secondary/30">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
-      
+    <section id="faq" className="py-20 bg-secondary/30" aria-labelledby="faq-heading">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12 animate-on-scroll fade-in">
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider">
-            Common Questions
-          </span>
-          <h2 className="font-[var(--font-display)] text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-2 uppercase tracking-tight text-balance">
+        <div className="text-center mb-12">
+          <span className="text-primary font-semibold text-sm uppercase tracking-wider">Common Questions</span>
+          <h2 id="faq-heading" className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-2 uppercase tracking-tight text-balance">
             Frequently Asked Questions
           </h2>
           <p className="text-foreground/70 mt-4 max-w-2xl mx-auto text-balance">
-            Get answers to common questions about our land clearing services in San Antonio
+            Practical answers for property owners in San Antonio and surrounding South Texas communities.
           </p>
         </div>
-
-        <div className="max-w-3xl mx-auto">
-          {faqs.map((faq, index) => (
-            <div
-              key={index}
-              className="mb-4 animate-on-scroll fade-in-up"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <button
-                onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full flex items-center justify-between p-5 bg-card border border-border rounded-lg hover:border-primary/50 transition-all text-left group"
-              >
-                <span className="font-semibold text-foreground pr-4">{faq.question}</span>
-                <span className="flex-shrink-0 w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                  {openIndex === index ? (
-                    <Minus className="w-4 h-4 text-primary" />
-                  ) : (
-                    <Plus className="w-4 h-4 text-primary" />
-                  )}
-                </span>
-              </button>
-              
-              <div
-                className={`overflow-hidden transition-all duration-300 ${
-                  openIndex === index ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-                }`}
-              >
-                <div className="p-5 bg-card/50 border border-t-0 border-border rounded-b-lg">
-                  <p className="text-foreground/70 leading-relaxed">{faq.answer}</p>
-                </div>
-              </div>
-            </div>
+        <div className="max-w-3xl mx-auto space-y-4">
+          {faqs.map(({ question, answer }, index) => (
+            <details key={question} open={index === 0} className="group rounded-lg border border-border bg-card p-5">
+              <summary className="cursor-pointer font-semibold text-foreground marker:text-primary">{question}</summary>
+              <p className="pt-4 text-foreground/70 leading-relaxed">{answer}</p>
+            </details>
           ))}
         </div>
-
-        <div className="text-center mt-12 animate-on-scroll fade-in">
-          <p className="text-foreground/70 mb-4">
-            Have more questions? We&apos;re here to help!
-          </p>
-          <a
-            href="tel:+12108914174"
-            className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-all hover:scale-105"
-          >
-            Call (210) 891-4174
-          </a>
+        <div className="text-center mt-12">
+          <p className="text-foreground/70 mb-4">Have questions about a specific service or property?</p>
+          <Link href="/questions" className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 font-semibold text-primary-foreground hover:bg-primary/90">
+            Browse all 72 service answers <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </div>
     </section>
